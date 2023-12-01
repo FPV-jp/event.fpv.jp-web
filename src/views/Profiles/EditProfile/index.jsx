@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Button, Col, Container, Form, Nav, Row, Tab } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 // Redux
 import { connect } from 'react-redux'
-import { toggleCollapsedNav, sidebarDataHover } from 'redux/action/Theme'
+import { sidebarDataHover, toggleCollapsedNav } from 'redux/action/Theme'
 
 //Image
 import avatar3 from 'assets/dist/img/avatar3.jpg'
@@ -293,10 +293,10 @@ const EditProfile = ({ toggleCollapsedNav, sidebarDataHover }) => {
                         <Form.Group>
                           <Form.Label>2-Step Verification (2FA)</Form.Label>
                           <Form.Text muted className='d-block'>
-                            2-step verification drastically reduces the chances of having the personal information in your Google account stolen by someone else. Why? Because hackers would have to not only get your password and your username, they'd have to get a hold of your phone. A{' '}
+                            2-step verification drastically reduces the chances of having the personal information in your Google account stolen by someone else. Why? Because hackers would have to not only get your password and your username, they'd have to get a hold of your phone. A
                             <a href='#some' className='text-primary'>
                               6-digit
-                            </a>{' '}
+                            </a>
                             code may be sent to a number you’ve previously provided. Codes can be sent in a text message (SMS) or through a voice call, which depends on the setting you chose. To verify it’s you, enter the code on the sign-in screen.
                           </Form.Text>
                           <Button variant='primary' className='mt-3'>

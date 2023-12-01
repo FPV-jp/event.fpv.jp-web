@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 // Redux
 import { connect } from 'react-redux'
-import { toggleCollapsedNav, sidebarDataHover } from 'redux/action/Theme'
+import { sidebarDataHover, toggleCollapsedNav } from 'redux/action/Theme'
 
 //Image
 import fatalErrorImg from 'assets/dist/img/macaroni-fatal-error.png'
@@ -25,7 +25,7 @@ const Error404 = ({ toggleCollapsedNav, sidebarDataHover }) => {
                 <Col xl={12} className='text-center'>
                   <img src={fatalErrorImg} className='img-fluid w-sm-80 w-50' alt='login' />
                   <p className='p-xs mt-5 text-light'>
-                    Illustrations powered by{' '}
+                    Illustrations powered by
                     <a href='https://icons8.com/ouch/' target='_blank' className='text-light' rel='noreferrer'>
                       <u>Icons8</u>
                     </a>

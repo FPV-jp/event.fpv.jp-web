@@ -1,16 +1,15 @@
-import React from 'react'
-import { Button, Card, ListGroup, Nav, Tab } from 'react-bootstrap'
-import SimpleBar from 'simplebar-react'
-import { Link } from 'react-router-dom'
-import { Plus } from 'react-feather'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import HkBadge from 'components/@hk-badge/@hk-badge'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
+import { Button, Card, ListGroup, Nav, Tab } from 'react-bootstrap'
+import { Plus } from 'react-feather'
+import { Link } from 'react-router-dom'
+import SimpleBar from 'simplebar-react'
 
 //Images
-import avatar9 from 'assets/dist/img/avatar9.jpg'
 import avatar10 from 'assets/dist/img/avatar10.jpg'
 import avatar12 from 'assets/dist/img/avatar12.jpg'
 import avatar15 from 'assets/dist/img/avatar15.jpg'
+import avatar9 from 'assets/dist/img/avatar9.jpg'
 import mock2 from 'assets/dist/img/gallery/mock2.jpg'
 
 const FileInfo = ({ onHide }) => {
@@ -75,7 +74,7 @@ const FileInfo = ({ onHide }) => {
                 <Card>
                   <Card.Header>
                     <Link role='button' data-bs-toggle='collapse' to='#shared_with' aria-expanded='true'>
-                      Shared with{' '}
+                      Shared with
                     </Link>
                   </Card.Header>
                   <div id='shared_with' className='collapse show'>
@@ -131,7 +130,7 @@ const FileInfo = ({ onHide }) => {
                 <Card>
                   <Card.Header>
                     <Link role='button' data-bs-toggle='collapse' to='#settings' aria-expanded='true'>
-                      Settings{' '}
+                      Settings
                     </Link>
                   </Card.Header>
                   <div id='settings' className='collapse show'>
@@ -174,7 +173,7 @@ const FileInfo = ({ onHide }) => {
                             </div>
                             <div className='media-body'>
                               <p>
-                                <span className='text-dark'>Hencework</span> is working on{' '}
+                                <span className='text-dark'>Hencework</span> is working on
                                 <Link to='#' className='link-url'>
                                   <u>https://assets.adobe.com/id/urn:aaid:sc:AP:5cebaf53-ca19-420a-aeeb-1517b04ab8c0?view=file</u>
                                 </Link>
@@ -194,7 +193,7 @@ const FileInfo = ({ onHide }) => {
                             </div>
                             <div className='media-body'>
                               <p>
-                                <span className='text-dark'>Morgan Fregman</span> completed react conversion of{' '}
+                                <span className='text-dark'>Morgan Fregman</span> completed react conversion of
                                 <Link to='#' className='link-default'>
                                   <u>components</u>
                                 </Link>
@@ -225,7 +224,7 @@ const FileInfo = ({ onHide }) => {
                             </div>
                             <div className='media-body'>
                               <p>
-                                <span className='text-dark'>Hencework</span> is working on{' '}
+                                <span className='text-dark'>Hencework</span> is working on
                                 <Link to='#' className='link-url'>
                                   <u>https://assets.adobe.com/id/urn:aaid:sc:AP:5cebaf53-ca19-420a-aeeb-1517b04ab8c0?view=file</u>
                                 </Link>
@@ -243,7 +242,7 @@ const FileInfo = ({ onHide }) => {
                             </div>
                             <div className='media-body'>
                               <p>
-                                <span className='text-dark'>Morgan Fregman</span> completed react conversion of{' '}
+                                <span className='text-dark'>Morgan Fregman</span> completed react conversion of
                                 <Link to='#' className='link-default'>
                                   <u>components</u>
                                 </Link>

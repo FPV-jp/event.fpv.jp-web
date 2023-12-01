@@ -5,10 +5,10 @@ import Calendar from 'views/Calendar'
 import Chats from 'views/Chat/Chats'
 import ChatContacts from 'views/Chat/Contact'
 import ChatGroups from 'views/Chat/Groups'
-import ContactCards from 'views/Contact/ContactCards'
-import ContactList from 'views/Contact/ContactList'
 import ChatBot from 'views/ChatPopup/ChatBot'
 import ChatPopup from 'views/ChatPopup/DirectMessage'
+import ContactCards from 'views/Contact/ContactCards'
+import ContactList from 'views/Contact/ContactList'
 import EditContact from 'views/Contact/EditContact'
 import Dashboard from 'views/Dashboard'
 import Email from 'views/Email'
@@ -35,16 +35,12 @@ import Profile from 'views/Profiles/Profile'
 import Error404 from 'views/Authentication/Error404/Error404'
 import Error503 from 'views/Authentication/Error503/Error503'
 import LockScreen from 'views/Authentication/LockScreen'
-import Login from 'views/Authentication/LogIn/Login/Login'
-import LoginClassic from 'views/Authentication/LogIn/LoginClassic'
-import LoginSimple from 'views/Authentication/LogIn/LoginSimple'
+import Login from 'views/Authentication/LogIn'
 import ResetPassword from 'views/Authentication/ResetPassword'
-import Signup from 'views/Authentication/SignUp/Signup'
-import SignupClassic from 'views/Authentication/SignUp/SignupClassic'
-import SignUpSimple from 'views/Authentication/SignUp/SignupSimple'
+import Signup from 'views/Authentication/SignUp'
 
-// --- Public ------------------------------------------------------------------
-export const publicRoutes = [
+// --- Private -----------------------------------------------------------------
+export const privateRoutes = [
   { path: 'dashboard', exact: 'true', component: Dashboard },
   //Apps
   { path: 'apps/chat/chats', exact: 'true', component: Chats },
@@ -83,14 +79,10 @@ export const publicRoutes = [
   { path: 'error-404', exact: 'true', component: Error404 },
 ]
 
-// --- Private ------------------------------------------------------------------
-export const privateRoutes = [
+// --- Public ------------------------------------------------------------------
+export const publicRoutes = [
   { path: '/login', exact: 'true', component: Login },
-  { path: '/login-simple', exact: 'true', component: LoginSimple },
-  { path: '/login-classic', exact: 'true', component: LoginClassic },
   { path: '/signup', exact: 'true', component: Signup },
-  { path: '/signup-simple', exact: 'true', component: SignUpSimple },
-  { path: '/signup-classic', exact: 'true', component: SignupClassic },
   { path: '/lock-screen', exact: 'true', component: LockScreen },
   { path: '/reset-password', exact: 'true', component: ResetPassword },
   { path: '/error-503', exact: 'true', component: Error503 },

@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
 import classNames from 'classnames'
+import HkBadge from 'components/@hk-badge/@hk-badge'
+import { useState } from 'react'
 import { Draggable, Droppable } from 'react-beautiful-dnd'
 import { Button, Card, Col, Dropdown, Form, Modal, Row } from 'react-bootstrap'
-import { MoreHorizontal, Plus } from 'react-feather'
-import Task from './Task'
 import DateRangePicker from 'react-bootstrap-daterangepicker'
+import { MoreHorizontal, Plus } from 'react-feather'
 import PerfectScrollbar from 'react-perfect-scrollbar'
-import HkBadge from 'components/@hk-badge/@hk-badge'
+import Task from './Task'
 
 const Cards = (props) => {
   const [renameBoard, setRenameBoard] = useState(false)
@@ -78,7 +78,6 @@ const Cards = (props) => {
             </Card.Header>
 
             <Card.Body as={PerfectScrollbar}>
-              {' '}
               {/* className="tasklist-cards-wrap custom-scroll" */}
               <Droppable droppableId={props.card.id} type='task'>
                 {(provided, snapshot) => (

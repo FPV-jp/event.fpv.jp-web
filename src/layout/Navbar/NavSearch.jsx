@@ -1,14 +1,12 @@
+import avatar3 from 'assets/dist/img/avatar3.jpg'
+import avatar4 from 'assets/dist/img/avatar4.jpg'
+import HkBadge from 'components/@hk-badge/@hk-badge'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Button, Dropdown, Form, InputGroup } from 'react-bootstrap'
 import { Search } from 'react-feather'
 import { Link } from 'react-router-dom'
 import SimpleBar from 'simplebar-react'
-
-//Image
-import avatar3 from 'assets/dist/img/avatar3.jpg'
-import avatar4 from 'assets/dist/img/avatar4.jpg'
-import HkBadge from 'components/@hk-badge/@hk-badge'
 
 const NavSearch = () => {
   const [showDropdown, setShowDropdown] = useState(false)

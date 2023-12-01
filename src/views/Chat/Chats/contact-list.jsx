@@ -1,13 +1,13 @@
 import { PhoneCall } from 'react-feather'
 //Images
 import avatar1 from 'assets/dist/img/avatar1.jpg'
+import avatar13 from 'assets/dist/img/avatar13.jpg'
+import avatar15 from 'assets/dist/img/avatar15.jpg'
 import avatar2 from 'assets/dist/img/avatar2.jpg'
 import avatar3 from 'assets/dist/img/avatar3.jpg'
 import avatar7 from 'assets/dist/img/avatar7.jpg'
 import avatar8 from 'assets/dist/img/avatar8.jpg'
 import avatar9 from 'assets/dist/img/avatar9.jpg'
-import avatar13 from 'assets/dist/img/avatar13.jpg'
-import avatar15 from 'assets/dist/img/avatar15.jpg'
 
 export const contacts = [
   {
@@ -100,7 +100,7 @@ export const contacts = [
     lastChat: (
       <span className='text-danger'>
         <span className='feather-icon fe-x me-1'>
-          <PhoneCall />{' '}
+          <PhoneCall />
         </span>
         Missed call
       </span>

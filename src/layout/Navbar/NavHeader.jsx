@@ -1,12 +1,9 @@
+import jampackImg from 'assets/dist/img/Jampack.svg'
+import logo from 'assets/dist/img/brand-sm.svg'
+import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { sidebarDataHover, toggleCollapsedNav } from 'redux/action/Theme'
-
-//Images
-import jampackImg from 'assets/dist/img/Jampack.svg'
-import logo from 'assets/dist/img/brand-sm.svg'
-
-import { Button } from 'react-bootstrap'
 import { ArrowBarToLeft } from 'tabler-icons-react'
 
 const NavHeader = ({ navCollapsed, toggleCollapsedNav, sidebarDataHover, dataHover }) => {

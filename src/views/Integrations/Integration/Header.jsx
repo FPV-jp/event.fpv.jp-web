@@ -1,11 +1,10 @@
-import React from 'react'
 import classNames from 'classnames'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import { Button, Form, Nav } from 'react-bootstrap'
 import { CheckSquare, ChevronDown, ChevronUp, Globe } from 'react-feather'
 import { connect } from 'react-redux'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
-import { toggleTopNav } from 'redux/action/Theme'
 import { Link } from 'react-router-dom'
+import { toggleTopNav } from 'redux/action/Theme'
 
 const Header = ({ topNavCollapsed, toggleTopNav, toggleSidebar, show }) => {
   return (
@@ -55,7 +54,7 @@ const Header = ({ topNavCollapsed, toggleTopNav, toggleSidebar, show }) => {
           </HkTooltip>
         </Button>
       </div>
-      <div className={classNames('hk-sidebar-togglable', { active: !show })} onClick={toggleSidebar} />{' '}
+      <div className={classNames('hk-sidebar-togglable', { active: !show })} onClick={toggleSidebar} />
     </header>
   )
 }

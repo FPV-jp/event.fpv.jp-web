@@ -1,0 +1,3 @@
+export const AUTH0_ACCESS_TOKEN = 'AUTH0_ACCESS_TOKEN'
+export const AUTH0_USER = 'AUTH0_USER'
+export const AUTH0_INVOKING = 'AUTH0_INVOKING'

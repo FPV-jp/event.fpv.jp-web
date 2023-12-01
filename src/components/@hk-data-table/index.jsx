@@ -1,14 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import useSortableData from './hooks/useSortableData'
-import useTablePageSize from './hooks/useTablePageSize'
 import classNames from 'classnames'
+import PropTypes from 'prop-types'
+import React from 'react'
 import { Form, Table } from 'react-bootstrap'
 import { Star } from 'react-feather'
 import { ArrowsSort, SortAscending, SortDescending } from 'tabler-icons-react'
 import TableFooter from './TableFooter'
 import useRowSelect from './hooks/useRowSelect'
+import useSortableData from './hooks/useSortableData'
 import useStarred from './hooks/useStarred'
+import useTablePageSize from './hooks/useTablePageSize'
 
 const HkDataTable = ({ column, rowData, bsPrefix, classes, striped, bordered, borderless, hover, size, variant, responsive, rowsPerPage, paginatorSize, rowSelection, searchBar, searchQuery, searchClasses, markStarred, ...rest }) => {
   const [data, setData] = React.useState(rowData)
@@ -67,7 +67,7 @@ const HkDataTable = ({ column, rowData, bsPrefix, classes, striped, bordered, bo
                         </>
                       ) : (
                         <span>
-                          <ArrowsSort size={14} strokeWidth={2.5} />{' '}
+                          <ArrowsSort size={14} strokeWidth={2.5} />
                         </span>
                       )}
                     </span>

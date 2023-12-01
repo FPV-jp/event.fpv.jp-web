@@ -1,24 +1,24 @@
-import React, { useEffect, useReducer, useState } from 'react'
-import SimpleBar from 'simplebar-react'
-import { Inbox, MoreVertical, Star, UserCheck } from 'react-feather'
-import { Button, Card, Col, Dropdown, Form, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import classNames from 'classnames'
+import { useEffect, useReducer, useState } from 'react'
+import { Button, Card, Col, Dropdown, Form, Row } from 'react-bootstrap'
+import { Inbox, MoreVertical, Star, UserCheck } from 'react-feather'
+import { Link } from 'react-router-dom'
+import SimpleBar from 'simplebar-react'
 import { reducer } from './CheckboxReducer'
 import ContactDetails from './ContactDetails'
 
 //Images
+import avatar10 from 'assets/dist/img/avatar10.jpg'
+import avatar11 from 'assets/dist/img/avatar11.jpg'
+import avatar13 from 'assets/dist/img/avatar13.jpg'
+import avatar14 from 'assets/dist/img/avatar14.jpg'
+import avatar15 from 'assets/dist/img/avatar15.jpg'
 import avatar2 from 'assets/dist/img/avatar2.jpg'
 import avatar3 from 'assets/dist/img/avatar3.jpg'
 import avatar5 from 'assets/dist/img/avatar5.jpg'
 import avatar7 from 'assets/dist/img/avatar7.jpg'
 import avatar8 from 'assets/dist/img/avatar8.jpg'
 import avatar9 from 'assets/dist/img/avatar9.jpg'
-import avatar10 from 'assets/dist/img/avatar10.jpg'
-import avatar11 from 'assets/dist/img/avatar11.jpg'
-import avatar13 from 'assets/dist/img/avatar13.jpg'
-import avatar14 from 'assets/dist/img/avatar14.jpg'
-import avatar15 from 'assets/dist/img/avatar15.jpg'
 
 const ContactCardsBody = () => {
   const initial = false
@@ -282,7 +282,7 @@ const ContactCardsBody = () => {
                     <div className='user-name'>
                       <span className='contact-star'>
                         <span className='feather-icon'>
-                          <Star />{' '}
+                          <Star />
                         </span>
                       </span>
                       Huma Therman
@@ -303,8 +303,7 @@ const ContactCardsBody = () => {
                     <div className='v-separator-full m-0' />
                     <Link to='#' className='d-flex align-items-center' onClick={() => setShowDetails(!showDetails)}>
                       <span className='feather-icon me-2'>
-                        {' '}
-                        <UserCheck />{' '}
+                        <UserCheck />
                       </span>
                       <span className='fs-7 lh-1'>Profile</span>
                     </Link>
@@ -349,7 +348,7 @@ const ContactCardsBody = () => {
                     <div className='user-name'>
                       <span className='contact-star marked'>
                         <span className='feather-icon'>
-                          <Star />{' '}
+                          <Star />
                         </span>
                       </span>
                       Charlie Chaplin
@@ -370,8 +369,7 @@ const ContactCardsBody = () => {
                     <div className='v-separator-full m-0' />
                     <Link to='#' className='d-flex align-items-center' onClick={() => setShowDetails(!showDetails)}>
                       <span className='feather-icon me-2'>
-                        {' '}
-                        <UserCheck />{' '}
+                        <UserCheck />
                       </span>
                       <span className='fs-7 lh-1'>Profile</span>
                     </Link>
@@ -416,7 +414,7 @@ const ContactCardsBody = () => {
                     <div className='user-name'>
                       <span className='contact-star'>
                         <span className='feather-icon'>
-                          <Star />{' '}
+                          <Star />
                         </span>
                       </span>
                       Winston Churchil
@@ -437,8 +435,7 @@ const ContactCardsBody = () => {
                     <div className='v-separator-full m-0' />
                     <Link to='#' className='d-flex align-items-center' onClick={() => setShowDetails(!showDetails)}>
                       <span className='feather-icon me-2'>
-                        {' '}
-                        <UserCheck />{' '}
+                        <UserCheck />
                       </span>
                       <span className='fs-7 lh-1'>Profile</span>
                     </Link>
@@ -483,7 +480,7 @@ const ContactCardsBody = () => {
                     <div className='user-name'>
                       <span className='contact-star marked'>
                         <span className='feather-icon'>
-                          <Star />{' '}
+                          <Star />
                         </span>
                       </span>
                       Jaquiline Joker
@@ -504,8 +501,7 @@ const ContactCardsBody = () => {
                     <div className='v-separator-full m-0' />
                     <Link to='#' className='d-flex align-items-center' onClick={() => setShowDetails(!showDetails)}>
                       <span className='feather-icon me-2'>
-                        {' '}
-                        <UserCheck />{' '}
+                        <UserCheck />
                       </span>
                       <span className='fs-7 lh-1'>Profile</span>
                     </Link>
@@ -550,7 +546,7 @@ const ContactCardsBody = () => {
                     <div className='user-name'>
                       <span className='contact-star'>
                         <span className='feather-icon'>
-                          <Star />{' '}
+                          <Star />
                         </span>
                       </span>
                       Tom Cruz
@@ -571,8 +567,7 @@ const ContactCardsBody = () => {
                     <div className='v-separator-full m-0' />
                     <Link to='#' className='d-flex align-items-center' onClick={() => setShowDetails(!showDetails)}>
                       <span className='feather-icon me-2'>
-                        {' '}
-                        <UserCheck />{' '}
+                        <UserCheck />
                       </span>
                       <span className='fs-7 lh-1'>Profile</span>
                     </Link>
@@ -617,7 +612,7 @@ const ContactCardsBody = () => {
                     <div className='user-name'>
                       <span className='contact-star marked'>
                         <span className='feather-icon'>
-                          <Star />{' '}
+                          <Star />
                         </span>
                       </span>
                       Daniel Craig
@@ -638,8 +633,7 @@ const ContactCardsBody = () => {
                     <div className='v-separator-full m-0' />
                     <Link to='#' className='d-flex align-items-center' onClick={() => setShowDetails(!showDetails)}>
                       <span className='feather-icon me-2'>
-                        {' '}
-                        <UserCheck />{' '}
+                        <UserCheck />
                       </span>
                       <span className='fs-7 lh-1'>Profile</span>
                     </Link>
@@ -684,7 +678,7 @@ const ContactCardsBody = () => {
                     <div className='user-name'>
                       <span className='contact-star marked'>
                         <span className='feather-icon'>
-                          <Star />{' '}
+                          <Star />
                         </span>
                       </span>
                       Katharine Jones
@@ -705,8 +699,7 @@ const ContactCardsBody = () => {
                     <div className='v-separator-full m-0' />
                     <Link to='#' className='d-flex align-items-center' onClick={() => setShowDetails(!showDetails)}>
                       <span className='feather-icon me-2'>
-                        {' '}
-                        <UserCheck />{' '}
+                        <UserCheck />
                       </span>
                       <span className='fs-7 lh-1'>Profile</span>
                     </Link>
@@ -751,7 +744,7 @@ const ContactCardsBody = () => {
                     <div className='user-name'>
                       <span className='contact-star'>
                         <span className='feather-icon'>
-                          <Star />{' '}
+                          <Star />
                         </span>
                       </span>
                       Hencework
@@ -772,8 +765,7 @@ const ContactCardsBody = () => {
                     <div className='v-separator-full m-0' />
                     <Link to='#' className='d-flex align-items-center' onClick={() => setShowDetails(!showDetails)}>
                       <span className='feather-icon me-2'>
-                        {' '}
-                        <UserCheck />{' '}
+                        <UserCheck />
                       </span>
                       <span className='fs-7 lh-1'>Profile</span>
                     </Link>
@@ -818,7 +810,7 @@ const ContactCardsBody = () => {
                     <div className='user-name'>
                       <span className='contact-star'>
                         <span className='feather-icon'>
-                          <Star />{' '}
+                          <Star />
                         </span>
                       </span>
                       Daniel Raynolds
@@ -839,8 +831,7 @@ const ContactCardsBody = () => {
                     <div className='v-separator-full m-0' />
                     <Link to='#' className='d-flex align-items-center' onClick={() => setShowDetails(!showDetails)}>
                       <span className='feather-icon me-2'>
-                        {' '}
-                        <UserCheck />{' '}
+                        <UserCheck />
                       </span>
                       <span className='fs-7 lh-1'>Profile</span>
                     </Link>
@@ -885,7 +876,7 @@ const ContactCardsBody = () => {
                     <div className='user-name'>
                       <span className='contact-star'>
                         <span className='feather-icon'>
-                          <Star />{' '}
+                          <Star />
                         </span>
                       </span>
                       John Brother
@@ -906,8 +897,7 @@ const ContactCardsBody = () => {
                     <div className='v-separator-full m-0' />
                     <Link to='#' className='d-flex align-items-center' onClick={() => setShowDetails(!showDetails)}>
                       <span className='feather-icon me-2'>
-                        {' '}
-                        <UserCheck />{' '}
+                        <UserCheck />
                       </span>
                       <span className='fs-7 lh-1'>Profile</span>
                     </Link>
@@ -952,7 +942,7 @@ const ContactCardsBody = () => {
                     <div className='user-name'>
                       <span className='contact-star marked'>
                         <span className='feather-icon'>
-                          <Star />{' '}
+                          <Star />
                         </span>
                       </span>
                       Dean Shaw
@@ -973,8 +963,7 @@ const ContactCardsBody = () => {
                     <div className='v-separator-full m-0' />
                     <Link to='#' className='d-flex align-items-center' onClick={() => setShowDetails(!showDetails)}>
                       <span className='feather-icon me-2'>
-                        {' '}
-                        <UserCheck />{' '}
+                        <UserCheck />
                       </span>
                       <span className='fs-7 lh-1'>Profile</span>
                     </Link>
@@ -1019,7 +1008,7 @@ const ContactCardsBody = () => {
                     <div className='user-name'>
                       <span className='contact-star marked'>
                         <span className='feather-icon'>
-                          <Star />{' '}
+                          <Star />
                         </span>
                       </span>
                       Cavin Spancy
@@ -1040,8 +1029,7 @@ const ContactCardsBody = () => {
                     <div className='v-separator-full m-0' />
                     <Link to='#' className='d-flex align-items-center' onClick={() => setShowDetails(!showDetails)}>
                       <span className='feather-icon me-2'>
-                        {' '}
-                        <UserCheck />{' '}
+                        <UserCheck />
                       </span>
                       <span className='fs-7 lh-1'>Profile</span>
                     </Link>
@@ -1086,7 +1074,7 @@ const ContactCardsBody = () => {
                     <div className='user-name'>
                       <span className='contact-star'>
                         <span className='feather-icon'>
-                          <Star />{' '}
+                          <Star />
                         </span>
                       </span>
                       Justin Bieber
@@ -1107,8 +1095,7 @@ const ContactCardsBody = () => {
                     <div className='v-separator-full m-0' />
                     <Link to='#' className='d-flex align-items-center' onClick={() => setShowDetails(!showDetails)}>
                       <span className='feather-icon me-2'>
-                        {' '}
-                        <UserCheck />{' '}
+                        <UserCheck />
                       </span>
                       <span className='fs-7 lh-1'>Profile</span>
                     </Link>
@@ -1153,7 +1140,7 @@ const ContactCardsBody = () => {
                     <div className='user-name'>
                       <span className='contact-star'>
                         <span className='feather-icon'>
-                          <Star />{' '}
+                          <Star />
                         </span>
                       </span>
                       Auston Kutcher
@@ -1174,8 +1161,7 @@ const ContactCardsBody = () => {
                     <div className='v-separator-full m-0' />
                     <Link to='#' className='d-flex align-items-center' onClick={() => setShowDetails(!showDetails)}>
                       <span className='feather-icon me-2'>
-                        {' '}
-                        <UserCheck />{' '}
+                        <UserCheck />
                       </span>
                       <span className='fs-7 lh-1'>Profile</span>
                     </Link>

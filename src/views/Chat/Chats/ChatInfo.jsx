@@ -1,10 +1,9 @@
-import React from 'react'
-import { Button, Card, Dropdown, Form, Nav, Tab } from 'react-bootstrap'
-import SimpleBar from 'simplebar-react'
-import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Briefcase, Mail, MapPin, MoreVertical, Phone } from 'react-feather'
 import { faDropbox, faFacebook, faGithub, faGoogle, faGoogleDrive } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Button, Card, Dropdown, Form, Nav, Tab } from 'react-bootstrap'
+import { Briefcase, Mail, MapPin, MoreVertical, Phone } from 'react-feather'
+import { Link } from 'react-router-dom'
+import SimpleBar from 'simplebar-react'
 //Redux
 import { connect } from 'react-redux'
 
@@ -109,7 +108,7 @@ const ChatInfo = ({ infoToggle, avatar, userName }) => {
                 <Card>
                   <Card.Header>
                     <Link role='button' data-bs-toggle='collapse' to='#social_profile' aria-expanded='true'>
-                      Social Profile{' '}
+                      Social Profile
                     </Link>
                   </Card.Header>
                   <div id='social_profile' className='collapse show'>
@@ -157,7 +156,7 @@ const ChatInfo = ({ infoToggle, avatar, userName }) => {
                 <Card>
                   <Card.Header>
                     <Link role='button' data-bs-toggle='collapse' to='#biography' aria-expanded='true'>
-                      Biography{' '}
+                      Biography
                     </Link>
                   </Card.Header>
                   <div id='biography' className='collapse show'>
@@ -169,7 +168,7 @@ const ChatInfo = ({ infoToggle, avatar, userName }) => {
                 <Card>
                   <Card.Header>
                     <Link role='button' data-bs-toggle='collapse' to='#settings' aria-expanded='true'>
-                      Settings{' '}
+                      Settings
                     </Link>
                   </Card.Header>
                   <div id='settings' className='collapse show'>

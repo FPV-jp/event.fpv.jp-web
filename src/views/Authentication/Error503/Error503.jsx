@@ -1,7 +1,6 @@
-import React from 'react'
+import Footer from 'layout/Footer'
+import Header from 'layout/Header'
 import { Button, Col, Container, Row } from 'react-bootstrap'
-import SimpleHeader from '../SimpleHeader'
-import PageFooter from '../../../layout/Footer/PageFooter'
 import { useNavigate } from 'react-router-dom'
 
 // Image
@@ -17,7 +16,7 @@ const Error503 = (props) => {
 
   return (
     <>
-      <SimpleHeader />
+      <Header />
       <div className='hk-pg-wrapper'>
         <div className='hk-pg-body'>
           <Container>
@@ -28,7 +27,7 @@ const Error503 = (props) => {
                     <Col xl={12} className='text-center'>
                       <img src={Error503Img} className='img-fluid w-sm-70 w-50' alt='login' />
                       <p className='p-xs mt-5 text-light'>
-                        Illustrations powered by{' '}
+                        Illustrations powered by
                         <a href='https://icons8.com/ouch/' target='_blank' className='text-light' rel='noreferrer'>
                           <u>Icons8</u>
                         </a>
@@ -56,7 +55,7 @@ const Error503 = (props) => {
           </Container>
         </div>
         {/* Page Footer */}
-        <PageFooter />
+        <Footer />
       </div>
     </>
   )

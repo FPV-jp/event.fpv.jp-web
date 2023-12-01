@@ -1,10 +1,9 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { Button, Card, Form } from 'react-bootstrap'
-import SimpleBar from 'simplebar-react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Briefcase, Mail, MapPin, Phone } from 'react-feather'
 import { faDropbox, faFacebook, faGithub, faGoogle, faGoogleDrive } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Button, Card, Form } from 'react-bootstrap'
+import { Briefcase, Mail, MapPin, Phone } from 'react-feather'
+import { Link } from 'react-router-dom'
+import SimpleBar from 'simplebar-react'
 
 //Image
 import avatar2 from 'assets/dist/img/avatar2.jpg'
@@ -84,7 +83,7 @@ const ChatInfo = ({ infoToggle }) => {
             <Card>
               <Card.Header>
                 <a role='button' data-bs-toggle='collapse' href='#social_profile' aria-expanded='true'>
-                  Social Profile{' '}
+                  Social Profile
                 </a>
               </Card.Header>
               <div id='social_profile' className='collapse show'>
@@ -132,7 +131,7 @@ const ChatInfo = ({ infoToggle }) => {
             <Card>
               <Card.Header>
                 <a role='button' data-bs-toggle='collapse' href='#biography' aria-expanded='true'>
-                  Biography{' '}
+                  Biography
                 </a>
               </Card.Header>
               <div id='biography' className='collapse show'>
@@ -144,7 +143,7 @@ const ChatInfo = ({ infoToggle }) => {
             <Card>
               <Card.Header>
                 <a role='button' data-bs-toggle='collapse' href='#settings' aria-expanded='true'>
-                  Settings{' '}
+                  Settings
                 </a>
               </Card.Header>
               <div id='settings' className='collapse show'>

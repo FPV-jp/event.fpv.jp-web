@@ -1,9 +1,9 @@
 import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState } from 'react'
+import Footer from 'layout/Footer'
+import { useState } from 'react'
 import { Button, Card, Col, Container, Form, InputGroup, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import CommanFooter1 from '../../CommanFooter1'
 
 //Images
 import logo from 'assets/dist/img/logo-light.png'
@@ -68,7 +68,7 @@ const Signup = (props) => {
                 </Row>
               </div>
               <p className='p-xs text-white credit-text opacity-55'>
-                All illustration are powered by{' '}
+                All illustration are powered by
                 <a href='https://icons8.com/ouch/' target='_blank' className='link-white' rel='noreferrer'>
                   <u>OUCH</u>
                 </a>
@@ -105,14 +105,6 @@ const Signup = (props) => {
                         <span>Or</span>
                       </div>
                       <Row className='gx-3'>
-                        <Col lg={6} as={Form.Group} className='mb-3'>
-                          <Form.Label>Name</Form.Label>
-                          <Form.Control placeholder='Enter your name' type='text' />
-                        </Col>
-                        <Col lg={6} as={Form.Group} className='mb-3'>
-                          <Form.Label>Username</Form.Label>
-                          <Form.Control placeholder='Enter username' type='text' />
-                        </Col>
                         <Col lg={12} as={Form.Group} className='mb-3'>
                           <Form.Label>Email</Form.Label>
                           <Form.Control placeholder='Enter your email id' type='text' />
@@ -139,8 +131,8 @@ const Signup = (props) => {
                         Create account
                       </Button>
                       <p className='p-xs mt-2 text-center'>
-                        Already a member ?{' '}
-                        <Link to='#'>
+                        Already a member ?
+                        <Link to='/auth/login'>
                           <u>Sign In</u>
                         </Link>
                       </p>
@@ -148,8 +140,7 @@ const Signup = (props) => {
                   </Row>
                 </Form>
               </div>
-              {/* Page Footer */}
-              <CommanFooter1 />
+              <Footer />
             </Col>
           </Row>
         </Container>

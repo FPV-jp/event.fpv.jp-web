@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
-import SimpleBar from 'simplebar-react'
+import { useEffect, useRef, useState } from 'react'
 import { Button, Card, Dropdown, Form, InputGroup } from 'react-bootstrap'
 import * as Icons from 'react-feather'
+import SimpleBar from 'simplebar-react'
 //Redux
 import { connect } from 'react-redux'
 import { sendMsg } from 'redux/action/ChatPopup'
@@ -278,7 +278,7 @@ const ChatBotInterface = ({ show, sendMsg, msg }) => {
             </div>
           </InputGroup>
           <div className='footer-copy-text'>
-            Powered by{' '}
+            Powered by
             <a className='brand-link' href='#some'>
               <img src={logo} alt='logo-brand' />
             </a>

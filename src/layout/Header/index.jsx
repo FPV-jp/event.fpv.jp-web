@@ -1,28 +1,43 @@
-import React from 'react'
-import { Button, Container, Nav, Navbar } from 'react-bootstrap'
-import { HelpCircle } from 'react-feather'
-import { Link, useMatch } from 'react-router-dom'
-
-//Images
 import logo from 'assets/dist/img/logo-light.png'
+import { Button, Container, Nav, Navbar } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { useAuth } from 'utils/AuthProvider'
 
-const SimpleHeader = () => {
-  const loginPath = useMatch('/auth/login-simple')
-  const signupPath = useMatch('/auth/signup-simple')
+const Header = () => {
+  // const loginPath = useMatch('/auth/login')
+  // const signupPath = useMatch('/auth/signup')
 
+  const { loginWithRedirect } = useAuth()
   return (
     <Navbar expand='xl' className='hk-navbar navbar-light fixed-top'>
       <Container>
-        {/* Start Nav */}
         <div className='nav-start-wrap'>
           <Navbar.Brand as={Link} to='/'>
             <img className='brand-img d-inline-block' src={logo} alt='brand' />
           </Navbar.Brand>
         </div>
-
-        {/* End Nav */}
         <div className='nav-end-wrap'>
           <Nav as='ul' className='flex-row'>
+            <Nav.Item as='li' className='nav-link px-1 py-0'>
+              <Button variant='primary' onClick={() => loginWithRedirect()}>
+                Login
+              </Button>
+            </Nav.Item>
+            {/* 
+            <Nav.Item as='li' className='nav-link py-0'>
+              <Button size='sm' variant='outline-light'>
+                <span>
+                  <span className='icon'>
+                    <span className='feather-icon'>
+                      <HelpCircle />
+                    </span>
+                  </span>
+                  <span>Get Help</span>
+                </span>
+              </Button>
+            </Nav.Item> 
+            */}
+            {/* 
             {loginPath && (
               <Nav.Item as='li' className='nav-link py-0'>
                 <Button size='sm' variant='outline-light'>
@@ -39,24 +54,24 @@ const SimpleHeader = () => {
             )}
             {signupPath && (
               <>
-                <Nav.Item as='li' className='nav-link py-0'>
+                <Nav.Item as='li' className='nav-link px-1 py-0'>
                   <Button variant='primary' as={Link} to='#'>
                     Help
                   </Button>
                 </Nav.Item>
-                <Nav.Item as='li' className='nav-link py-0'>
+                <Nav.Item as='li' className='nav-link px-1 py-0'>
                   <Button variant='outline-light' as={Link} to='login'>
                     Sign In
                   </Button>
                 </Nav.Item>
               </>
-            )}
+            )} 
+            */}
           </Nav>
         </div>
-        {/* /End Nav */}
       </Container>
     </Navbar>
   )
 }
 
-export default SimpleHeader
+export default Header

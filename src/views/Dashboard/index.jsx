@@ -6,7 +6,7 @@ import { Col, Container, Form, InputGroup, Nav, Row, Tab } from 'react-bootstrap
 import DateRangePicker from 'react-bootstrap-daterangepicker'
 import { Calendar } from 'react-feather'
 import { useTranslation } from 'react-i18next'
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 import { sidebarDataHover, toggleCollapsedNav } from 'redux/action/Theme'
 import { GET } from 'utils/Http'
 import ChatBotInterface from '../ChatPopup/ChatBot/ChatBotInterface'
@@ -15,25 +15,27 @@ import AudienceReviewCard from './AudienceReviewCard'
 import CustomerTable from './CustomerTable'
 import ReturningCustomersCard from './ReturningCustomersCard'
 
+const getAccessToken = (state) => state.auth0Reducer.accessToken
+
 const Dashboard = ({ navCollapsed, toggleCollapsedNav, sidebarDataHover, dataHover }) => {
   const { t } = useTranslation()
+  const accessToken = useSelector(getAccessToken)
+
   useEffect(() => {
     toggleCollapsedNav(false)
     sidebarDataHover(false)
     async function fetchData() {
-      const response = await GET('/api/users')
-      // const response = await GET('https://event.fpv.jp/api/hello/xxx?limit=20')
+      const response = await GET(accessToken, '/api/users')
       if (response.ok) {
         const data = await response.json()
         console.log(data)
-      } else {
-        console.log(response)
       }
     }
     i18n.changeLanguage('ja')
     fetchData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
   return (
     <>
       <ChatBotInterface show={false} />

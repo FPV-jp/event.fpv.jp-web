@@ -1,7 +1,6 @@
-import React from 'react'
+import Footer from 'layout/Footer'
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import CommanFooter1 from '../CommanFooter1'
 
 //image
 import logo from 'assets/dist/img/logo-light.png'
@@ -41,7 +40,7 @@ const ResetPassword = () => {
                             Send Code
                           </Button>
                           <p className='p-xs mt-2 text-center'>
-                            Did not receive code?{' '}
+                            Did not receive code?
                             <Link to='#'>
                               <u>Send again</u>
                             </Link>
@@ -57,7 +56,7 @@ const ResetPassword = () => {
         </Container>
       </div>
       {/* Page Footer */}
-      <CommanFooter1 />
+      <Footer />
     </div>
   )
 }

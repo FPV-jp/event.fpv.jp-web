@@ -1,18 +1,20 @@
-import React, { useState } from 'react'
-import * as Icons from 'react-feather'
-import { Button, Card, Col, Dropdown, Form, ListGroup, Modal, Nav, Row, Tab } from 'react-bootstrap'
-import ReactApexChart from 'react-apexcharts'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
-import DateRangePicker from 'react-bootstrap-daterangepicker'
-import { Link } from 'react-router-dom'
-import { nanoid } from 'nanoid'
 import classNames from 'classnames'
-import HkInlineEdit from 'components/@hk-editable-component/HkInlineEdit'
-import HkDropZone from 'components/@hk-drop-zone/HkDropZone'
 import HkAlert from 'components/@hk-alert/@hk-alert'
 import HkChips from 'components/@hk-chips/@hk-chips'
+import HkDropZone from 'components/@hk-drop-zone/HkDropZone'
+import HkInlineEdit from 'components/@hk-editable-component/HkInlineEdit'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
+import { nanoid } from 'nanoid'
+import { useState } from 'react'
+import ReactApexChart from 'react-apexcharts'
+import { Button, Card, Col, Dropdown, Form, ListGroup, Modal, Nav, Row, Tab } from 'react-bootstrap'
+import DateRangePicker from 'react-bootstrap-daterangepicker'
+import * as Icons from 'react-feather'
+import { Link } from 'react-router-dom'
 
 //Images
+import thumb1 from 'assets/dist/img/avatar1.jpg'
+import avatar13 from 'assets/dist/img/avatar13.jpg'
 import avatar2 from 'assets/dist/img/avatar2.jpg'
 import avatar3 from 'assets/dist/img/avatar3.jpg'
 import avatar4 from 'assets/dist/img/avatar4.jpg'
@@ -20,8 +22,6 @@ import avatar5 from 'assets/dist/img/avatar5.jpg'
 import avatar6 from 'assets/dist/img/avatar6.jpg'
 import avatar7 from 'assets/dist/img/avatar7.jpg'
 import avatar8 from 'assets/dist/img/avatar8.jpg'
-import avatar13 from 'assets/dist/img/avatar13.jpg'
-import thumb1 from 'assets/dist/img/avatar1.jpg'
 
 const TaskDetails = ({ show, onHide }) => {
   const [recipients, setRecipients] = useState(['Framework', 'Html'])
@@ -278,7 +278,7 @@ const TaskDetails = ({ show, onHide }) => {
                 <span className='feather-icon'>
                   <i className='zmdi zmdi-lock' />
                 </span>
-              </span>{' '}
+              </span>
               This task is private for Jampack Team
             </HkAlert>
             <HkInlineEdit as='h4' id='edit1' className='fw-bold mb-0' value='Framworking Building' />
@@ -445,7 +445,7 @@ const TaskDetails = ({ show, onHide }) => {
                     {showAddButton && (
                       <Link to='#' className={classNames('d-flex align-items-center add-new-checklist')} onClick={(e) => addItem('list-1', e)}>
                         <span className='feather-icon fe-x me-2'>
-                          <Icons.PlusSquare />{' '}
+                          <Icons.PlusSquare />
                         </span>
                         <span>New Item</span>
                       </Link>
@@ -466,7 +466,7 @@ const TaskDetails = ({ show, onHide }) => {
                       <a href='#some' className='btn btn-xs btn-icon btn-rounded btn-flush-light flush-soft-hover delete-checklist'>
                         <span className='icon'>
                           <span className='feather-icon'>
-                            <Icons.Trash2 />{' '}
+                            <Icons.Trash2 />
                           </span>
                         </span>
                       </a>
@@ -508,7 +508,7 @@ const TaskDetails = ({ show, onHide }) => {
                     {showAddButton && (
                       <Link to='#' className={classNames('d-flex align-items-center add-new-checklist')} onClick={(e) => addItem('list-2', e)}>
                         <span className='feather-icon fe-x me-2'>
-                          <Icons.PlusSquare />{' '}
+                          <Icons.PlusSquare />
                         </span>
                         <span>New Item</span>
                       </Link>
@@ -567,7 +567,7 @@ const TaskDetails = ({ show, onHide }) => {
                         @
                         <a href='#some' className='fw-medium'>
                           Charlie Darvin
-                        </a>{' '}
+                        </a>
                         From there, you can run grunt compile, grunt migrate and grunt test to compile your contracts, deploy those contracts to the network, and run their associated unit tests.
                       </p>
                     </div>
@@ -613,8 +613,8 @@ const TaskDetails = ({ show, onHide }) => {
                         @
                         <a href='#some' className='fw-medium'>
                           Martin Luther
-                        </a>{' '}
-                        Viscosity ratio for "Appear view" link text is 3.7:1 which is less{' '}
+                        </a>
+                        Viscosity ratio for "Appear view" link text is 3.7:1 which is less
                       </p>
                     </div>
                   </div>
@@ -651,7 +651,7 @@ const TaskDetails = ({ show, onHide }) => {
                           @
                           <a href='#some' className='fw-medium'>
                             Charlie Darvin
-                          </a>{' '}
+                          </a>
                           From there, you can run truffle compile, truffle migrate and truffle test to compile your contracts, deploy those contracts to the network, and run their associated unit tests.
                         </p>
                         <div className='comment-action-wrap mt-3'>
@@ -702,7 +702,7 @@ const TaskDetails = ({ show, onHide }) => {
                               @
                               <a href='#some' className='fw-medium'>
                                 Katherine Jones
-                              </a>{' '}
+                              </a>
                               Thank you :)
                             </p>
                             <div className='comment-action-wrap mt-3'>
@@ -1078,7 +1078,7 @@ const TaskDetails = ({ show, onHide }) => {
                                 </div>
                                 <div className='media-body'>
                                   <p>
-                                    <span className='text-dark'>Hencework</span> on Documentation link is working now -{' '}
+                                    <span className='text-dark'>Hencework</span> on Documentation link is working now -
                                     <a href='#some' className='link-url'>
                                       <u>ttps://hencework.com/theme/jampa</u>
                                     </a>
@@ -1096,7 +1096,7 @@ const TaskDetails = ({ show, onHide }) => {
                                 </div>
                                 <div className='media-body'>
                                   <p>
-                                    <span className='text-dark'>Morgan Fregman</span> completed react conversion of{' '}
+                                    <span className='text-dark'>Morgan Fregman</span> completed react conversion of
                                     <a href='#some' className='link-default'>
                                       <u>components</u>
                                     </a>
@@ -1114,7 +1114,7 @@ const TaskDetails = ({ show, onHide }) => {
                                 </div>
                                 <div className='media-body'>
                                   <p>
-                                    <span className='text-dark'>Jimmy Carry</span>completed side bar menu on{' '}
+                                    <span className='text-dark'>Jimmy Carry</span>completed side bar menu on
                                     <a href='#some' className='link-default'>
                                       <u>elements</u>
                                     </a>
@@ -1132,7 +1132,7 @@ const TaskDetails = ({ show, onHide }) => {
                                 </div>
                                 <div className='media-body'>
                                   <p>
-                                    <span className='text-dark'>Charlie Chaplin</span> deleted empty cards on{' '}
+                                    <span className='text-dark'>Charlie Chaplin</span> deleted empty cards on
                                     <a href='#some' className='link-default'>
                                       <u>completed</u>
                                     </a>
@@ -1178,7 +1178,7 @@ const TaskDetails = ({ show, onHide }) => {
                                 </div>
                                 <div className='media-body'>
                                   <p>
-                                    <span className='text-dark'>Morgan Fregman</span> completed react conversion of{' '}
+                                    <span className='text-dark'>Morgan Fregman</span> completed react conversion of
                                     <a href='#some' className='link-default'>
                                       <u>components</u>
                                     </a>
@@ -1196,7 +1196,7 @@ const TaskDetails = ({ show, onHide }) => {
                                 </div>
                                 <div className='media-body'>
                                   <p>
-                                    <span className='text-dark'>Jimmy Carry</span>added shared components to{' '}
+                                    <span className='text-dark'>Jimmy Carry</span>added shared components to
                                     <a href='#some' className='link-default'>
                                       <u>basic structure</u>
                                     </a>
@@ -1214,7 +1214,7 @@ const TaskDetails = ({ show, onHide }) => {
                                 </div>
                                 <div className='media-body'>
                                   <p>
-                                    <span className='text-dark'>Hencework</span> commented on{' '}
+                                    <span className='text-dark'>Hencework</span> commented on
                                     <a href='#some' className='link-default'>
                                       <u>basic structure</u>
                                     </a>
@@ -1272,7 +1272,7 @@ const TaskDetails = ({ show, onHide }) => {
                   <Nav.Link>
                     <span className='nav-icon-wrap'>
                       <span className='feather-icon'>
-                        <Icons.Edit />{' '}
+                        <Icons.Edit />
                       </span>
                     </span>
                     <span className='nav-link-text'>Edit</span>
@@ -1322,7 +1322,7 @@ const TaskDetails = ({ show, onHide }) => {
                   <Nav.Link>
                     <span className='nav-icon-wrap'>
                       <span className='feather-icon'>
-                        <Icons.Bookmark />{' '}
+                        <Icons.Bookmark />
                       </span>
                     </span>
                     <span className='nav-link-text'>Follow Task</span>
@@ -1335,7 +1335,7 @@ const TaskDetails = ({ show, onHide }) => {
                   <Nav.Link>
                     <span className='nav-icon-wrap'>
                       <span className='feather-icon'>
-                        <Icons.ArrowUp />{' '}
+                        <Icons.ArrowUp />
                       </span>
                     </span>
                     <span className='nav-link-text'>Set as Top Priority</span>
@@ -1345,8 +1345,7 @@ const TaskDetails = ({ show, onHide }) => {
                   <Nav.Link>
                     <span className='nav-icon-wrap'>
                       <span className='feather-icon'>
-                        {' '}
-                        <Icons.Repeat />{' '}
+                        <Icons.Repeat />
                       </span>
                     </span>
                     <span className='nav-link-text'>Change Status</span>
@@ -1356,7 +1355,7 @@ const TaskDetails = ({ show, onHide }) => {
                   <Nav.Link>
                     <span className='nav-icon-wrap'>
                       <span className='feather-icon'>
-                        <Icons.Pocket />{' '}
+                        <Icons.Pocket />
                       </span>
                     </span>
                     <span className='nav-link-text'>Save as Template</span>
@@ -1366,7 +1365,7 @@ const TaskDetails = ({ show, onHide }) => {
                   <Nav.Link>
                     <span className='nav-icon-wrap'>
                       <span className='feather-icon'>
-                        <Icons.Archive />{' '}
+                        <Icons.Archive />
                       </span>
                     </span>
                     <span className='nav-link-text'>Move to archive</span>
@@ -1376,7 +1375,7 @@ const TaskDetails = ({ show, onHide }) => {
                   <Nav.Link>
                     <span className='nav-icon-wrap'>
                       <span className='feather-icon'>
-                        <Icons.Trash2 />{' '}
+                        <Icons.Trash2 />
                       </span>
                     </span>
                     <span className='nav-link-text'>Delete</span>

@@ -1,19 +1,20 @@
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import HkBadge from 'components/@hk-badge/@hk-badge'
 import { Button, Card, Col, Dropdown, Form, ListGroup, Row } from 'react-bootstrap'
 import { Check, Link2, MoreHorizontal, Plus, Settings } from 'react-feather'
 import { Link } from 'react-router-dom'
-import HkBadge from 'components/@hk-badge/@hk-badge'
 
 //Swiper Carousel
-import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 import 'swiper/css'
 
 //Images
 import avatar1 from 'assets/dist/img/avatar1.jpg'
+import avatar10 from 'assets/dist/img/avatar10.jpg'
+import avatar14 from 'assets/dist/img/avatar14.jpg'
 import avatar2 from 'assets/dist/img/avatar2.jpg'
 import avatar3 from 'assets/dist/img/avatar3.jpg'
 import avatar4 from 'assets/dist/img/avatar4.jpg'
@@ -22,13 +23,11 @@ import avatar6 from 'assets/dist/img/avatar6.jpg'
 import avatar7 from 'assets/dist/img/avatar7.jpg'
 import avatar8 from 'assets/dist/img/avatar8.jpg'
 import avatar9 from 'assets/dist/img/avatar9.jpg'
-import avatar10 from 'assets/dist/img/avatar10.jpg'
-import avatar14 from 'assets/dist/img/avatar14.jpg'
-import mock7 from 'assets/dist/img/gallery/mock7.jpg'
 import mock11 from 'assets/dist/img/gallery/mock11.jpg'
 import mock12 from 'assets/dist/img/gallery/mock12.jpg'
 import mock13 from 'assets/dist/img/gallery/mock13.jpg'
 import mock14 from 'assets/dist/img/gallery/mock14.jpg'
+import mock7 from 'assets/dist/img/gallery/mock7.jpg'
 
 const Body = () => {
   return (
@@ -482,7 +481,7 @@ const Body = () => {
             >
               <SwiperSlide>
                 <p className='tweet'>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. A hic magni rem consectetur iure? Suscipit esse totam id sed! Nostrum.{' '}
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. A hic magni rem consectetur iure? Suscipit esse totam id sed! Nostrum.
                   <a href='#demo' data-expanded-url='#demo' target=' _blank' title='#title' data-scribe='element:url'>
                     <span>https://</span>demo.de<span>&nbsp;</span>
                   </a>

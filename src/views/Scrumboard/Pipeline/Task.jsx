@@ -1,4 +1,3 @@
-import React from 'react'
 import classNames from 'classnames'
 import { Draggable } from 'react-beautiful-dnd'
 import { Card, Dropdown } from 'react-bootstrap'
@@ -43,7 +42,7 @@ const Task = (props) => {
                         <div className='avatar avatar-icon avatar-xxs avatar-soft-danger avatar-rounded ms-3'>
                           <span className='initial-wrap'>
                             <span className='feather-icon'>
-                              <Phone />{' '}
+                              <Phone />
                             </span>
                           </span>
                         </div>
@@ -61,7 +60,7 @@ const Task = (props) => {
                         <div className='avatar avatar-icon avatar-xxs avatar-light avatar-rounded ms-3'>
                           <span className='initial-wrap'>
                             <span className='feather-icon'>
-                              <Phone />{' '}
+                              <Phone />
                             </span>
                           </span>
                         </div>
@@ -79,7 +78,7 @@ const Task = (props) => {
                         <div className='avatar avatar-icon avatar-xxs avatar-soft-primary avatar-rounded ms-3'>
                           <span className='initial-wrap'>
                             <span className='feather-icon'>
-                              <Monitor />{' '}
+                              <Monitor />
                             </span>
                           </span>
                         </div>

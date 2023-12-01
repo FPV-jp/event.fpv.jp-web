@@ -1,18 +1,17 @@
-import React from 'react'
 import { Button, Card, Dropdown, Form, Nav, Tab } from 'react-bootstrap'
-import SimpleBar from 'simplebar-react'
-import { Link } from 'react-router-dom'
 import { Briefcase, MoreVertical, Plus } from 'react-feather'
+import { Link } from 'react-router-dom'
+import SimpleBar from 'simplebar-react'
 //Own custom components
 import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 //Images
 import avatar1 from 'assets/dist/img/avatar1.jpg'
-import avatar2 from 'assets/dist/img/avatar2.jpg'
-import avatar7 from 'assets/dist/img/avatar7.jpg'
-import avatar9 from 'assets/dist/img/avatar9.jpg'
 import avatar10 from 'assets/dist/img/avatar10.jpg'
 import avatar13 from 'assets/dist/img/avatar13.jpg'
 import avatar15 from 'assets/dist/img/avatar15.jpg'
+import avatar2 from 'assets/dist/img/avatar2.jpg'
+import avatar7 from 'assets/dist/img/avatar7.jpg'
+import avatar9 from 'assets/dist/img/avatar9.jpg'
 import thumbImg from 'assets/dist/img/img-thumb1.jpg'
 import HkBadge from 'components/@hk-badge/@hk-badge'
 
@@ -163,7 +162,7 @@ const Info = ({ toggleInfo, invitePeople }) => {
                 <Card>
                   <Card.Header>
                     <Link role='button' data-bs-toggle='collapse' to='#settings' aria-expanded='true'>
-                      Settings{' '}
+                      Settings
                     </Link>
                   </Card.Header>
                   <div id='settings' className='collapse show'>

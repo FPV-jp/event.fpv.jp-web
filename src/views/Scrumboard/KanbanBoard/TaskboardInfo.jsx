@@ -1,15 +1,14 @@
-import React from 'react'
-import SimpleBar from 'simplebar-react'
 import { Button, Card, Form, ListGroup } from 'react-bootstrap'
 import { Plus } from 'react-feather'
+import SimpleBar from 'simplebar-react'
 
 //Images
-import avatar2 from 'assets/dist/img/avatar2.jpg'
-import avatar7 from 'assets/dist/img/avatar7.jpg'
-import avatar9 from 'assets/dist/img/avatar9.jpg'
 import avatar10 from 'assets/dist/img/avatar10.jpg'
 import avatar13 from 'assets/dist/img/avatar13.jpg'
 import avatar15 from 'assets/dist/img/avatar15.jpg'
+import avatar2 from 'assets/dist/img/avatar2.jpg'
+import avatar7 from 'assets/dist/img/avatar7.jpg'
+import avatar9 from 'assets/dist/img/avatar9.jpg'
 
 const TaskboardInfo = ({ onHide }) => {
   return (
@@ -105,7 +104,7 @@ const TaskboardInfo = ({ onHide }) => {
                       </div>
                       <div className='media-body'>
                         <p>
-                          <span className='text-dark'>Hencework</span> on Documentation link is working now -{' '}
+                          <span className='text-dark'>Hencework</span> on Documentation link is working now -
                           <a href='#some' className='link-url'>
                             <u>ttps://hencework.com/theme/jampa</u>
                           </a>
@@ -123,7 +122,7 @@ const TaskboardInfo = ({ onHide }) => {
                       </div>
                       <div className='media-body'>
                         <p>
-                          <span className='text-dark'>Morgan Fregman</span> completed react conversion of{' '}
+                          <span className='text-dark'>Morgan Fregman</span> completed react conversion of
                           <a href='#some' className='link-default'>
                             <u>components</u>
                           </a>
@@ -141,7 +140,7 @@ const TaskboardInfo = ({ onHide }) => {
                       </div>
                       <div className='media-body'>
                         <p>
-                          <span className='text-dark'>Jimmy Carry</span>completed side bar menu on{' '}
+                          <span className='text-dark'>Jimmy Carry</span>completed side bar menu on
                           <a href='#some' className='link-default'>
                             <u>elements</u>
                           </a>
@@ -159,7 +158,7 @@ const TaskboardInfo = ({ onHide }) => {
                       </div>
                       <div className='media-body'>
                         <p>
-                          <span className='text-dark'>Charlie Chaplin</span> deleted empty cards on{' '}
+                          <span className='text-dark'>Charlie Chaplin</span> deleted empty cards on
                           <a href='#some' className='link-default'>
                             <u>completed</u>
                           </a>
@@ -192,7 +191,7 @@ const TaskboardInfo = ({ onHide }) => {
                       </div>
                       <div className='media-body'>
                         <p>
-                          <span className='text-dark'>Morgan Fregman</span> completed react conversion of{' '}
+                          <span className='text-dark'>Morgan Fregman</span> completed react conversion of
                           <a href='#some' className='link-default'>
                             <u>components</u>
                           </a>
@@ -210,7 +209,7 @@ const TaskboardInfo = ({ onHide }) => {
                       </div>
                       <div className='media-body'>
                         <p>
-                          <span className='text-dark'>Jimmy Carry</span>added shared components to{' '}
+                          <span className='text-dark'>Jimmy Carry</span>added shared components to
                           <a href='#some' className='link-default'>
                             <u>basic structure</u>
                           </a>
@@ -228,7 +227,7 @@ const TaskboardInfo = ({ onHide }) => {
                       </div>
                       <div className='media-body'>
                         <p>
-                          <span className='text-dark'>Hencework</span> commented on{' '}
+                          <span className='text-dark'>Hencework</span> commented on
                           <a href='#some' className='link-default'>
                             <u>basic structure</u>
                           </a>

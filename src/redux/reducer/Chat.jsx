@@ -1,4 +1,4 @@
-import { START_CHATING, SENT_MSG, REPLY_MSG, GROUP_MSG, CONTACT_MSG, SET_USER } from '../constants/Chat'
+import { START_CHATING, SENT_MSG, REPLY_MSG, GROUP_MSG, CONTACT_MSG, SET_USER } from 'redux/constants/Chat'
 //images
 import avatar8 from 'assets/dist/img/avatar8.jpg'
 

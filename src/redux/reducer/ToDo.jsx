@@ -1,4 +1,4 @@
-import { CHANGE_VM } from '../constants/ToDo'
+import { CHANGE_VM } from 'redux/constants/ToDo'
 
 const initialState = {
   vm: 'Week',

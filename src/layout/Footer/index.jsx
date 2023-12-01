@@ -1,8 +1,7 @@
-import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-const CommanFooter1 = () => {
+const Footer = () => {
   return (
     <div className='hk-footer border-0'>
       <Container as='footer' className='footer'>
@@ -23,4 +22,4 @@ const CommanFooter1 = () => {
   )
 }
 
-export default CommanFooter1
+export default Footer

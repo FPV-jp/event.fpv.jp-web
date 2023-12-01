@@ -1,16 +1,15 @@
-import React from 'react'
+import HkChips from 'components/@hk-chips/@hk-chips'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import { Badge, Button, Card, Dropdown, Form } from 'react-bootstrap'
 import { ArrowDown, ArrowRight, CornerUpLeft, Edit, MoreVertical, Paperclip, Printer, Star, Trash2 } from 'react-feather'
 import SimpleBar from 'simplebar-react'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
-import HkChips from 'components/@hk-chips/@hk-chips'
 
 //Images
-import avatar2 from 'assets/dist/img/avatar2.jpg'
 import avatar10 from 'assets/dist/img/avatar10.jpg'
 import avatar11 from 'assets/dist/img/avatar11.jpg'
 import avatar12 from 'assets/dist/img/avatar12.jpg'
 import avatar13 from 'assets/dist/img/avatar13.jpg'
+import avatar2 from 'assets/dist/img/avatar2.jpg'
 import sign from 'assets/dist/img/signature-1.png'
 
 const EmailBody = () => {
@@ -134,7 +133,7 @@ const EmailBody = () => {
                 <p>We'd like to let you know that an update to your item Jampack - Admin Template by hencework is now available in your Downloads page.</p>
                 <p>Remember: you need to be logged in to download the update.</p>
                 <p className='mt-3 mb-4'>
-                  You may manage notifications for your items from{' '}
+                  You may manage notifications for your items from
                   <a href='#some'>
                     <u>your downloads.</u>
                   </a>

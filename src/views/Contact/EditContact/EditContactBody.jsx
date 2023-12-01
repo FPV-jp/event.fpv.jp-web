@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
+import { faBehance, faDropbox, faGithub, faGoogleDrive } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import HkAvatarUploader from 'components/@hk-avatar-uploader/@hk-avatar-uploader'
 import HkTooltip from 'components/@hk-tooltip/HkTooltip'
+import { useState } from 'react'
 import { Badge, Button, Card, Col, Dropdown, Form, Nav, Row, Tab } from 'react-bootstrap'
+import { Activity, CheckSquare, Clock, Edit2, Edit3, Heart, Mail, Phone, Plus, Shield, Trash, Upload, Video, Zap } from 'react-feather'
 import { Link } from 'react-router-dom'
 import { Rating } from 'react-simple-star-rating'
 import SimpleBar from 'simplebar-react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBehance, faDropbox, faGithub, faGoogleDrive } from '@fortawesome/free-brands-svg-icons'
-import { Activity, CheckSquare, Clock, Edit2, Edit3, Heart, Mail, Phone, Plus, Shield, Trash, Upload, Video, Zap } from 'react-feather'
 //Internal Components
-import ProfileInfo from './ProfileInfo'
-import MoreInfo from './MoreInfo'
-import AddTags from './AddTags'
 import AddBio from './AddBio'
+import AddTags from './AddTags'
+import MoreInfo from './MoreInfo'
+import ProfileInfo from './ProfileInfo'
 
 //Image
 import avatar2 from 'assets/dist/img/avatar2.jpg'
@@ -481,7 +481,7 @@ const EditContactBody = () => {
                       <div className='media-body'>
                         <div>
                           <div className='activity-text'>
-                            <span className='text-dark'>Morgan Freeman</span> responded to your appointment schedule question.{' '}
+                            <span className='text-dark'>Morgan Freeman</span> responded to your appointment schedule question.
                           </div>
                           <div className='activity-time'>10.00 pm</div>
                         </div>

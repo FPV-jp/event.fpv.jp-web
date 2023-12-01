@@ -1,12 +1,11 @@
-import React from 'react'
+import { faBehance, faDropbox, faGithub, faGoogleDrive } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import HkAvatarUploader from 'components/@hk-avatar-uploader/@hk-avatar-uploader'
 import { Button, Card, Col, Dropdown, Form, Modal, Nav, Row, Tab } from 'react-bootstrap'
-import { Rating } from 'react-simple-star-rating'
 import { Activity, Archive, CheckSquare, ChevronLeft, ChevronRight, Clock, Edit2, Edit3, Heart, Mail, MoreVertical, Phone, Plus, Shield, Slash, Star, Trash, Upload, Video, XSquare, Zap } from 'react-feather'
 import { Link } from 'react-router-dom'
+import { Rating } from 'react-simple-star-rating'
 import SimpleBar from 'simplebar-react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBehance, faDropbox, faGithub, faGoogleDrive } from '@fortawesome/free-brands-svg-icons'
-import HkAvatarUploader from 'components/@hk-avatar-uploader/@hk-avatar-uploader'
 
 //Image
 import avatar2 from 'assets/dist/img/avatar2.jpg'
@@ -528,7 +527,7 @@ const ContactDetails = ({ show, onHide }) => {
                         <div className='media-body'>
                           <div>
                             <div className='activity-text'>
-                              <span className='text-dark'>Morgan Freeman</span> responded to your appointment schedule question.{' '}
+                              <span className='text-dark'>Morgan Freeman</span> responded to your appointment schedule question.
                             </div>
                             <div className='activity-time'>10.00 pm</div>
                           </div>

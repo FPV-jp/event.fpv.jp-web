@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
 import classNames from 'classnames'
+import HkBadge from 'components/@hk-badge/@hk-badge'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
+import { useState } from 'react'
 import { Draggable } from 'react-beautiful-dnd'
 import { Card, Dropdown, ProgressBar } from 'react-bootstrap'
 import { Archive, ArrowUp, Bookmark, Calendar, Edit2, MoreVertical, Paperclip, Pocket, Repeat, Tag, Trash2, User } from 'react-feather'
-import HkBadge from 'components/@hk-badge/@hk-badge'
 import TaskDetails from './TaskDetails'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 
 const Task = (props) => {
   const [showTaskInfo, setshowTaskInfo] = useState(false)
@@ -79,14 +79,12 @@ const Task = (props) => {
                     </Dropdown.Item>
                     <Dropdown.Item>
                       <span className='feather-icon dropdown-icon'>
-                        {' '}
                         <Repeat />
                       </span>
                       <span>Change Status</span>
                     </Dropdown.Item>
                     <Dropdown.Item>
                       <span className='feather-icon dropdown-icon'>
-                        {' '}
                         <Pocket />
                       </span>
                       <span>Save as Template</span>
