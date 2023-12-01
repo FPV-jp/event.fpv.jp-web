@@ -1,21 +1,11 @@
-# event.fpv.jp
-FPV Japan's integrated Document 
+# React + Vite + TailwindCSS
 
-https://nubra-ui-react.netlify.app/introduction
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-```mermaid
-flowchart TD
-U[User] --> C{Corserver}
- C -->|First Access| R(React view\nindex.html)
- C -->|Fetch api| P(PHP api\napi.php)
-  P -->|Get data| M[fa:fa-database MariaDB\nCoreserver]
-  P -->|Send mail| E[fa:fa-envelope E-mail\nCoreserver]
-  P --> G{Google}
-   G -->|Create Event| D[fa:fa-calendar Google Cloud Platform\nCalendar]
-U[User] --> G 
-   G -->|Authentication| F[fa:fa-key Firebase\nAuthentication]
-```
+Currently, two official plugins are available:
 
-https://event.fpv.jp/api/user/list?limit=20
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-http://localhost/api/user/list?limit=20
+
+https://fpv.v2008.coreserver.jp
