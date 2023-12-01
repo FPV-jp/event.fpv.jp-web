@@ -1,0 +1,10 @@
+node_modules/
+private_html/
+
+.env
+mariadb/data/
+vendor
+
+.vscode/
+.idea/
+.DS_Store
