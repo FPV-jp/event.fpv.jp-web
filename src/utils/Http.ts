@@ -45,3 +45,49 @@ const retry = async (accessToken: string, count: number, path: string, method: s
     return await retry(accessToken, count - 1, path, method, body)
   }
 }
+
+export const everything = async (q: string): Promise<any> => {
+  const apiUrl = 'https://newsapi.org/v2/everything'
+  const queryParams = {
+    apiKey: process.env.REACT_APP_NEWS_API_KEY as string,
+    q: q,
+    // from: '2023-12-08',
+    // sortBy: 'popularity',
+  }
+  const queryString = new URLSearchParams(queryParams).toString()
+  fetch(`${apiUrl}?${queryString}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`)
+      }
+      return response.json()
+    })
+    .then((data) => {
+      console.log('Response data:', data)
+    })
+    .catch((error) => {
+      console.error('Fetch error:', error)
+    })
+}
+
+export const topHeadlines = async (country: string = 'jp'): Promise<any> => {
+  const apiUrl = 'https://newsapi.org/v2/everything'
+  const queryParams = {
+    apiKey: process.env.REACT_APP_NEWS_API_KEY as string,
+    country: country,
+  }
+  const queryString = new URLSearchParams(queryParams).toString()
+  fetch(`${apiUrl}?${queryString}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`)
+      }
+      return response.json()
+    })
+    .then((data) => {
+      console.log('Response data:', data)
+    })
+    .catch((error) => {
+      console.error('Fetch error:', error)
+    })
+}
