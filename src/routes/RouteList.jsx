@@ -35,9 +35,7 @@ import Profile from 'views/Profiles/Profile'
 import Error404 from 'views/Authentication/Error404/Error404'
 import Error503 from 'views/Authentication/Error503/Error503'
 import LockScreen from 'views/Authentication/LockScreen'
-import Login from 'views/Authentication/LogIn'
 import ResetPassword from 'views/Authentication/ResetPassword'
-import Signup from 'views/Authentication/SignUp'
 
 // --- Private -----------------------------------------------------------------
 export const privateRoutes = [
@@ -81,8 +79,6 @@ export const privateRoutes = [
 
 // --- Public ------------------------------------------------------------------
 export const publicRoutes = [
-  { path: '/login', exact: 'true', component: Login },
-  { path: '/signup', exact: 'true', component: Signup },
   { path: '/lock-screen', exact: 'true', component: LockScreen },
   { path: '/reset-password', exact: 'true', component: ResetPassword },
   { path: '/error-503', exact: 'true', component: Error503 },

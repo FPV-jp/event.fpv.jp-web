@@ -1,5 +1,4 @@
 import 'bootstrap-daterangepicker/daterangepicker.css'
-import i18n from 'i18next'
 import moment from 'moment'
 import { useEffect } from 'react'
 import { Col, Container, Form, InputGroup, Nav, Row, Tab } from 'react-bootstrap'
@@ -7,6 +6,7 @@ import DateRangePicker from 'react-bootstrap-daterangepicker'
 import { Calendar } from 'react-feather'
 import { useTranslation } from 'react-i18next'
 import { connect, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { sidebarDataHover, toggleCollapsedNav } from 'redux/action/Theme'
 import { GET } from 'utils/Http'
 import ChatBotInterface from '../ChatPopup/ChatBot/ChatBotInterface'
@@ -19,23 +19,22 @@ const getAccessToken = (state) => state.auth0Reducer.accessToken
 
 const Dashboard = ({ navCollapsed, toggleCollapsedNav, sidebarDataHover, dataHover }) => {
   const { t } = useTranslation()
+  const navigate = useNavigate()
+
   const accessToken = useSelector(getAccessToken)
 
   useEffect(() => {
     toggleCollapsedNav(false)
     sidebarDataHover(false)
     async function fetchData() {
-      // const response2 = await everything('fpv')
-      // console.log(response2) => undefined!!
-
       const response = await GET(accessToken, '/api/users')
-      // console.log(response)
       if (response.ok) {
         const data = await response.json()
         console.log(data)
-      }
+      } //else {
+      //   navigate('/auth/error-503')
+      // }
     }
-    i18n.changeLanguage('ja')
     fetchData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

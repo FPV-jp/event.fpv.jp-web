@@ -1,3 +1,4 @@
+import i18n from 'i18next'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
@@ -12,6 +13,7 @@ import './i18n'
 function App() {
   const { getUser } = useAuth()
   getUser()
+  i18n.changeLanguage('ja')
 
   return (
     <Router>
