@@ -2,6 +2,36 @@ import HkBadge from 'components/@hk-badge/@hk-badge'
 import { useTranslation } from 'react-i18next'
 import * as Icons from 'tabler-icons-react'
 
+const Badge = () => {
+  return (
+    <HkBadge size='sm' bg='pink' soft className='ms-xl-2 ms-auto'>
+      hot
+    </HkBadge>
+  )
+}
+
+const IconBadge = (prop) => {
+  const { count } = prop
+  return (
+    <HkBadge bg='primary' size='sm' pill className='position-top-end-overflow'>
+      {count}
+    </HkBadge>
+  )
+}
+
+const IconBadge2 = (prop) => {
+  const { count } = prop
+  return (
+    <HkBadge bg='success' soft className='ms-2'>
+      {count}
+    </HkBadge>
+  )
+}
+
+const BadgeIndicator = () => {
+  return <HkBadge bg='danger' indicator className='position-absolute top-0 start-100' />
+}
+
 export const NavMenuConfig = () => {
   const { t } = useTranslation()
 
@@ -28,17 +58,44 @@ export const NavMenuConfig = () => {
           name: t('Dashboard'),
           icon: <Icons.Template />,
           path: '/dashboard',
-          badge: (
-            <HkBadge size='sm' bg='pink' soft className='ms-xl-2 ms-auto'>
-              hot
-            </HkBadge>
-          ),
+          badge: <Badge />,
         },
       ],
     },
     {
       group: 'Apps',
       contents: [
+        {
+          id: 'dash_scrumboard',
+          name: t('Scrumboard'),
+          icon: <Icons.LayoutKanban />,
+          path: '/apps/taskboard',
+          iconBadge: <IconBadge count='3' />,
+          childrens: [
+            appSubMenuConfig('All Boards', '/apps/taskboard/projects-board'), //
+            appSubMenuConfig('Project Kanban', '/apps/taskboard/kanban-board'), //
+            appSubMenuConfig('Pipeline Kanban', '/apps/taskboard/pipeline'), //
+          ],
+        },
+        {
+          id: 'dash_chatpop',
+          name: t('Calendar'),
+          icon: <Icons.CalendarTime />,
+          path: '/apps/calendar',
+          grp_name: 'apps',
+        },
+        {
+          name: t('Email'),
+          icon: <Icons.Inbox />,
+          path: '/apps/email',
+          grp_name: 'apps',
+        },
+        {
+          name: t('Gallery'),
+          icon: <Icons.Photo />,
+          path: '/apps/gallery',
+          grp_name: 'apps',
+        },
         {
           id: 'dash_chat',
           name: t('Chat'),
@@ -58,35 +115,6 @@ export const NavMenuConfig = () => {
           childrens: [
             appSubMenuConfig('Direct Message', '/apps/chat-bot/chatpopup'), //
             appSubMenuConfig('Chatbot', '/apps/chat-bot/chatbot'), //
-          ],
-        },
-        {
-          id: 'dash_chatpop',
-          name: t('Calendar'),
-          icon: <Icons.CalendarTime />,
-          path: '/apps/calendar',
-          grp_name: 'apps',
-        },
-        {
-          name: t('Email'),
-          icon: <Icons.Inbox />,
-          path: '/apps/email',
-          grp_name: 'apps',
-        },
-        {
-          id: 'dash_scrumboard',
-          name: t('Scrumboard'),
-          icon: <Icons.LayoutKanban />,
-          path: '/apps/taskboard',
-          iconBadge: (
-            <HkBadge bg='primary' size='sm' pill className='position-top-end-overflow'>
-              3
-            </HkBadge>
-          ),
-          childrens: [
-            appSubMenuConfig('All Boards', '/apps/taskboard/projects-board'), //
-            appSubMenuConfig('Project Kanban', '/apps/taskboard/kanban-board'), //
-            appSubMenuConfig('Pipeline Kanban', '/apps/taskboard/pipeline'), //
           ],
         },
         {
@@ -111,21 +139,11 @@ export const NavMenuConfig = () => {
           ],
         },
         {
-          name: t('Gallery'),
-          icon: <Icons.Photo />,
-          path: '/apps/gallery',
-          grp_name: 'apps',
-        },
-        {
           id: 'dash_task',
           name: t('Todo'),
           icon: <Icons.ListDetails />,
           path: '/apps/todo',
-          badge: (
-            <HkBadge bg='success' soft className='ms-2'>
-              2
-            </HkBadge>
-          ),
+          badge: <IconBadge2 />,
           childrens: [
             appSubMenuConfig('Tasklist', '/apps/todo/task-list'), //
             appSubMenuConfig('Gantt', '/apps/todo/gantt'), //
@@ -187,7 +205,7 @@ export const NavMenuConfig = () => {
           name: t('Profile'),
           icon: <Icons.UserSearch />,
           path: '/pages',
-          badgeIndicator: <HkBadge bg='danger' indicator className='position-absolute top-0 start-100' />,
+          badgeIndicator: <BadgeIndicator />,
           childrens: [
             appSubMenuConfig('Profile', '/pages/profile'), //
             appSubMenuConfig('Edit Profile', '/pages/edit-profile'), //
