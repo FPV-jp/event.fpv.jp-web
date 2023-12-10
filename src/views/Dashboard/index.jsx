@@ -26,7 +26,7 @@ const Dashboard = ({ navCollapsed, toggleCollapsedNav, sidebarDataHover, dataHov
     sidebarDataHover(false)
     async function fetchData() {
       // const response2 = await everything('fpv')
-      // console.log(response2)
+      // console.log(response2) => undefined!!
 
       const response = await GET(accessToken, '/api/users')
       // console.log(response)

@@ -4,6 +4,22 @@ import * as Icons from 'tabler-icons-react'
 
 export const NavMenuConfig = () => {
   const { t } = useTranslation()
+
+  const mainMenuConfig = (name, path) => {
+    return {
+      name: t(name),
+      path: path,
+    }
+  }
+
+  const appSubMenuConfig = (name, path, grp_name) => {
+    return {
+      name: t(name),
+      path: path,
+      grp_name: 'apps',
+    }
+  }
+
   return [
     {
       group: '',
@@ -21,67 +37,6 @@ export const NavMenuConfig = () => {
       ],
     },
     {
-      group: 'Pages',
-      contents: [
-        {
-          id: 'dash_pages',
-          name: t('Authentication'),
-          icon: <Icons.UserPlus />,
-          path: '/auth',
-          childrens: [
-            {
-              name: t('Login'),
-              path: '/auth/login',
-            },
-            {
-              name: t('Sign Up'),
-              path: '/auth/signup',
-            },
-            {
-              name: t('Lock Screen'),
-              path: '/auth/lock-screen',
-            },
-            {
-              name: t('Reset Password'),
-              path: '/auth/reset-password',
-            },
-            {
-              name: t('Error 404'),
-              path: '/error-404',
-            },
-            {
-              name: t('Error 503'),
-              path: '/auth/error-503',
-            },
-          ],
-        },
-        {
-          id: 'dash_profile',
-          name: t('Profile'),
-          icon: <Icons.UserSearch />,
-          path: '/pages',
-          badgeIndicator: <HkBadge bg='danger' indicator className='position-absolute top-0 start-100' />,
-          childrens: [
-            {
-              name: t('Profile'),
-              path: '/pages/profile',
-              grp_name: 'apps',
-            },
-            {
-              name: t('Edit Profile'),
-              path: '/pages/edit-profile',
-              grp_name: 'apps',
-            },
-            {
-              name: t('Account'),
-              path: '/pages/account',
-              grp_name: 'apps',
-            },
-          ],
-        },
-      ],
-    },
-    {
       group: 'Apps',
       contents: [
         {
@@ -90,21 +45,9 @@ export const NavMenuConfig = () => {
           icon: <Icons.MessageDots />,
           path: '/apps/chat',
           childrens: [
-            {
-              name: t('Chats'),
-              path: '/apps/chat/chats',
-              grp_name: 'apps',
-            },
-            {
-              name: t('Groups'),
-              path: '/apps/chat/chat-groups',
-              grp_name: 'apps',
-            },
-            {
-              name: t('Contacts'),
-              path: '/apps/chat/chat-contact',
-              grp_name: 'apps',
-            },
+            appSubMenuConfig('Chats', '/apps/chat/chats'), //
+            appSubMenuConfig('Groups', '/apps/chat/chat-groups'), //
+            appSubMenuConfig('Contacts', '/apps/chat/chat-contact'), //
           ],
         },
         {
@@ -113,16 +56,8 @@ export const NavMenuConfig = () => {
           icon: <Icons.MessageCircle />,
           path: '/apps/chat-bot',
           childrens: [
-            {
-              name: t('Direct Message'),
-              path: '/apps/chat-bot/chatpopup',
-              grp_name: 'apps',
-            },
-            {
-              name: t('Chatbot'),
-              path: '/apps/chat-bot/chatbot',
-              grp_name: 'apps',
-            },
+            appSubMenuConfig('Direct Message', '/apps/chat-bot/chatpopup'), //
+            appSubMenuConfig('Chatbot', '/apps/chat-bot/chatbot'), //
           ],
         },
         {
@@ -149,21 +84,9 @@ export const NavMenuConfig = () => {
             </HkBadge>
           ),
           childrens: [
-            {
-              name: t('All Boards'),
-              path: '/apps/taskboard/projects-board',
-              grp_name: 'apps',
-            },
-            {
-              name: t('Project Kanban'),
-              path: '/apps/taskboard/kanban-board',
-              grp_name: 'apps',
-            },
-            {
-              name: t('Pipeline Kanban'),
-              path: '/apps/taskboard/pipeline',
-              grp_name: 'apps',
-            },
+            appSubMenuConfig('All Boards', '/apps/taskboard/projects-board'), //
+            appSubMenuConfig('Project Kanban', '/apps/taskboard/kanban-board'), //
+            appSubMenuConfig('Pipeline Kanban', '/apps/taskboard/pipeline'), //
           ],
         },
         {
@@ -172,21 +95,9 @@ export const NavMenuConfig = () => {
           icon: <Icons.Notebook />,
           path: '/apps/contacts',
           childrens: [
-            {
-              name: t('Contact List'),
-              path: '/apps/contacts/contact-list',
-              grp_name: 'apps',
-            },
-            {
-              name: t('Contact Cards'),
-              path: '/apps/contacts/contact-cards',
-              grp_name: 'apps',
-            },
-            {
-              name: t('Edit Contact'),
-              path: '/apps/contacts/edit-contact',
-              grp_name: 'apps',
-            },
+            appSubMenuConfig('Contact List', '/apps/contacts/contact-list'), //
+            appSubMenuConfig('Contact Cards', '/apps/contacts/contact-cards'), //
+            appSubMenuConfig('Edit Contact', '/apps/contacts/edit-contact'), //
           ],
         },
         {
@@ -195,16 +106,8 @@ export const NavMenuConfig = () => {
           icon: <Icons.FileCheck />,
           path: '/apps/file-manager',
           childrens: [
-            {
-              name: t('List View'),
-              path: '/apps/file-manager/list-view',
-              grp_name: 'apps',
-            },
-            {
-              name: t('Grid View'),
-              path: '/apps/file-manager/grid-view',
-              grp_name: 'apps',
-            },
+            appSubMenuConfig('List View', '/apps/file-manager/list-view'), //
+            appSubMenuConfig('Grid View', '/apps/file-manager/grid-view'), //
           ],
         },
         {
@@ -224,16 +127,8 @@ export const NavMenuConfig = () => {
             </HkBadge>
           ),
           childrens: [
-            {
-              name: t('Tasklist'),
-              path: '/apps/todo/task-list',
-              grp_name: 'apps',
-            },
-            {
-              name: t('Gantt'),
-              path: '/apps/todo/gantt',
-              grp_name: 'apps',
-            },
+            appSubMenuConfig('Tasklist', '/apps/todo/task-list'), //
+            appSubMenuConfig('Gantt', '/apps/todo/gantt'), //
           ],
         },
         {
@@ -242,21 +137,9 @@ export const NavMenuConfig = () => {
           icon: <Icons.Browser />,
           path: '/apps/blog',
           childrens: [
-            {
-              name: t('Posts'),
-              path: '/apps/blog/posts',
-              grp_name: 'apps',
-            },
-            {
-              name: t('Add New Post'),
-              path: '/apps/blog/add-new-post',
-              grp_name: 'apps',
-            },
-            {
-              name: t('Post Detail'),
-              path: '/apps/blog/post-detail',
-              grp_name: 'apps',
-            },
+            appSubMenuConfig('Posts', '/apps/blog/posts'), //
+            appSubMenuConfig('Add New Post', '/apps/blog/add-new-post'), //
+            appSubMenuConfig('Post Detail', '/apps/blog/post-detail'), //
           ],
         },
         {
@@ -265,26 +148,10 @@ export const NavMenuConfig = () => {
           icon: <Icons.FileDigit />,
           path: '/apps/invoices',
           childrens: [
-            {
-              name: t('Invoice List'),
-              path: '/apps/invoices/invoice-list',
-              grp_name: 'apps',
-            },
-            {
-              name: t('Invoice Templates'),
-              path: '/apps/invoices/invoice-templates',
-              grp_name: 'apps',
-            },
-            {
-              name: t('Create Invoice'),
-              path: '/apps/invoices/create-invoice',
-              grp_name: 'apps',
-            },
-            {
-              name: t('Invoice Preview'),
-              path: '/apps/invoices/invoice-preview',
-              grp_name: 'apps',
-            },
+            appSubMenuConfig('Invoice List', '/apps/invoices/invoice-list'), //
+            appSubMenuConfig('Invoice Templates', '/apps/invoices/invoice-templates'), //
+            appSubMenuConfig('Create Invoice', '/apps/invoices/create-invoice'), //
+            appSubMenuConfig('Invoice Preview', '/apps/invoices/invoice-preview'), //
           ],
         },
         {
@@ -293,21 +160,38 @@ export const NavMenuConfig = () => {
           icon: <Icons.Code />,
           path: '/apps/integrations',
           childrens: [
-            {
-              name: t('All Apps'),
-              path: '/apps/integrations/all-apps',
-              grp_name: 'apps',
-            },
-            {
-              name: t('App Detail'),
-              path: '/apps/integrations/integrations-detail',
-              grp_name: 'apps',
-            },
-            {
-              name: t('Integrations'),
-              path: '/apps/integrations/integration',
-              grp_name: 'apps',
-            },
+            appSubMenuConfig('All Apps', '/apps/integrations/all-apps'), //
+            appSubMenuConfig('App Detail', '/apps/integrations/integrations-detail'), //
+            appSubMenuConfig('Integrations', '/apps/integrations/integration'), //
+          ],
+        },
+      ],
+    },
+    {
+      group: 'Pages',
+      contents: [
+        {
+          id: 'dash_pages',
+          name: t('Authentication'),
+          icon: <Icons.UserPlus />,
+          path: '/auth',
+          childrens: [
+            mainMenuConfig('Lock Screen', '/auth/lock-screen'), //
+            mainMenuConfig('Reset Password', '/auth/reset-password'), //
+            mainMenuConfig('Error 404', '/error-404'), //
+            mainMenuConfig('Error 503', '/auth/error-503'), //
+          ],
+        },
+        {
+          id: 'dash_profile',
+          name: t('Profile'),
+          icon: <Icons.UserSearch />,
+          path: '/pages',
+          badgeIndicator: <HkBadge bg='danger' indicator className='position-absolute top-0 start-100' />,
+          childrens: [
+            appSubMenuConfig('Profile', '/pages/profile'), //
+            appSubMenuConfig('Edit Profile', '/pages/edit-profile'), //
+            appSubMenuConfig('Account', '/pages/account'), //
           ],
         },
       ],
