@@ -31,7 +31,8 @@ const Dashboard = ({ navCollapsed, toggleCollapsedNav, sidebarDataHover, dataHov
       if (response.ok) {
         const data = await response.json()
         console.log(data)
-      } //else {
+      }
+      //  else {
       //   navigate('/auth/error-503')
       // }
     }

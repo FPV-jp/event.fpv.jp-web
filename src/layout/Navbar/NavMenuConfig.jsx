@@ -78,6 +78,17 @@ export const NavMenuConfig = () => {
           ],
         },
         {
+          id: 'dash_task',
+          name: t('Todo'),
+          icon: <Icons.ListDetails />,
+          path: '/apps/todo',
+          badge: <IconBadge2 />,
+          childrens: [
+            appSubMenuConfig('Tasklist', '/apps/todo/task-list'), //
+            appSubMenuConfig('Gantt', '/apps/todo/gantt'), //
+          ],
+        },
+        {
           id: 'dash_chatpop',
           name: t('Calendar'),
           icon: <Icons.CalendarTime />,
@@ -136,17 +147,6 @@ export const NavMenuConfig = () => {
           childrens: [
             appSubMenuConfig('List View', '/apps/file-manager/list-view'), //
             appSubMenuConfig('Grid View', '/apps/file-manager/grid-view'), //
-          ],
-        },
-        {
-          id: 'dash_task',
-          name: t('Todo'),
-          icon: <Icons.ListDetails />,
-          path: '/apps/todo',
-          badge: <IconBadge2 />,
-          childrens: [
-            appSubMenuConfig('Tasklist', '/apps/todo/task-list'), //
-            appSubMenuConfig('Gantt', '/apps/todo/gantt'), //
           ],
         },
         {
