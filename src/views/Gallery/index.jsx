@@ -1,11 +1,43 @@
 import classNames from 'classnames'
-import React, { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { GET } from 'utils/Http'
 import GalleryBody from './GalleryBody'
 import GalleryHeader from './GalleryHeader'
 import GallerySidebar from './GallerySidebar'
 
+// import { useEffect, useState } from 'react'
+// import { useTranslation } from 'react-i18next'
+// import { useSelector } from 'react-redux'
+// import { useNavigate } from 'react-router-dom'
+// import { GET } from 'utils/Http'
+
+const getAccessToken = (state) => state.auth0Reducer.accessToken
+
 const Gallery = () => {
+  const { t } = useTranslation()
+  const navigate = useNavigate()
+  const accessToken = useSelector(getAccessToken)
+  const [data, setData] = useState()
+
   const [showSidebar, setShowSidebar] = useState(true)
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await GET(accessToken, '/api/apps/calendar')
+      if (response.ok) {
+        const data = await response.json()
+        console.log(data)
+        setData(data)
+      } else {
+        // navigate('/auth/error-503')
+      }
+    }
+    fetchData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className='hk-pg-body py-0'>

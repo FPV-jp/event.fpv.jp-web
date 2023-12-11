@@ -1,6 +1,6 @@
 import 'bootstrap-daterangepicker/daterangepicker.css'
 import moment from 'moment'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Col, Container, Form, InputGroup, Nav, Row, Tab } from 'react-bootstrap'
 import DateRangePicker from 'react-bootstrap-daterangepicker'
 import { Calendar } from 'react-feather'
@@ -20,21 +20,21 @@ const getAccessToken = (state) => state.auth0Reducer.accessToken
 const Dashboard = ({ navCollapsed, toggleCollapsedNav, sidebarDataHover, dataHover }) => {
   const { t } = useTranslation()
   const navigate = useNavigate()
-
   const accessToken = useSelector(getAccessToken)
+  const [data, setData] = useState()
 
   useEffect(() => {
     toggleCollapsedNav(false)
     sidebarDataHover(false)
     async function fetchData() {
-      const response = await GET(accessToken, '/api/users')
+      const response = await GET(accessToken, '/api/dashboard')
       if (response.ok) {
         const data = await response.json()
         console.log(data)
+        setData(data)
+      } else {
+        // navigate('/auth/error-503')
       }
-      //  else {
-      //   navigate('/auth/error-503')
-      // }
     }
     fetchData()
     // eslint-disable-next-line react-hooks/exhaustive-deps

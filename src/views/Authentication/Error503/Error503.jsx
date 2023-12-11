@@ -1,5 +1,5 @@
 import Footer from 'layout/Footer'
-import Header from 'layout/Header'
+// import Header from 'layout/Header'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
@@ -16,7 +16,7 @@ const Error503 = (props) => {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className='hk-pg-wrapper'>
         <div className='hk-pg-body'>
           <Container>
