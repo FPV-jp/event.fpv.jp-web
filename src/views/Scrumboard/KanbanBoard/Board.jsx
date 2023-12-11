@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { nanoid } from 'nanoid'
+import { useEffect, useState } from 'react'
 import { Button, Col, Form, Modal, Row } from 'react-bootstrap'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import 'react-perfect-scrollbar/dist/css/styles.css'
-import { DATASET } from './KanbanDatas'
 import DragDropCards from './DragDropCards'
-import { nanoid } from 'nanoid'
+import { DATASET } from './KanbanDatas'
 
 const Board = () => {
   // eslint-disable-next-line no-unused-vars

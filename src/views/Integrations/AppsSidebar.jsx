@@ -1,9 +1,8 @@
-import React from 'react'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import { Button, Form, Nav } from 'react-bootstrap'
 import { Archive, Book, Box, Briefcase, CheckSquare, Code, GitBranch, GitHub, Grid, Heart, PenTool, RefreshCw, Settings, Tool, Zap } from 'react-feather'
 import { NavLink, useMatch } from 'react-router-dom'
 import SimpleBar from 'simplebar-react'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 
 const AppsSidebar = () => {
   //All Apps page route

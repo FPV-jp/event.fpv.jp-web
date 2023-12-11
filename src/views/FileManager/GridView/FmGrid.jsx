@@ -1,13 +1,12 @@
-import React from 'react'
+import HkAlert from 'components/@hk-alert/@hk-alert'
 import { Button, Card, Col, Dropdown, Row } from 'react-bootstrap'
 import { Copy, Download, Eye, Info, Link2, MoreHorizontal, SkipForward, Star, Trash2, UserPlus } from 'react-feather'
-import SimpleBar from 'simplebar-react'
 import { Link } from 'react-router-dom'
-import HkAlert from 'components/@hk-alert/@hk-alert'
+import SimpleBar from 'simplebar-react'
 
 //Images
-import mock7 from 'assets/dist/img/gallery/mock7.jpg'
 import mock5 from 'assets/dist/img/gallery/mock5.jpg'
+import mock7 from 'assets/dist/img/gallery/mock7.jpg'
 
 const FmGrid = ({ fileInfo }) => {
   return (

@@ -1,8 +1,7 @@
-import React from 'react'
-import { Card } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import HkBadge from 'components/@hk-badge/@hk-badge'
 import HkTooltip from 'components/@hk-tooltip/HkTooltip'
+import { Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 //Image
 import avatar3 from 'assets/dist/img/avatar3.jpg'

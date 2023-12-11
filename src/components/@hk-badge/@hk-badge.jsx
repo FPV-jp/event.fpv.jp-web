@@ -1,5 +1,4 @@
 import classNames from 'classnames'
-import React from 'react'
 import { Badge } from 'react-bootstrap'
 
 const HkBadge = ({ children, as, bg, pill, outline, indicator, text, bsPrefix, className, size, soft, ...rest }) => {

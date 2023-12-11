@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
+import { useState } from 'react'
 import { Badge, Button, Col, Form, Modal, Nav, Row } from 'react-bootstrap'
 import { Archive, Book, Edit, Inbox, Plus, Send, Settings, Star, Trash2 } from 'react-feather'
 import SimpleBar from 'simplebar-react'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import ComposeEmail from './ComposeEmail'
 
 //Redux

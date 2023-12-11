@@ -92,7 +92,7 @@
     "test": "react-scripts test",
     "build": "BUILD_PATH='./private_html' react-scripts build",
     "eject": "react-scripts eject",
-    "lint": "CI=true eslint --fix --ext .ts,.js,.tsx,.jsx",
+    "lint": "eslint --fix --ext .ts,.js,.tsx,.jsx .",
     "fmt": "prettier --write \"./**/*.{js,jsx,ts,tsx,scss}\""
   },
   "eslintConfig": {

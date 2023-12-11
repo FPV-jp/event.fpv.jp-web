@@ -1,10 +1,9 @@
-import React from 'react'
 import classNames from 'classnames'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import { Button, Form } from 'react-bootstrap'
 import { ChevronDown, ChevronUp } from 'react-feather'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import { toggleTopNav } from 'redux/action/Theme'
 
 const Header = ({ topNavCollapsed, toggleTopNav, toggleSidebar, show }) => {

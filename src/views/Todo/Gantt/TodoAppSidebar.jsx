@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import HkBadge from 'components/@hk-badge/@hk-badge'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
+import { useState } from 'react'
 import { Button, Nav } from 'react-bootstrap'
-import SimpleBar from 'simplebar-react'
 import * as Icons from 'react-feather'
 import { Link } from 'react-router-dom'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
-import AddNewProject from './AddNewProject'
+import SimpleBar from 'simplebar-react'
 import AddNewTask from '../AddNewTask'
-import HkBadge from 'components/@hk-badge/@hk-badge'
+import AddNewProject from './AddNewProject'
 
 const TodoAppSidebar = () => {
   const [addNewTask, setAddNewTask] = useState(false)

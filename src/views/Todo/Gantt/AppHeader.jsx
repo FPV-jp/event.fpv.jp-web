@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Button, ButtonGroup, Dropdown, Form, InputGroup } from 'react-bootstrap'
 import { ChevronDown, ChevronUp, Columns, Maximize, Minimize, Plus, Sidebar, Star } from 'react-feather'
-import { toggleTopNav } from 'redux/action/Theme'
 import { connect } from 'react-redux'
+import { toggleTopNav } from 'redux/action/Theme'
 import { ganttViewMode } from 'redux/action/ToDo'
 
 //Images
+import avatar13 from 'assets/dist/img/avatar13.jpg'
 import avatar2 from 'assets/dist/img/avatar2.jpg'
 import avatar8 from 'assets/dist/img/avatar8.jpg'
-import avatar13 from 'assets/dist/img/avatar13.jpg'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import classNames from 'classnames'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import { Link } from 'react-router-dom'
 
 const AppHeader = ({ topNavCollapsed, toggleTopNav, toggleSidebar, showSidebar, ganttViewMode, vm }) => {

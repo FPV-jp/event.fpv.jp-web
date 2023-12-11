@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
 import classNames from 'classnames'
+import { useState } from 'react'
 import Sidebar from '../Sidebar'
+import Board from './Board'
 import BoardHeader from './BoardHeader'
 import EditTaskList from './EditTaskList'
-import TaskboardInfo from './TaskboardInfo'
 import TaskDetails from './TaskDetails'
-import Board from './Board'
+import TaskboardInfo from './TaskboardInfo'
 
 const KanbanBoard = () => {
   const [showSidebar, setShowSidebar] = useState(true)

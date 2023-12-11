@@ -1,4 +1,3 @@
-import React from 'react'
 import { Card, Col, Container, Form, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import SimpleBar from 'simplebar-react'

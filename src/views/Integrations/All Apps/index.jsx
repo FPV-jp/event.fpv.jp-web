@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
 import classNames from 'classnames'
+import { useState } from 'react'
 import AppsSidebar from '../AppsSidebar'
-import Header from './Header'
 import Body from './Body'
+import Header from './Header'
 
 const AllApps = () => {
   const [showSidebar, setShowSidebar] = useState(true)

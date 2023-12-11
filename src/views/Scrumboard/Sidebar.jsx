@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
+import { useState } from 'react'
 import { Alert, Button, Nav } from 'react-bootstrap'
 import { Archive, Book, Globe, Layout, Lock, MoreVertical, Plus, Settings, Star, Trash2, UserCheck, ZapOff } from 'react-feather'
 import SimpleBar from 'simplebar-react'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import AddNewBoard from './AddNewBoard'
 import AddNewFavBoard from './KanbanBoard/AddNewFavBoard'
 

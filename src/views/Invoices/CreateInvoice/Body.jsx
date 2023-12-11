@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Col, Container, Form, Row, Table } from 'react-bootstrap'
-import SimpleBar from 'simplebar-react'
-import EditInfo from './EditInfo'
-import { Link } from 'react-router-dom'
-import AddNewClient from './AddNewClient'
-import { nanoid } from 'nanoid'
-import HkInlineEdit from 'components/@hk-editable-component/HkInlineEdit'
 import HkDropZone from 'components/@hk-drop-zone/HkDropZone'
+import HkInlineEdit from 'components/@hk-editable-component/HkInlineEdit'
+import { nanoid } from 'nanoid'
+import { useEffect, useState } from 'react'
+import { Button, Col, Container, Form, Row, Table } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import SimpleBar from 'simplebar-react'
+import AddNewClient from './AddNewClient'
+import EditInfo from './EditInfo'
 
 const Body = () => {
   const [editInfo, setEditInfo] = useState(false)

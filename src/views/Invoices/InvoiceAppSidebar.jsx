@@ -1,9 +1,8 @@
-import React from 'react'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import { Button, Dropdown, Nav } from 'react-bootstrap'
 import { Archive, Book, Download, Edit, Layers, Save, Settings, Star, Trash2, Upload, User, Users } from 'react-feather'
 import { Link } from 'react-router-dom'
 import SimpleBar from 'simplebar-react'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 
 const InvoiceAppSidebar = () => {
   return (

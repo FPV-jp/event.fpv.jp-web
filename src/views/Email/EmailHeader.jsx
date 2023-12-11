@@ -1,12 +1,11 @@
-import React from 'react'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import { Button, Dropdown } from 'react-bootstrap'
 import { Archive, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Clock, Flag, Folder, MoreVertical, Printer, Trash2 } from 'react-feather'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 
 //Redux
 import { connect } from 'react-redux'
-import { toggleTopNav } from 'redux/action/Theme'
 import { StartConversation } from 'redux/action/Chat'
+import { toggleTopNav } from 'redux/action/Theme'
 
 const EmailHeader = ({ topNavCollapsed, toggleTopNav, StartConversation, startChating }) => {
   const BackToContactList = () => {

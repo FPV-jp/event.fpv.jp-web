@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link2, MoreHorizontal } from 'react-feather'
 
 const GalleryCaption = () => {

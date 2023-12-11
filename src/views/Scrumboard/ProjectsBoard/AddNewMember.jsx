@@ -1,6 +1,5 @@
-import React from 'react'
-import { Button, Col, Form, Modal, Row } from 'react-bootstrap'
 import HkDropZone from 'components/@hk-drop-zone/HkDropZone'
+import { Button, Col, Form, Modal, Row } from 'react-bootstrap'
 
 const AddNewMember = ({ show, hide }) => {
   return (

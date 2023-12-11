@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import { Button, Nav } from 'react-bootstrap'
-import SimpleBar from 'simplebar-react'
-import * as Icons from 'react-feather'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
-import AddNewTask from '../AddNewTask'
 import HkBadge from 'components/@hk-badge/@hk-badge'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
+import { useState } from 'react'
+import { Button, Nav } from 'react-bootstrap'
+import * as Icons from 'react-feather'
+import SimpleBar from 'simplebar-react'
+import AddNewTask from '../AddNewTask'
 
 const TodoSidebar = () => {
   const [addNewTask, setAddNewTask] = useState(false)

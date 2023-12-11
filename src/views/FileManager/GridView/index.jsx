@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import FileInfo from '../FileInfo'
 import FmHeader from '../FmHeader'
 import FmSidebar from '../FmSidebar'

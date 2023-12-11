@@ -1,15 +1,15 @@
-import React from 'react'
-import { Copy, Download, Eye, Info, Link2, MoreHorizontal, SkipForward, Trash2, UserPlus } from 'react-feather'
-import { Dropdown } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import classNames from 'classnames'
 import HkTooltip from 'components/@hk-tooltip/HkTooltip'
+import React from 'react'
+import { Dropdown } from 'react-bootstrap'
+import { Copy, Download, Eye, Info, Link2, MoreHorizontal, SkipForward, Trash2, UserPlus } from 'react-feather'
+import { Link } from 'react-router-dom'
 
 //Images
-import avatar2 from 'assets/dist/img/avatar2.jpg'
 import avatar12 from 'assets/dist/img/avatar12.jpg'
 import avatar13 from 'assets/dist/img/avatar13.jpg'
 import avatar14 from 'assets/dist/img/avatar14.jpg'
+import avatar2 from 'assets/dist/img/avatar2.jpg'
 import mock7 from 'assets/dist/img/gallery/mock7.jpg'
 import mock8 from 'assets/dist/img/gallery/mock8.jpg'
 

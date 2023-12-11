@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
 import { useWindowWidth } from '@react-hook/window-size'
 import classNames from 'classnames'
+import { useEffect, useState } from 'react'
+import Body from './Body'
 import TaskInfo from './TaskInfo'
 import TodoHeader from './TodoHeader'
 import TodoSidebar from './TodoSidebar'
-import Body from './Body'
 
 const TaskList = () => {
   const [showAppInfo, setShowAppInfo] = useState(true)

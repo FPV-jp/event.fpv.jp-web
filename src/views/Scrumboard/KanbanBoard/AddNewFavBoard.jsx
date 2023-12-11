@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button, Form, Modal } from 'react-bootstrap'
 import SimpleBar from 'simplebar-react'
 

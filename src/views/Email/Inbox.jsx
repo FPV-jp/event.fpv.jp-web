@@ -1,24 +1,24 @@
-import React, { useState } from 'react'
-import { Badge, Button, Dropdown, Form, ListGroup } from 'react-bootstrap'
-import SimpleBar from 'simplebar-react'
-import classNames from 'classnames'
 import { useWindowWidth } from '@react-hook/window-size'
+import classNames from 'classnames'
+import { useState } from 'react'
+import { Badge, Button, Dropdown, Form, ListGroup } from 'react-bootstrap'
 import { Archive, Calendar, Check, Edit, Inbox, Layout, Mail, RefreshCw, Send, Settings, Star, Trash2 } from 'react-feather'
+import SimpleBar from 'simplebar-react'
 import ComposeEmail from './ComposeEmail'
 
 //Redux
 import { connect } from 'react-redux'
 import { StartConversation } from 'redux/action/Chat'
-import { toggleTopNav } from 'redux/action/Theme'
 import { Compose } from 'redux/action/Email'
+import { toggleTopNav } from 'redux/action/Theme'
 
 //Images
+import avatar10 from 'assets/dist/img/avatar10.jpg'
 import avatar2 from 'assets/dist/img/avatar2.jpg'
 import avatar3 from 'assets/dist/img/avatar3.jpg'
 import avatar7 from 'assets/dist/img/avatar7.jpg'
 import avatar8 from 'assets/dist/img/avatar8.jpg'
 import avatar9 from 'assets/dist/img/avatar9.jpg'
-import avatar10 from 'assets/dist/img/avatar10.jpg'
 
 const InboxList = ({ toggleSidebar, show, StartConversation, startChating, toggleTopNav, topNavCollapsed, Compose, composeEmail }) => {
   const [showComposePopup, setShowComposePopup] = useState(false)

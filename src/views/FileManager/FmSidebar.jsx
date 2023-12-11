@@ -1,9 +1,8 @@
-import React from 'react'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import { Button, Nav } from 'react-bootstrap'
 import { Archive, Book, File, FileText, Folder, HardDrive, Image, Play, Settings, Trash2, Upload, Video } from 'react-feather'
 import SimpleBar from 'simplebar-react'
 import { Star } from 'tabler-icons-react'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 
 const FmSidebar = () => {
   return (

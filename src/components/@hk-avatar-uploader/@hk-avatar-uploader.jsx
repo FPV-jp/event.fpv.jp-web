@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 const HkAvatarUploader = ({ defaultImg }) => {
   const [imageSrc, setImageSrc] = useState(defaultImg)

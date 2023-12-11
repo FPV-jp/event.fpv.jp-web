@@ -1,19 +1,18 @@
-import React from 'react'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 import SimpleBar from 'simplebar-react'
 
 //Images
+import symbolAvatar10 from 'assets/dist/img/symbol-avatar-10.png'
+import symbolAvatar11 from 'assets/dist/img/symbol-avatar-11.png'
+import symbolAvatar12 from 'assets/dist/img/symbol-avatar-12.png'
+import symbolAvatar13 from 'assets/dist/img/symbol-avatar-13.png'
+import symbolAvatar14 from 'assets/dist/img/symbol-avatar-14.png'
 import symbolAvatar2 from 'assets/dist/img/symbol-avatar-2.png'
 import symbolAvatar5 from 'assets/dist/img/symbol-avatar-5.png'
 import symbolAvatar6 from 'assets/dist/img/symbol-avatar-6.png'
 import symbolAvatar7 from 'assets/dist/img/symbol-avatar-7.png'
 import symbolAvatar8 from 'assets/dist/img/symbol-avatar-8.png'
 import symbolAvatar9 from 'assets/dist/img/symbol-avatar-9.png'
-import symbolAvatar10 from 'assets/dist/img/symbol-avatar-10.png'
-import symbolAvatar11 from 'assets/dist/img/symbol-avatar-11.png'
-import symbolAvatar12 from 'assets/dist/img/symbol-avatar-12.png'
-import symbolAvatar14 from 'assets/dist/img/symbol-avatar-14.png'
-import symbolAvatar13 from 'assets/dist/img/symbol-avatar-13.png'
 
 const Body = () => {
   return (

@@ -1,6 +1,5 @@
-import React from 'react'
-import SimpleBar from 'simplebar-react'
 import { Col, Container, Row, Table } from 'react-bootstrap'
+import SimpleBar from 'simplebar-react'
 
 //Images
 import logo from 'assets/dist/img/logo-light.png'

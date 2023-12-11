@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import HkDataTable from 'components/@hk-data-table'
+import { useState } from 'react'
 import { Col, Form, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import HkDataTable from 'components/@hk-data-table'
 import { columns, data } from './TableData'
 
 const InvoiceList = () => {

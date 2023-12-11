@@ -1,4 +1,3 @@
-import React from 'react'
 import { nanoid } from 'nanoid'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import Board from './Board'

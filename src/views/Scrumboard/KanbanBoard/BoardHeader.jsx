@@ -1,15 +1,14 @@
-import React from 'react'
+import classNames from 'classnames'
 import { ChevronDown, ChevronUp, Info, Plus, Star } from 'react-feather'
 import { connect } from 'react-redux'
 import { toggleTopNav } from 'redux/action/Theme'
-import classNames from 'classnames'
 
 //Images
+import avatar13 from 'assets/dist/img/avatar13.jpg'
 import avatar2 from 'assets/dist/img/avatar2.jpg'
 import avatar8 from 'assets/dist/img/avatar8.jpg'
-import avatar13 from 'assets/dist/img/avatar13.jpg'
-import { Button, Form, InputGroup, Nav } from 'react-bootstrap'
 import HkTooltip from 'components/@hk-tooltip/HkTooltip'
+import { Button, Form, InputGroup, Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const BoardHeader = ({ topNavCollapsed, toggleTopNav, showSidebar, toggleSidebar, showInfo, toggleInfo }) => {

@@ -1,8 +1,8 @@
-import React from 'react'
-import { Archive, Edit, Trash2 } from 'react-feather'
-import { Button, ButtonGroup, Dropdown } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import HkBadge from 'components/@hk-badge/@hk-badge'
+import React from 'react'
+import { Button, ButtonGroup, Dropdown } from 'react-bootstrap'
+import { Archive, Edit, Trash2 } from 'react-feather'
+import { Link } from 'react-router-dom'
 
 //Custom Reciplent Container
 const reciplentFormatter = (cell) => {

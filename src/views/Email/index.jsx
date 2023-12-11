@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import EmailBody from './EmailBody'
 import EmailHeader from './EmailHeader'
 import EmailSidebar from './EmailSidebar'

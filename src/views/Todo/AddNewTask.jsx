@@ -1,9 +1,8 @@
-import React from 'react'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import { Button, Col, Form, Modal, Row } from 'react-bootstrap'
 import DateRangePicker from 'react-bootstrap-daterangepicker'
 import { Plus } from 'react-feather'
 import { Link } from 'react-router-dom'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 
 const AddNewTask = ({ show, hide }) => {
   const hideCalender = (ev, picker) => {

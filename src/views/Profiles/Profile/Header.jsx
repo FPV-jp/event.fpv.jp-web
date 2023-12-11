@@ -1,4 +1,3 @@
-import React from 'react'
 import { Dropdown, Form, Nav } from 'react-bootstrap'
 import { MoreVertical } from 'react-feather'
 

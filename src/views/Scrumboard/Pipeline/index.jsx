@@ -1,4 +1,3 @@
-import React from 'react'
 import PipelineBody from './Body'
 import Footer from './Footer'
 

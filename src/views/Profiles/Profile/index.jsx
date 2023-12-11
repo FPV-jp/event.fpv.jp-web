@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Container } from 'react-bootstrap'
-import ProfileIntro from './ProfileIntro'
-import Header from './Header'
 import Body from './Body'
+import Header from './Header'
+import ProfileIntro from './ProfileIntro'
 // Redux
 import { connect } from 'react-redux'
-import { toggleCollapsedNav, sidebarDataHover } from 'redux/action/Theme'
+import { sidebarDataHover, toggleCollapsedNav } from 'redux/action/Theme'
 
 //Images
 import bgImg from 'assets/dist/img/profile-bg.jpg'

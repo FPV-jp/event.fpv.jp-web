@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { Button, Col, Form, InputGroup, Modal, Row } from 'react-bootstrap'
 import HkDropZone from 'components/@hk-drop-zone/HkDropZone'
+import { useState } from 'react'
+import { Button, Col, Form, InputGroup, Modal, Row } from 'react-bootstrap'
 
 const AddNewBoard = ({ show, onHide }) => {
   const [avatarColor, setAvatarColor] = useState('#009B84')

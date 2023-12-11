@@ -1,8 +1,8 @@
-import React, { useReducer } from 'react'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
+import { useReducer } from 'react'
 import { Button, Form, Nav } from 'react-bootstrap'
 import { Archive, Book, Folder, HardDrive, Plus, Settings, Star, Trash2, Upload } from 'react-feather'
 import SimpleBar from 'simplebar-react'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import AddCategory from './AddCategory'
 import { GalleryReducer } from './GalleryReducer'
 
