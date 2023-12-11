@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import { GET } from 'utils/Http'
 import GalleryBody from './GalleryBody'
 import GalleryHeader from './GalleryHeader'
@@ -18,7 +18,7 @@ const getAccessToken = (state) => state.auth0Reducer.accessToken
 
 const Gallery = () => {
   const { t } = useTranslation()
-  const navigate = useNavigate()
+  // const history = useNavigate()
   const accessToken = useSelector(getAccessToken)
   const [data, setData] = useState()
 
@@ -32,7 +32,7 @@ const Gallery = () => {
         console.log(data)
         setData(data)
       } else {
-        // navigate('/auth/error-503')
+        // history('/auth/error-503')
       }
     }
     fetchData()

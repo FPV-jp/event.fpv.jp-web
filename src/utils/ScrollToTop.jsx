@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const ScrollToTop = ({ children }) => {
-  const navigate = useNavigate()
+  const history = useNavigate()
   const { pathname } = useLocation()
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const ScrollToTop = ({ children }) => {
       left: 0,
       behavior: 'smooth',
     })
-  }, [pathname, navigate])
+  }, [pathname, history])
 
   return children || null
 }

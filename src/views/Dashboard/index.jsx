@@ -6,7 +6,7 @@ import DateRangePicker from 'react-bootstrap-daterangepicker'
 import { Calendar } from 'react-feather'
 import { useTranslation } from 'react-i18next'
 import { connect, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import { sidebarDataHover, toggleCollapsedNav } from 'redux/action/Theme'
 import { GET } from 'utils/Http'
 import ChatBotInterface from '../ChatPopup/ChatBot/ChatBotInterface'
@@ -19,7 +19,7 @@ const getAccessToken = (state) => state.auth0Reducer.accessToken
 
 const Dashboard = ({ navCollapsed, toggleCollapsedNav, sidebarDataHover, dataHover }) => {
   const { t } = useTranslation()
-  const navigate = useNavigate()
+  // const history = useNavigate()
   const accessToken = useSelector(getAccessToken)
   const [data, setData] = useState()
 
@@ -33,7 +33,7 @@ const Dashboard = ({ navCollapsed, toggleCollapsedNav, sidebarDataHover, dataHov
         console.log(data)
         setData(data)
       } else {
-        // navigate('/auth/error-503')
+        // history('/auth/error-503')
       }
     }
     fetchData()
