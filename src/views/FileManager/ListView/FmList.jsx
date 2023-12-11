@@ -3,7 +3,7 @@ import { Nav, Tab } from 'react-bootstrap'
 import SimpleBar from 'simplebar-react'
 import { columns, data } from './TableData'
 
-const FmList = ({}) => {
+const FmList = () => {
   return (
     <div className='fm-body'>
       <SimpleBar className='nicescroll-bar'>
