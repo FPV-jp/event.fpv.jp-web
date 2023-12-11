@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 // Image
 import Error503Img from 'assets/dist/img/macaroni-delete-confirmaton.png'
 
-const Error503 = (props) => {
+const Error503 = () => {
   let history = useNavigate()
 
   // Return to home page

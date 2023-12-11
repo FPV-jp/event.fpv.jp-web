@@ -1,9 +1,8 @@
-import React from 'react'
 import classNames from 'classnames'
+import HkBadge from 'components/@hk-badge/@hk-badge'
 import { Draggable } from 'react-beautiful-dnd'
 import { Badge, Dropdown, Form } from 'react-bootstrap'
 import { MoreVertical, Star } from 'react-feather'
-import HkBadge from 'components/@hk-badge/@hk-badge'
 
 const Task = (props) => {
   return (

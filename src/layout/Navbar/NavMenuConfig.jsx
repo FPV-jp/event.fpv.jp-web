@@ -42,7 +42,7 @@ export const NavMenuConfig = () => {
     }
   }
 
-  const appSubMenuConfig = (name, path, grp_name) => {
+  const appSubMenuConfig = (name, path) => {
     return {
       name: t(name),
       path: path,

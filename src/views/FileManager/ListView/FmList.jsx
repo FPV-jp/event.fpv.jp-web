@@ -1,10 +1,9 @@
-import React from 'react'
+import HkDataTable from 'components/@hk-data-table'
 import { Nav, Tab } from 'react-bootstrap'
 import SimpleBar from 'simplebar-react'
-import HkDataTable from 'components/@hk-data-table'
 import { columns, data } from './TableData'
 
-const FmList = ({ toggleInfo }) => {
+const FmList = ({}) => {
   return (
     <div className='fm-body'>
       <SimpleBar className='nicescroll-bar'>

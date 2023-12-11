@@ -1,6 +1,6 @@
 import React from 'react'
 
-const useRowSelect = (slice, data) => {
+const useRowSelect = (slice) => {
   const [selectedRows, setSelectedRows] = React.useState([])
   const [selectAll, setSelectAll] = React.useState(false)
 

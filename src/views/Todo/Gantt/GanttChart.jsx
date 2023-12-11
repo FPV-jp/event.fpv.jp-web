@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
-import SimpleBar from 'simplebar-react'
+import HkGantt from 'components/@hk-gantt/@hk-gantt'
+import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { ganttViewMode } from 'redux/action/ToDo'
-import HkGantt from 'components/@hk-gantt/@hk-gantt'
+import SimpleBar from 'simplebar-react'
 
-const GanttChart = ({ ganttViewMode, vm }) => {
+const GanttChart = ({ vm }) => {
   // 👇️ scroll to viewPort every time messages change
   useEffect(() => {
     const element = document.querySelector('#split_2 .simplebar-content-wrapper')

@@ -1,13 +1,12 @@
-import React from 'react'
 import classNames from 'classnames'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import { Button, Dropdown, Form } from 'react-bootstrap'
 import { AlignCenter, ChevronDown, ChevronUp, Clock, Droplet, List } from 'react-feather'
 import { connect } from 'react-redux'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
-import { toggleTopNav } from 'redux/action/Theme'
 import { Link } from 'react-router-dom'
+import { toggleTopNav } from 'redux/action/Theme'
 
-const TodoHeader = ({ topNavCollapsed, toggleTopNav, toggleSidebar, showSidebar, toggleInfo }) => {
+const TodoHeader = ({ topNavCollapsed, toggleTopNav, toggleSidebar, showSidebar }) => {
   return (
     <header className='todo-header'>
       <div className='d-flex align-items-center'>

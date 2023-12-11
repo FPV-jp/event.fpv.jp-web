@@ -1,10 +1,9 @@
-import React from 'react'
-import ReactDOMServer from 'react-dom/server'
 import { Image } from 'react-bootstrap'
+import ReactDOMServer from 'react-dom/server'
 import { DropzoneComponent } from 'react-dropzone-component'
 // import { Upload } from 'react-feather';
 
-const HkFileInput = ({ children, className }) => {
+const HkFileInput = ({ className }) => {
   //DropZone Config
   var djsConfig = {
     addRemoveLinks: true,

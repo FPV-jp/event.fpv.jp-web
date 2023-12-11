@@ -1,8 +1,7 @@
-import React from 'react'
 import { Droppable } from 'react-beautiful-dnd'
 import { Card } from 'react-bootstrap'
-import Task from './Task'
 import { Link } from 'react-router-dom'
+import Task from './Task'
 
 const Board = (props) => {
   return (

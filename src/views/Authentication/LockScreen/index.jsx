@@ -1,12 +1,11 @@
-import React from 'react'
 import { Card, Col, Container, Form, Row } from 'react-bootstrap'
-import Footer from './Footer'
 import { useNavigate } from 'react-router-dom'
+import Footer from './Footer'
 
 //Images
 import avatar12 from 'assets/dist/img/avatar12.jpg'
 
-const LockScreen = (props) => {
+const LockScreen = () => {
   let history = useNavigate()
 
   const unlockScreen = (e) => {

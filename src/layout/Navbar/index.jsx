@@ -15,7 +15,7 @@ import { toggleCollapsedNav } from 'redux/action/Theme'
 import SimpleBar from 'simplebar-react'
 import { useAuth } from 'utils/AuthProvider'
 
-const AuthenticatedNavbar = ({ navCollapsed, toggleCollapsedNav, name, nickname, picture, email, email_verified, sub }) => {
+const AuthenticatedNavbar = ({ navCollapsed, toggleCollapsedNav, nickname, picture, email }) => {
   const { logout } = useAuth()
   return (
     <Navbar expand='xl' className='hk-navbar navbar-light fixed-top'>

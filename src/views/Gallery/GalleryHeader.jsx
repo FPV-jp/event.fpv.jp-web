@@ -1,13 +1,12 @@
 import classNames from 'classnames'
-import React from 'react'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import { Button, Dropdown, Form } from 'react-bootstrap'
+import * as Icons from 'react-feather'
 import { ChevronDown, ChevronUp, Download, FolderPlus, Grid, List, Server, UploadCloud } from 'react-feather'
 import { connect } from 'react-redux'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import { toggleTopNav } from 'redux/action/Theme'
-import * as Icons from 'react-feather'
 
-const GalleryHeader = ({ topNavCollapsed, toggleTopNav, toggleSidebar, showSidebar, toggleInfo }) => {
+const GalleryHeader = ({ topNavCollapsed, toggleTopNav, toggleSidebar, showSidebar }) => {
   return (
     <header className='gallery-header'>
       <div className='d-flex align-items-center flex-grow-1'>

@@ -1,4 +1,3 @@
-import React from 'react'
 import classNames from 'classnames'
 import { Button, Dropdown, Form, InputGroup } from 'react-bootstrap'
 import { MoreVertical, Users, X } from 'react-feather'
@@ -6,7 +5,7 @@ import { MoreVertical, Users, X } from 'react-feather'
 //Image
 import avatar8 from 'assets/dist/img/avatar8.jpg'
 
-const ChatPopupHeader = ({ show, onClose, showContact, onHideContact }) => {
+const ChatPopupHeader = ({ onClose, showContact, onHideContact }) => {
   return (
     <header>
       <InputGroup className={classNames('contact-search-wrap', { 'd-none': !showContact })}>

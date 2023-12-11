@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
-import SimpleBar from 'simplebar-react'
-import DatePicker from 'react-datepicker'
-import { Archive, Bell, Book, Calendar, Plus, Settings } from 'react-feather'
+import { useState } from 'react'
 import { Badge, Button, Dropdown, Form, Nav } from 'react-bootstrap'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import { Archive, Bell, Book, Calendar, Plus, Settings } from 'react-feather'
+import SimpleBar from 'simplebar-react'
 import AddCategory from './AddCategory'
 import SetReminder from './SetReminder'
-import 'react-datepicker/dist/react-datepicker.css'
 //Custom Components
 import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 
-const CalendarSidebar = ({ showSidebar, toggleSidebar, createNewEvent }) => {
+const CalendarSidebar = ({ createNewEvent }) => {
   const [addCategory, setAddCategory] = useState(false)
   const [reminder, setReminder] = useState(false)
   const [startDate, setStartDate] = useState(new Date())

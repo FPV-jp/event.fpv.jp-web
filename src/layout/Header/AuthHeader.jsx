@@ -9,7 +9,7 @@ import { useMatch } from 'react-router-dom'
 import { sidebarDataHover, toggleCollapsedNav } from 'redux/action/Theme'
 import Spinner from 'utils/Spinner'
 
-const AuthenticatedHeader = ({ children, navCollapsed, topNavCollapsed, toggleCollapsedNav, sidebarDataHover, dataHover, maximize }) => {
+const AuthenticatedHeader = ({ children, navCollapsed, topNavCollapsed, toggleCollapsedNav, maximize }) => {
   const appRoutes = useMatch('/apps/')
   const errro404Route = useMatch('/error-404')
   const windowWidth = useWindowWidth()
@@ -29,7 +29,9 @@ const AuthenticatedHeader = ({ children, navCollapsed, topNavCollapsed, toggleCo
 
   return (
     <div className={classNames('hk-wrapper', { 'hk-pg-auth': errro404Route }, { hk__email__backdrop: maximize })} data-layout='navbar' data-layout-style={navCollapsed ? 'collapsed' : 'default'} data-navbar-style={topNavCollapsed ? 'collapsed' : ''} data-menu='light' data-footer='simple'>
-      {invoking ? <Spinner /> :
+      {invoking ? (
+        <Spinner />
+      ) : (
         <>
           {accessToken ? <AuthenticatedNavbar /> : <Header />}
           <div className={classNames('hk-pg-wrapper', { 'pb-0': appRoutes })}>
@@ -37,7 +39,7 @@ const AuthenticatedHeader = ({ children, navCollapsed, topNavCollapsed, toggleCo
             {!appRoutes && <Footer />}
           </div>
         </>
-      }
+      )}
     </div>
   )
 }

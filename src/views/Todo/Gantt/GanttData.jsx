@@ -3,11 +3,11 @@ import { Badge, Dropdown } from 'react-bootstrap'
 import { MoreVertical } from 'react-feather'
 
 //Images
+import avatar10 from 'assets/dist/img/avatar10.jpg'
+import avatar15 from 'assets/dist/img/avatar15.jpg'
 import avatar2 from 'assets/dist/img/avatar2.jpg'
 import avatar7 from 'assets/dist/img/avatar7.jpg'
 import avatar9 from 'assets/dist/img/avatar9.jpg'
-import avatar10 from 'assets/dist/img/avatar10.jpg'
-import avatar15 from 'assets/dist/img/avatar15.jpg'
 
 const avatarFormater = (cell) => {
   return cell.map((data, indx) => (
