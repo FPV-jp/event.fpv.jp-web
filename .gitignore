@@ -1,4 +1,6 @@
 node_modules/
+private_html/
+
 .env
 # .vscode/
 .idea/

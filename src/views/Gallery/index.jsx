@@ -1,6 +1,5 @@
 import classNames from 'classnames'
 import { useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 // import { useNavigate } from 'react-router-dom'
 import { GET } from 'utils/Http'
@@ -17,7 +16,7 @@ import GallerySidebar from './GallerySidebar'
 const getAccessToken = (state) => state.auth0Reducer.accessToken
 
 const Gallery = () => {
-  const { t } = useTranslation()
+  // const { t } = useTranslation()
   // const history = useNavigate()
   const accessToken = useSelector(getAccessToken)
   const [data, setData] = useState()
@@ -29,7 +28,7 @@ const Gallery = () => {
       const response = await GET(accessToken, '/api/apps/calendar')
       if (response.ok) {
         const data = await response.json()
-        console.log(data)
+
         setData(data)
       } else {
         // history('/auth/error-503')
@@ -38,7 +37,7 @@ const Gallery = () => {
     fetchData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
+  console.log(data)
   return (
     <div className='hk-pg-body py-0'>
       <div className={classNames('galleryapp-wrap', { 'galleryapp-sidebar-toggle': !showSidebar })}>

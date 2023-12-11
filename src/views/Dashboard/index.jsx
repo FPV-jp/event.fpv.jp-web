@@ -30,7 +30,6 @@ const Dashboard = ({ navCollapsed, toggleCollapsedNav, sidebarDataHover, dataHov
       const response = await GET(accessToken, '/api/dashboard')
       if (response.ok) {
         const data = await response.json()
-        console.log(data)
         setData(data)
       } else {
         // history('/auth/error-503')
@@ -39,6 +38,7 @@ const Dashboard = ({ navCollapsed, toggleCollapsedNav, sidebarDataHover, dataHov
     fetchData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+  console.log(data)
 
   return (
     <>
