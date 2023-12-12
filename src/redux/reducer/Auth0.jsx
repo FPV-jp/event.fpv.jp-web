@@ -9,6 +9,7 @@ export const initialState = {
   email: null,
   email_verified: false,
   sub: null,
+  locale: 'ja',
 }
 
 const Auth0Reducer = (state = initialState, action) => {
@@ -27,13 +28,13 @@ const Auth0Reducer = (state = initialState, action) => {
         email: action.email,
         email_verified: action.email_verified,
         sub: action.sub,
-        userId: action.userId,
+        locale: action.locale,
       }
-      case AUTH0_INVOKING:
-        return {
-          ...state,
-          invoking: action.invoking,
-        }
+    case AUTH0_INVOKING:
+      return {
+        ...state,
+        invoking: action.invoking,
+      }
     default:
       return state
   }

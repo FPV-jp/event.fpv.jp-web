@@ -1,6 +1,7 @@
 import i18n from 'i18next'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { Provider } from 'react-redux'
+import { Provider, useSelector } from 'react-redux'
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import store from 'redux/store'
 import PrivateRoutes from 'routes/PrivateRoutes'
@@ -13,7 +14,13 @@ import './i18n'
 function App() {
   const { getUser } = useAuth()
   getUser()
-  i18n.changeLanguage('ja')
+
+  const selectLocale = (state) => state.auth0Reducer.locale
+  const locale = useSelector(selectLocale)
+
+  React.useEffect(() => {
+    i18n.changeLanguage(locale)
+  }, [locale])
 
   return (
     <Router>

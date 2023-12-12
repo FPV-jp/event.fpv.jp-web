@@ -7,7 +7,7 @@ export function setToken(accessToken) {
   }
 }
 
-export function setUser(name, nickname, picture, email, email_verified, sub) {
+export function setUser(name, nickname, picture, email, email_verified, sub, locale) {
   return {
     type: AUTH0_USER,
     name,
@@ -16,6 +16,7 @@ export function setUser(name, nickname, picture, email, email_verified, sub) {
     email,
     email_verified,
     sub,
+    locale,
   }
 }
 

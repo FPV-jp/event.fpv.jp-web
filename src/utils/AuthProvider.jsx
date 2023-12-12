@@ -41,7 +41,7 @@ const AuthProviderComponent = ({ children, setToken, setUser, setInvoking }) => 
     const auth0Instance = await createAuth0Client()
     const user = await auth0Instance.getUser()
     if (user) {
-      setUser(user.name, user.nickname, user.picture, user.email, user.email_verified, user.sub)
+      setUser(user.name, user.nickname, user.picture, user.email, user.email_verified, user.sub, user.locale ? user.locale : 'jp')
       const accessToken = await auth0Instance.getTokenSilently()
       setToken(accessToken)
       setInvoking(false)
@@ -51,7 +51,7 @@ const AuthProviderComponent = ({ children, setToken, setUser, setInvoking }) => 
     if (hasAuthParams) {
       await auth0Instance.handleRedirectCallback()
       const user = await auth0Instance.getUser()
-      setUser(user.name, user.nickname, user.picture, user.email, user.email_verified, user.sub)
+      setUser(user.name, user.nickname, user.picture, user.email, user.email_verified, user.sub, user.locale ? user.locale : 'jp')
       const accessToken = await auth0Instance.getTokenSilently()
       setToken(accessToken)
       setInvoking(false)

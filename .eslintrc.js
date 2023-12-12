@@ -4,7 +4,7 @@ module.exports = {
     es2021: true,
     browser: true,
   },
-  extends: 'eslint:recommended',
+  extends: ['eslint:recommended', 'plugin:jest/recommended'],
   parserOptions: {
     ecmaVersion: 12,
     sourceType: 'module',
@@ -17,5 +17,5 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'no-unused-vars': 'off',
   },
-  plugins: ['react-hooks'],
+  plugins: ['react-hooks', 'jest'],
 }
