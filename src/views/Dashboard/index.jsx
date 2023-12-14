@@ -6,9 +6,9 @@ import DateRangePicker from 'react-bootstrap-daterangepicker'
 import { Calendar } from 'react-feather'
 import { useTranslation } from 'react-i18next'
 import { connect, useSelector } from 'react-redux'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { sidebarDataHover, toggleCollapsedNav } from 'redux/action/Theme'
-import { GET } from 'utils/Http'
+import { fetchData_dashboard } from 'utils/API'
 import ChatBotInterface from '../ChatPopup/ChatBot/ChatBotInterface'
 import ActiveUserCard from './ActiveUserCard'
 import AudienceReviewCard from './AudienceReviewCard'
@@ -19,26 +19,16 @@ const getAccessToken = (state) => state.auth0Reducer.accessToken
 
 const Dashboard = ({ navCollapsed, toggleCollapsedNav, sidebarDataHover, dataHover }) => {
   const { t } = useTranslation()
-  // const history = useNavigate()
+  const history = useNavigate()
   const accessToken = useSelector(getAccessToken)
   const [data, setData] = useState()
 
   useEffect(() => {
     toggleCollapsedNav(false)
     sidebarDataHover(false)
-    async function fetchData() {
-      const response = await GET(accessToken, '/api/dashboard')
-      if (response.ok) {
-        const data = await response.json()
-        setData(data)
-      } else {
-        // history('/auth/error-503')
-      }
-    }
-    fetchData()
+    fetchData_dashboard(setData, accessToken, history)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  console.log(data)
 
   return (
     <>

@@ -1,43 +1,28 @@
 import classNames from 'classnames'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-// import { useNavigate } from 'react-router-dom'
-import { GET } from 'utils/Http'
+import { useNavigate } from 'react-router-dom'
+import { fetchData_gallery } from 'utils/API'
 import GalleryBody from './GalleryBody'
 import GalleryHeader from './GalleryHeader'
 import GallerySidebar from './GallerySidebar'
 
-// import { useEffect, useState } from 'react'
-// import { useTranslation } from 'react-i18next'
-// import { useSelector } from 'react-redux'
-// import { useNavigate } from 'react-router-dom'
-// import { GET } from 'utils/Http'
-
 const getAccessToken = (state) => state.auth0Reducer.accessToken
 
 const Gallery = () => {
-  // const { t } = useTranslation()
-  // const history = useNavigate()
-  const accessToken = useSelector(getAccessToken)
-  const [data, setData] = useState()
+  const { t } = useTranslation()
 
   const [showSidebar, setShowSidebar] = useState(true)
 
+  const history = useNavigate()
+  const accessToken = useSelector(getAccessToken)
+  const [data, setData] = useState()
   useEffect(() => {
-    async function fetchData() {
-      const response = await GET(accessToken, '/api/apps/calendar')
-      if (response.ok) {
-        const data = await response.json()
-
-        setData(data)
-      } else {
-        // history('/auth/error-503')
-      }
-    }
-    fetchData()
+    fetchData_gallery(setData, accessToken, history)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  console.log(data)
+
   return (
     <div className='hk-pg-body py-0'>
       <div className={classNames('galleryapp-wrap', { 'galleryapp-sidebar-toggle': !showSidebar })}>

@@ -1,27 +1,29 @@
 /* eslint-disable no-useless-concat */
-import React, { createRef, useEffect, useState } from 'react'
-import { Button, ButtonGroup } from 'react-bootstrap'
-import classNames from 'classnames'
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
-import timeGridPlugin from '@fullcalendar/timegrid'
-import listPlugin from '@fullcalendar/list'
-import interactionPlugin from '@fullcalendar/interaction'
-import moment from 'moment'
-import { useWindowHeight } from '@react-hook/window-size'
-import CalendarSidebar from './CalendarSidebar'
-import { CalendarEvents } from './Events'
-import EventsDrawer from './EventsDrawer'
-import CreateNewEvent from './CreateNewEvent'
-import 'bootstrap-icons/font/bootstrap-icons.css'
-import 'assets/dist/css/FullCalendar.css'
-//Redux
-import { connect } from 'react-redux'
-import { toggleTopNav } from 'redux/action/Theme'
-//Icons
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import interactionPlugin from '@fullcalendar/interaction'
+import listPlugin from '@fullcalendar/list'
+import FullCalendar from '@fullcalendar/react'
+import timeGridPlugin from '@fullcalendar/timegrid'
+import { useWindowHeight } from '@react-hook/window-size'
+import 'assets/dist/css/FullCalendar.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import classNames from 'classnames'
+import moment from 'moment'
+import { createRef, useEffect, useState } from 'react'
+import { Button, ButtonGroup } from 'react-bootstrap'
 import { ChevronDown, ChevronUp } from 'react-feather'
+import { connect, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { toggleTopNav } from 'redux/action/Theme'
+import { fetchData_calendar } from 'utils/API'
+import CalendarSidebar from './CalendarSidebar'
+import CreateNewEvent from './CreateNewEvent'
+import { CalendarEvents } from './Events'
+import EventsDrawer from './EventsDrawer'
+
+const getAccessToken = (state) => state.auth0Reducer.accessToken
 
 const Calendar = ({ topNavCollapsed, toggleTopNav }) => {
   let calendarRef = createRef()
@@ -38,11 +40,18 @@ const Calendar = ({ topNavCollapsed, toggleTopNav }) => {
 
   useEffect(() => {
     const calApi = calendarRef.current.getApi()
-
     if (calApi) {
       setDate(moment(calApi.getDate()))
     }
   }, [calendarRef])
+
+  const history = useNavigate()
+  const accessToken = useSelector(getAccessToken)
+  const [data, setData] = useState()
+  useEffect(() => {
+    fetchData_calendar(setData, accessToken, history)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   //Function for date change
   const handleChange = (action) => {
@@ -55,7 +64,6 @@ const Calendar = ({ topNavCollapsed, toggleTopNav }) => {
       } else {
         calendarApi.today()
       }
-
       setDate(moment(calendarApi.getDate()))
     }
   }
