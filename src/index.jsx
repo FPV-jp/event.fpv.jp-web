@@ -13,14 +13,15 @@ import './i18n'
 
 function App() {
   const { getUser } = useAuth()
-
-  React.useEffect(() => {
-    getUser()
-  }, [getUser])
+  if (window.location.pathname === '/') {
+    const keys = Array.from(new URLSearchParams(window.location.search).keys())
+    if (keys.includes('code') && keys.includes('state')) {
+      getUser()
+    }
+  }
 
   const selectLocale = (state) => state.auth0Reducer.locale
   const locale = useSelector(selectLocale)
-
   React.useEffect(() => {
     i18n.changeLanguage(locale)
   }, [locale])
