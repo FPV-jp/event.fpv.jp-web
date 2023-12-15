@@ -1,20 +1,20 @@
 const RETRY_COUNT = 1
 const RETRY_INTERVAL = 1500
 
-export const GET = async (accessToken: string, path: string): Promise<Response> => {
-  return retry(accessToken, RETRY_COUNT, path, 'GET')
+export const GET = async (token: string, path: string): Promise<Response> => {
+  return retry(token, RETRY_COUNT, path, 'GET')
 }
 
-export const POST = async (accessToken: string, path: string, body: object) => {
-  return retry(accessToken, RETRY_COUNT, path, 'POST', JSON.stringify(body))
+export const POST = async (token: string, path: string, body: object) => {
+  return retry(token, RETRY_COUNT, path, 'POST', JSON.stringify(body))
 }
 
-export const PUT = async (accessToken: string, path: string, body: object) => {
-  return retry(accessToken, RETRY_COUNT, path, 'PUT', JSON.stringify(body))
+export const PUT = async (token: string, path: string, body: object) => {
+  return retry(token, RETRY_COUNT, path, 'PUT', JSON.stringify(body))
 }
 
-export const DELETE = async (accessToken: string, path: string) => {
-  return retry(accessToken, RETRY_COUNT, path, 'DELETE')
+export const DELETE = async (token: string, path: string) => {
+  return retry(token, RETRY_COUNT, path, 'DELETE')
 }
 
 function delay(time: number) {
@@ -22,13 +22,13 @@ function delay(time: number) {
   return new Promise((resolve) => setTimeout(resolve, time))
 }
 
-const retry = async (accessToken: string, count: number, path: string, method: string, body?: BodyInit | null): Promise<Response> => {
+const retry = async (token: string, count: number, path: string, method: string, body?: BodyInit | null): Promise<Response> => {
   try {
     const url: URL = new URL(window.location.protocol + '//' + window.location.host.replace(':3000', ':8000') + path)
 
     const headers: HeadersInit = {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `Bearer ${token}`,
     }
 
     const request: RequestInit = { method: method, headers: headers, body: body }
@@ -42,7 +42,7 @@ const retry = async (accessToken: string, count: number, path: string, method: s
 
     await delay(RETRY_INTERVAL)
 
-    return await retry(accessToken, count - 1, path, method, body)
+    return await retry(token, count - 1, path, method, body)
   }
 }
 

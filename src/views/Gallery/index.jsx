@@ -8,7 +8,7 @@ import GalleryBody from './GalleryBody'
 import GalleryHeader from './GalleryHeader'
 import GallerySidebar from './GallerySidebar'
 
-const getAccessToken = (state) => state.auth0Reducer.accessToken
+const getToken = (state) => state.auth0Reducer.idToken
 
 const Gallery = () => {
   const { t } = useTranslation()
@@ -16,10 +16,10 @@ const Gallery = () => {
   const [showSidebar, setShowSidebar] = useState(true)
 
   const history = useNavigate()
-  const accessToken = useSelector(getAccessToken)
+  const token = useSelector(getToken)
   const [data, setData] = useState()
   useEffect(() => {
-    fetchData_gallery(setData, accessToken, history)
+    fetchData_gallery(setData, token, history)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

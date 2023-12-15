@@ -1,8 +1,8 @@
 import { NavigateFunction } from 'react-router-dom'
 import { GET } from 'utils/Http'
 
-export const fetchData_dashboard = async (setData: Function, accessToken: string, history: NavigateFunction) => {
-  const response = await GET(accessToken, '/api/dashboard')
+export const fetchData_dashboard = async (setData: Function, token: string, history: NavigateFunction) => {
+  const response = await GET(token, '/api/dashboard')
   if (response.ok) {
     const data = await response.json()
     setData(data)
@@ -12,8 +12,8 @@ export const fetchData_dashboard = async (setData: Function, accessToken: string
   }
 }
 
-export const fetchData_calendar = async (setData: Function, accessToken: string, history: NavigateFunction) => {
-  const response = await GET(accessToken, '/api/apps/calendar')
+export const fetchData_calendar = async (setData: Function, token: string, history: NavigateFunction) => {
+  const response = await GET(token, '/api/apps/calendar')
   if (response.ok) {
     const data = await response.json()
     setData(data)
@@ -23,8 +23,8 @@ export const fetchData_calendar = async (setData: Function, accessToken: string,
   }
 }
 
-export const fetchData_gallery = async (setData: Function, accessToken: string, history: NavigateFunction) => {
-  const response = await GET(accessToken, '/api/apps/gallery')
+export const fetchData_gallery = async (setData: Function, token: string, history: NavigateFunction) => {
+  const response = await GET(token, '/api/apps/gallery')
   if (response.ok) {
     const data = await response.json()
     setData(data)

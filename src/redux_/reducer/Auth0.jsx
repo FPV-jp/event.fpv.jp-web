@@ -1,8 +1,9 @@
-import { AUTH0_ACCESS_TOKEN, AUTH0_INVOKING, AUTH0_USER } from 'redux_/constants/Auth0'
+import { AUTH0_ACCESS_TOKEN, AUTH0_ID_TOKEN, AUTH0_INVOKING, AUTH0_USER } from 'redux_/constants/Auth0'
 
 export const initialState = {
   invoking: false,
   accessToken: null,
+  idToken: null,
   name: null,
   nickname: null,
   picture: null,
@@ -18,6 +19,11 @@ const Auth0Reducer = (state = initialState, action) => {
       return {
         ...state,
         accessToken: action.accessToken,
+      }
+    case AUTH0_ID_TOKEN:
+      return {
+        ...state,
+        idToken: action.idToken,
       }
     case AUTH0_USER:
       return {

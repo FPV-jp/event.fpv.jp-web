@@ -9,6 +9,8 @@ import { useMatch } from 'react-router-dom'
 import { sidebarDataHover, toggleCollapsedNav } from 'redux_/action/Theme'
 import Spinner from 'utils/Spinner'
 
+const getToken = (state) => state.auth0Reducer.idToken
+
 const AuthenticatedHeader = ({ children, navCollapsed, topNavCollapsed, toggleCollapsedNav, maximize }) => {
   const appRoutes = useMatch('/apps/')
   const errro404Route = useMatch('/error-404')
@@ -21,8 +23,7 @@ const AuthenticatedHeader = ({ children, navCollapsed, topNavCollapsed, toggleCo
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windowWidth])
 
-  const selectAccessToken = (state) => state.auth0Reducer.accessToken
-  const accessToken = useSelector(selectAccessToken)
+  const token = useSelector(getToken)
 
   const selectInvoking = (state) => state.auth0Reducer.invoking
   const invoking = useSelector(selectInvoking)
@@ -33,7 +34,7 @@ const AuthenticatedHeader = ({ children, navCollapsed, topNavCollapsed, toggleCo
         <Spinner />
       ) : (
         <>
-          {accessToken ? <AuthenticatedNavbar /> : <Header />}
+          {token ? <AuthenticatedNavbar /> : <Header />}
           <div className={classNames('hk-pg-wrapper', { 'pb-0': appRoutes })}>
             {children}
             {!appRoutes && <Footer />}

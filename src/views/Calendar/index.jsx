@@ -23,7 +23,7 @@ import CreateNewEvent from './CreateNewEvent'
 import { CalendarEvents } from './Events'
 import EventsDrawer from './EventsDrawer'
 
-const getAccessToken = (state) => state.auth0Reducer.accessToken
+const getToken = (state) => state.auth0Reducer.idToken
 
 const Calendar = ({ topNavCollapsed, toggleTopNav }) => {
   let calendarRef = createRef()
@@ -46,10 +46,10 @@ const Calendar = ({ topNavCollapsed, toggleTopNav }) => {
   }, [calendarRef])
 
   const history = useNavigate()
-  const accessToken = useSelector(getAccessToken)
+  const token = useSelector(getToken)
   const [data, setData] = useState()
   useEffect(() => {
-    fetchData_calendar(setData, accessToken, history)
+    fetchData_calendar(setData, token, history)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

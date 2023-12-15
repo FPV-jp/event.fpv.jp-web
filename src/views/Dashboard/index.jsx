@@ -15,18 +15,18 @@ import AudienceReviewCard from './AudienceReviewCard'
 import CustomerTable from './CustomerTable'
 import ReturningCustomersCard from './ReturningCustomersCard'
 
-const getAccessToken = (state) => state.auth0Reducer.accessToken
+const getToken = (state) => state.auth0Reducer.idToken
 
 const Dashboard = ({ navCollapsed, toggleCollapsedNav, sidebarDataHover, dataHover }) => {
   const { t } = useTranslation()
   const history = useNavigate()
-  const accessToken = useSelector(getAccessToken)
+  const token = useSelector(getToken)
   const [data, setData] = useState()
 
   useEffect(() => {
     toggleCollapsedNav(false)
     sidebarDataHover(false)
-    fetchData_dashboard(setData, accessToken, history)
+    fetchData_dashboard(setData, token, history)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
