@@ -43,15 +43,18 @@ const Calendar = ({ topNavCollapsed, toggleTopNav }) => {
     if (calApi) {
       setDate(moment(calApi.getDate()))
     }
-  }, [calendarRef])
+  }, [setDate])
 
   const history = useNavigate()
   const token = useSelector(getToken)
   const [data, setData] = useState()
   useEffect(() => {
-    fetchData_calendar(setData, token, history)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    const fetchData = async () => {
+      const result = await fetchData_calendar(setData, token, history)
+      setData(result)
+    }
+    fetchData()
+  }, [token, history])
 
   //Function for date change
   const handleChange = (action) => {

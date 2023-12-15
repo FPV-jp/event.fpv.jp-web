@@ -30,15 +30,14 @@ const AuthProviderComponent = ({ children, setAccessToken, setIdToken, setUser, 
     return auth0Instance
   }, [auth0Instance])
 
-  // -------------- save
-  const save = useCallback(
+  // -------------- savewithtoken
+  const savewithtoken = useCallback(
     async (auth0Instance, user) => {
       setUser(user.name, user.nickname, user.picture, user.email, user.email_verified, user.sub, user.locale ? user.locale : 'jp')
       const accessToken = await auth0Instance.getTokenSilently()
       setAccessToken(accessToken)
       const idToken = await auth0Instance.getIdTokenClaims()
       setIdToken(idToken.__raw)
-      console.log(idToken)
       setInvoking(false)
     },
     [setUser, setAccessToken, setIdToken, setInvoking],
@@ -67,7 +66,7 @@ const AuthProviderComponent = ({ children, setAccessToken, setIdToken, setUser, 
         returnTo: window.location.origin,
       },
     })
-    clear()
+    await clear()
   }, [setInvoking, getAuth0Instance, clear])
 
   // -------------- getUser
@@ -76,19 +75,19 @@ const AuthProviderComponent = ({ children, setAccessToken, setIdToken, setUser, 
     const auth0Instance = await getAuth0Instance()
     const user = await auth0Instance.getUser()
     if (user) {
-      save(auth0Instance, user)
+      await savewithtoken(auth0Instance, user)
       return user
     }
     var hasAuthParams = window.location.href.indexOf('code=') !== -1 && window.location.href.indexOf('state=') !== -1
     if (hasAuthParams) {
       await auth0Instance.handleRedirectCallback()
-      save(auth0Instance, await auth0Instance.getUser())
+      await savewithtoken(auth0Instance, await auth0Instance.getUser())
       return user
     }
-    clear()
+    await clear()
     setInvoking(false)
     return user
-  }, [setInvoking, getAuth0Instance, save, clear])
+  }, [setInvoking, getAuth0Instance, savewithtoken, clear])
 
   // export --------------
   const authContextValue = useMemo(
