@@ -1,7 +1,7 @@
 import HkGantt from 'components/@hk-gantt/@hk-gantt'
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { ganttViewMode } from 'redux/action/ToDo'
+import { ganttViewMode } from 'redux_/action/ToDo'
 import SimpleBar from 'simplebar-react'
 
 const GanttChart = ({ vm }) => {

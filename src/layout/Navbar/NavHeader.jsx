@@ -3,7 +3,7 @@ import logo from 'assets/dist/img/brand-sm.svg'
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { sidebarDataHover, toggleCollapsedNav } from 'redux/action/Theme'
+import { sidebarDataHover, toggleCollapsedNav } from 'redux_/action/Theme'
 import { ArrowBarToLeft } from 'tabler-icons-react'
 
 const NavHeader = ({ navCollapsed, toggleCollapsedNav, sidebarDataHover, dataHover }) => {

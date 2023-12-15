@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { Button, ButtonGroup, Dropdown, Form, InputGroup } from 'react-bootstrap'
 import { ChevronDown, ChevronUp, Columns, Maximize, Minimize, Plus, Sidebar, Star } from 'react-feather'
 import { connect } from 'react-redux'
-import { toggleTopNav } from 'redux/action/Theme'
-import { ganttViewMode } from 'redux/action/ToDo'
+import { toggleTopNav } from 'redux_/action/Theme'
+import { ganttViewMode } from 'redux_/action/ToDo'
 
 //Images
 import avatar13 from 'assets/dist/img/avatar13.jpg'

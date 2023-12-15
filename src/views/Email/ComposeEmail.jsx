@@ -1,12 +1,12 @@
 import classNames from 'classnames'
-import React, { useState } from 'react'
+import HkChips from 'components/@hk-chips/@hk-chips'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
+import { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { Edit, Maximize2, Minimize2, Minus, Paperclip, Trash2, X } from 'react-feather'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
-import HkChips from 'components/@hk-chips/@hk-chips'
 //Redux
 import { connect } from 'react-redux'
-import { Maximize, Minimize, Compose } from 'redux/action/Email'
+import { Compose, Maximize, Minimize } from 'redux_/action/Email'
 
 //Images
 import avatar11 from 'assets/dist/img/avatar11.jpg'

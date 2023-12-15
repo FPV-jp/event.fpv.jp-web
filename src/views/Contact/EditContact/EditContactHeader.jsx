@@ -1,10 +1,9 @@
-import React from 'react'
 import classNames from 'classnames'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import { Button } from 'react-bootstrap'
 import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from 'react-feather'
 import { connect } from 'react-redux'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
-import { toggleTopNav } from 'redux/action/Theme'
+import { toggleTopNav } from 'redux_/action/Theme'
 
 const EditContactHeader = ({ topNavCollapsed, toggleTopNav, toggleSidebar, show }) => {
   return (

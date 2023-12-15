@@ -1,25 +1,25 @@
-import React, { useState } from 'react'
-import { Button, Dropdown, Form, ListGroup } from 'react-bootstrap'
-import SimpleBar from 'simplebar-react'
-import * as Icons from 'react-feather'
-import InvitePeopleModal from '../InvitePeopleModal'
 import { useWindowWidth } from '@react-hook/window-size'
+import { useState } from 'react'
+import { Button, Dropdown, Form, ListGroup } from 'react-bootstrap'
+import * as Icons from 'react-feather'
+import SimpleBar from 'simplebar-react'
+import InvitePeopleModal from '../InvitePeopleModal'
 
 //Redux
 import { connect } from 'react-redux'
-import { StartConversation } from 'redux/action/Chat'
-import { toggleTopNav } from 'redux/action/Theme'
+import { StartConversation } from 'redux_/action/Chat'
+import { toggleTopNav } from 'redux_/action/Theme'
 
 //Images
 import avatar1 from 'assets/dist/img/avatar1.jpg'
+import avatar11 from 'assets/dist/img/avatar11.jpg'
+import avatar15 from 'assets/dist/img/avatar15.jpg'
 import avatar2 from 'assets/dist/img/avatar2.jpg'
 import avatar3 from 'assets/dist/img/avatar3.jpg'
 import avatar4 from 'assets/dist/img/avatar4.jpg'
 import avatar7 from 'assets/dist/img/avatar7.jpg'
 import avatar8 from 'assets/dist/img/avatar8.jpg'
 import avatar9 from 'assets/dist/img/avatar9.jpg'
-import avatar11 from 'assets/dist/img/avatar11.jpg'
-import avatar15 from 'assets/dist/img/avatar15.jpg'
 
 const ContactList = ({ StartConversation, startChating, toggleTopNav, topNavCollapsed }) => {
   const [showInviteModal, setShowInviteModal] = useState(false)

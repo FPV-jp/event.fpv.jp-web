@@ -1,4 +1,4 @@
-import { COMPOSE_EMAIL, MAXIMIZE_COMPOSE_MODAL, MINIMIZE_COMPOSE_MODAL } from 'redux/constants/Email'
+import { COMPOSE_EMAIL, MAXIMIZE_COMPOSE_MODAL, MINIMIZE_COMPOSE_MODAL } from 'redux_/constants/Email'
 
 const initialState = {
   composeEmail: false,

@@ -1,11 +1,10 @@
-import React from 'react'
-import { Button, Dropdown } from 'react-bootstrap'
 import classNames from 'classnames'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
+import { Button, Dropdown } from 'react-bootstrap'
 import { Archive, ChevronDown, ChevronUp, Edit, ExternalLink, Grid, List, MoreVertical, RefreshCw, Server, Settings, Slash, Star, Trash2, User } from 'react-feather'
 import { connect } from 'react-redux'
 import { NavLink, useMatch } from 'react-router-dom'
-import { toggleTopNav } from 'redux/action/Theme'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
+import { toggleTopNav } from 'redux_/action/Theme'
 
 const ContactAppHeader = ({ topNavCollapsed, toggleTopNav, toggleSidebar, show }) => {
   const contactListRoute = useMatch('/apps/contacts/contact-list')

@@ -1,24 +1,24 @@
-import React, { useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
+import HkBadge from 'components/@hk-badge/@hk-badge'
+import { useEffect, useRef, useState } from 'react'
 import { Button, Dropdown, ListGroup } from 'react-bootstrap'
 import { ArrowDown, MoreHorizontal, MoreVertical } from 'react-feather'
 import SimpleBar from 'simplebar-react'
-import HkBadge from 'components/@hk-badge/@hk-badge'
 
 //Redux
 import { connect } from 'react-redux'
-import { DirectMsg } from 'redux/action/ChatPopup'
+import { DirectMsg } from 'redux_/action/ChatPopup'
 
 //Images
 import avatar1 from 'assets/dist/img/avatar1.jpg'
+import avatar11 from 'assets/dist/img/avatar11.jpg'
+import avatar15 from 'assets/dist/img/avatar15.jpg'
 import avatar2 from 'assets/dist/img/avatar2.jpg'
 import avatar3 from 'assets/dist/img/avatar3.jpg'
 import avatar4 from 'assets/dist/img/avatar4.jpg'
 import avatar7 from 'assets/dist/img/avatar7.jpg'
 import avatar8 from 'assets/dist/img/avatar8.jpg'
 import avatar9 from 'assets/dist/img/avatar9.jpg'
-import avatar11 from 'assets/dist/img/avatar11.jpg'
-import avatar15 from 'assets/dist/img/avatar15.jpg'
 import gify from 'assets/dist/img/giphy.gif'
 
 const ChatPopupBody = ({ showContactList, directMsgs, DirectMsg }) => {

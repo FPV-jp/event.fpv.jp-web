@@ -4,7 +4,7 @@ import { Button, Dropdown, Form } from 'react-bootstrap'
 import * as Icons from 'react-feather'
 import { ChevronDown, ChevronUp, Download, FolderPlus, Grid, List, Server, UploadCloud } from 'react-feather'
 import { connect } from 'react-redux'
-import { toggleTopNav } from 'redux/action/Theme'
+import { toggleTopNav } from 'redux_/action/Theme'
 
 const GalleryHeader = ({ topNavCollapsed, toggleTopNav, toggleSidebar, showSidebar }) => {
   return (

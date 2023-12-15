@@ -2,7 +2,7 @@ import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import { Button, ButtonGroup, Form } from 'react-bootstrap'
 import { Calendar, ChevronDown, ChevronUp, List, Trello } from 'react-feather'
 import { connect } from 'react-redux'
-import { toggleTopNav } from 'redux/action/Theme'
+import { toggleTopNav } from 'redux_/action/Theme'
 
 const PipelineHeader = ({ topNavCollapsed, toggleTopNav, addNewDeal }) => {
   return (

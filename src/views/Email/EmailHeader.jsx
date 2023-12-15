@@ -4,8 +4,8 @@ import { Archive, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Clock, Flag
 
 //Redux
 import { connect } from 'react-redux'
-import { StartConversation } from 'redux/action/Chat'
-import { toggleTopNav } from 'redux/action/Theme'
+import { StartConversation } from 'redux_/action/Chat'
+import { toggleTopNav } from 'redux_/action/Theme'
 
 const EmailHeader = ({ topNavCollapsed, toggleTopNav, StartConversation, startChating }) => {
   const BackToContactList = () => {

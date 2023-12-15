@@ -1,4 +1,4 @@
-import { DATA_HOVER, TOGGLE_COLLAPSED_NAV, TOGGLE_TOP_NAV } from 'redux/constants/Theme'
+import { DATA_HOVER, TOGGLE_COLLAPSED_NAV, TOGGLE_TOP_NAV } from 'redux_/constants/Theme'
 
 export function toggleCollapsedNav(navCollapsed) {
   return {

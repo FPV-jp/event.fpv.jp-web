@@ -5,7 +5,7 @@ import Header from './Header'
 import ProfileIntro from './ProfileIntro'
 // Redux
 import { connect } from 'react-redux'
-import { sidebarDataHover, toggleCollapsedNav } from 'redux/action/Theme'
+import { sidebarDataHover, toggleCollapsedNav } from 'redux_/action/Theme'
 
 //Images
 import bgImg from 'assets/dist/img/profile-bg.jpg'

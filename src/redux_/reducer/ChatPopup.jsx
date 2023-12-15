@@ -1,4 +1,4 @@
-import { DIRECT_MSG, SEND_MSG } from 'redux/constants/ChatPopup'
+import { DIRECT_MSG, SEND_MSG } from 'redux_/constants/ChatPopup'
 
 const initialState = {
   msg: [

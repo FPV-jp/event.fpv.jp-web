@@ -3,7 +3,7 @@ import { Button, Col, Container, Form, Nav, Row, Tab } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 // Redux
 import { connect } from 'react-redux'
-import { sidebarDataHover, toggleCollapsedNav } from 'redux/action/Theme'
+import { sidebarDataHover, toggleCollapsedNav } from 'redux_/action/Theme'
 
 //Image
 import avatar3 from 'assets/dist/img/avatar3.jpg'

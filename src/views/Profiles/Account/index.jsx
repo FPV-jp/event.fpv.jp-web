@@ -6,7 +6,7 @@ import { Edit2, Edit3, Minimize, Plus, Trash2 } from 'react-feather'
 import { Link } from 'react-router-dom'
 // Redux
 import { connect } from 'react-redux'
-import { sidebarDataHover, toggleCollapsedNav } from 'redux/action/Theme'
+import { sidebarDataHover, toggleCollapsedNav } from 'redux_/action/Theme'
 //Images
 import visaCard from 'assets/dist/img/card-visa.png'
 import interest1 from 'assets/dist/img/interests/interest-1.png'

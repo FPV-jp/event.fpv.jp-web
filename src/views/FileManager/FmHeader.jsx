@@ -4,7 +4,7 @@ import { Button, Dropdown, Form } from 'react-bootstrap'
 import { ChevronDown, ChevronUp, File, FilePlus, FolderPlus, Grid, Info, List, UploadCloud, UserPlus } from 'react-feather'
 import { connect } from 'react-redux'
 import { Link, NavLink, useMatch } from 'react-router-dom'
-import { toggleTopNav } from 'redux/action/Theme'
+import { toggleTopNav } from 'redux_/action/Theme'
 
 const FmHeader = ({ topNavCollapsed, toggleTopNav, toggleSidebar, showSidebar, showInfo, toggleInfo }) => {
   const listViewRoute = useMatch('/apps/file-manager/list-view')

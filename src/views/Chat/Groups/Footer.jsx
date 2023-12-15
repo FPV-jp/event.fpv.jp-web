@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Button, Dropdown, InputGroup } from 'react-bootstrap'
 import { ArrowRight, Share, Smile } from 'react-feather'
 //Redux
 import { connect } from 'react-redux'
-import { groupMessage } from 'redux/action/Chat'
+import { groupMessage } from 'redux_/action/Chat'
 
 const Footer = ({ groupMessage, grpMsg }) => {
   const [message, setMessage] = useState([])

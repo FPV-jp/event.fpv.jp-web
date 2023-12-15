@@ -3,7 +3,7 @@ import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import { Breadcrumb, Button, Nav } from 'react-bootstrap'
 import { ChevronDown, ChevronLeft, ChevronUp } from 'react-feather'
 import { connect } from 'react-redux'
-import { toggleTopNav } from 'redux/action/Theme'
+import { toggleTopNav } from 'redux_/action/Theme'
 
 const Header = ({ topNavCollapsed, toggleTopNav, toggleSidebar, show }) => {
   return (

@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { ChevronDown, ChevronUp, Info, Plus, Star } from 'react-feather'
 import { connect } from 'react-redux'
-import { toggleTopNav } from 'redux/action/Theme'
+import { toggleTopNav } from 'redux_/action/Theme'
 
 //Images
 import avatar13 from 'assets/dist/img/avatar13.jpg'

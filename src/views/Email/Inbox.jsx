@@ -8,9 +8,9 @@ import ComposeEmail from './ComposeEmail'
 
 //Redux
 import { connect } from 'react-redux'
-import { StartConversation } from 'redux/action/Chat'
-import { Compose } from 'redux/action/Email'
-import { toggleTopNav } from 'redux/action/Theme'
+import { StartConversation } from 'redux_/action/Chat'
+import { Compose } from 'redux_/action/Email'
+import { toggleTopNav } from 'redux_/action/Theme'
 
 //Images
 import avatar10 from 'assets/dist/img/avatar10.jpg'

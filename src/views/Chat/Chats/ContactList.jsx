@@ -1,20 +1,19 @@
-import React, { useState } from 'react'
-import SimpleBar from 'simplebar-react'
-import { Link } from 'react-router-dom'
-import classNames from 'classnames'
-import * as Icons from 'react-feather'
-import { Dropdown, Form, ListGroup } from 'react-bootstrap'
 import { useWindowWidth } from '@react-hook/window-size'
+import classNames from 'classnames'
+import { useState } from 'react'
+import { Dropdown, Form, ListGroup } from 'react-bootstrap'
+import * as Icons from 'react-feather'
+import { Link } from 'react-router-dom'
+import SimpleBar from 'simplebar-react'
 import { contacts } from './contact-list'
 //Redux
 import { connect } from 'react-redux'
-import { StartConversation } from 'redux/action/Chat'
-import { toggleTopNav } from 'redux/action/Theme'
-import { setUser } from 'redux/action/Chat'
+import { StartConversation, setUser } from 'redux_/action/Chat'
+import { toggleTopNav } from 'redux_/action/Theme'
 //Images
 import avatar1 from 'assets/dist/img/avatar1.jpg'
-import avatar8 from 'assets/dist/img/avatar8.jpg'
 import avatar15 from 'assets/dist/img/avatar15.jpg'
+import avatar8 from 'assets/dist/img/avatar8.jpg'
 
 const ContactList = ({ invitePeople, StartConversation, startChating, toggleTopNav, topNavCollapsed, setUser, userId, avatar, userName }) => {
   const [list, setList] = useState(contacts)

@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import ContactList from './ContactList'
+import { useWindowWidth } from '@react-hook/window-size'
+import classNames from 'classnames'
+import { useEffect, useState } from 'react'
+import ChatFooter from '../ChatFooter'
+import ChatHeader from '../ChatHeader'
+import InvitePeopleModal from '../InvitePeopleModal'
 import ChatBody from './ChatBody'
 import ChatInfo from './ChatInfo'
-import ChatFooter from '../ChatFooter'
-import classNames from 'classnames'
-import InvitePeopleModal from '../InvitePeopleModal'
-import ChatHeader from '../ChatHeader'
-import { useWindowWidth } from '@react-hook/window-size'
+import ContactList from './ContactList'
 //Redux
 import { connect } from 'react-redux'
-import { StartConversation } from 'redux/action/Chat'
+import { StartConversation } from 'redux_/action/Chat'
 
 const Chats = ({ startChating }) => {
   const [showInfo, setShowInfo] = useState(true)

@@ -5,7 +5,7 @@ import * as Icons from 'react-feather'
 import SimpleBar from 'simplebar-react'
 //Redux
 import { connect } from 'react-redux'
-import { sendMsg } from 'redux/action/ChatPopup'
+import { sendMsg } from 'redux_/action/ChatPopup'
 //Image
 import logo from 'assets/dist/img/logo-light.png'
 

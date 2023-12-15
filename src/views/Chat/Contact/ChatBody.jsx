@@ -1,14 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react'
-import SimpleBar from 'simplebar-react'
 import classNames from 'classnames'
+import { useEffect, useRef, useState } from 'react'
 import { Button, Dropdown } from 'react-bootstrap'
 import { CornerUpRight, MoreHorizontal } from 'react-feather'
+import SimpleBar from 'simplebar-react'
 //Redux
 import { connect } from 'react-redux'
-import { contactsMessage } from 'redux/action/Chat'
+import { contactsMessage } from 'redux_/action/Chat'
 //Images
-import emptyChat from 'assets/dist/img/start-conversation.png'
 import avatar2 from 'assets/dist/img/avatar2.jpg'
+import emptyChat from 'assets/dist/img/start-conversation.png'
 
 const ChatBody = ({ contactMsg }) => {
   const [messages, setMessages] = useState(contactMsg)

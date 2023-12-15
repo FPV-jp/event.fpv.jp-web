@@ -4,7 +4,7 @@ import { Button, Dropdown, Form } from 'react-bootstrap'
 import { AlignCenter, ChevronDown, ChevronUp, Clock, Droplet, List } from 'react-feather'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { toggleTopNav } from 'redux/action/Theme'
+import { toggleTopNav } from 'redux_/action/Theme'
 
 const TodoHeader = ({ topNavCollapsed, toggleTopNav, toggleSidebar, showSidebar }) => {
   return (

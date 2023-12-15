@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
+import { useEffect, useRef, useState } from 'react'
 import { Button, Dropdown } from 'react-bootstrap'
 import { ArrowDown, CornerUpRight, MoreHorizontal } from 'react-feather'
 import SimpleBar from 'simplebar-react'
 //Redux
 import { connect } from 'react-redux'
-import { sentMsg } from 'redux/action/Chat'
+import { sentMsg } from 'redux_/action/Chat'
 //Images
 import giphy from 'assets/dist/img/giphy.gif'
 

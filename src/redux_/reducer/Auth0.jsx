@@ -1,4 +1,4 @@
-import { AUTH0_ACCESS_TOKEN, AUTH0_INVOKING, AUTH0_USER } from 'redux/constants/Auth0'
+import { AUTH0_ACCESS_TOKEN, AUTH0_INVOKING, AUTH0_USER } from 'redux_/constants/Auth0'
 
 export const initialState = {
   invoking: false,

@@ -4,7 +4,7 @@ import { Button, Dropdown } from 'react-bootstrap'
 import { Archive, ChevronDown, ChevronUp, Edit, ExternalLink, MoreVertical, RefreshCw, Settings, Slash, Star, Trash2, Users } from 'react-feather'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { toggleTopNav } from 'redux/action/Theme'
+import { toggleTopNav } from 'redux_/action/Theme'
 
 const InvoiceAppHeader = ({ topNavCollapsed, toggleTopNav, toggleSidebar, show }) => {
   return (

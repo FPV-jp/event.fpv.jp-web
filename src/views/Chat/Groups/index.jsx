@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import classNames from 'classnames'
 import { useWindowWidth } from '@react-hook/window-size'
-import Footer from './Footer'
+import classNames from 'classnames'
+import { useEffect, useState } from 'react'
 import ChatHeader from '../ChatHeader'
+import InvitePeopleModal from '../InvitePeopleModal'
+import Footer from './Footer'
 import GroupChatBody from './GroupChatBody'
 import GroupList from './GroupList'
 import Info from './Info'
-import InvitePeopleModal from '../InvitePeopleModal'
 //Redux
 import { connect } from 'react-redux'
-import { StartConversation } from 'redux/action/Chat'
+import { StartConversation } from 'redux_/action/Chat'
 
 const ChatGroups = ({ startChating }) => {
   const [showInfo, setShowInfo] = useState(true)

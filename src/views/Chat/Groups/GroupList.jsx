@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import { Button, Dropdown, Form, ListGroup, Nav } from 'react-bootstrap'
-import SimpleBar from 'simplebar-react'
-import * as Icons from 'react-feather'
-import InvitePeopleModal from '../InvitePeopleModal'
 import { useWindowWidth } from '@react-hook/window-size'
+import { useState } from 'react'
+import { Button, Dropdown, Form, ListGroup, Nav } from 'react-bootstrap'
+import * as Icons from 'react-feather'
+import SimpleBar from 'simplebar-react'
+import InvitePeopleModal from '../InvitePeopleModal'
 //Redux
 import { connect } from 'react-redux'
-import { StartConversation } from 'redux/action/Chat'
-import { toggleTopNav } from 'redux/action/Theme'
+import { StartConversation } from 'redux_/action/Chat'
+import { toggleTopNav } from 'redux_/action/Theme'
 
 //Images
 import avatar1 from 'assets/dist/img/avatar1.jpg'

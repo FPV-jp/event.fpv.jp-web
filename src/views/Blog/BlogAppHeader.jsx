@@ -1,11 +1,10 @@
-import React from 'react'
 import classNames from 'classnames'
+import HkTooltip from 'components/@hk-tooltip/HkTooltip'
 import { Button, Dropdown } from 'react-bootstrap'
 import { ChevronDown, ChevronUp, ExternalLink, Flag, Grid, MoreVertical, RefreshCw, Settings, Slash, Tag, Users } from 'react-feather'
 import { connect } from 'react-redux'
 import { Link, useMatch } from 'react-router-dom'
-import HkTooltip from 'components/@hk-tooltip/HkTooltip'
-import { toggleTopNav } from 'redux/action/Theme'
+import { toggleTopNav } from 'redux_/action/Theme'
 
 const BlogAppHeader = ({ topNavCollapsed, toggleTopNav, toggleSidebar, showSidebar }) => {
   const postsRoute = useMatch('/apps/blog/posts')

@@ -1,17 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { Button, Dropdown } from 'react-bootstrap'
-import SimpleBar from 'simplebar-react'
 import classNames from 'classnames'
+import { useEffect, useRef, useState } from 'react'
+import { Button, Dropdown } from 'react-bootstrap'
 import { ArrowDown, CornerUpRight, MoreHorizontal } from 'react-feather'
+import SimpleBar from 'simplebar-react'
 //Redux
 import { connect } from 'react-redux'
-import { groupMessage } from 'redux/action/Chat'
+import { groupMessage } from 'redux_/action/Chat'
 
 //Images
 import avatar1 from 'assets/dist/img/avatar1.jpg'
+import avatar10 from 'assets/dist/img/avatar10.jpg'
 import avatar8 from 'assets/dist/img/avatar8.jpg'
 import avatar9 from 'assets/dist/img/avatar9.jpg'
-import avatar10 from 'assets/dist/img/avatar10.jpg'
 
 const GroupChatBody = ({ grpMsg }) => {
   const [messages, setMessages] = useState(grpMsg)

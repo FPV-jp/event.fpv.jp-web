@@ -6,7 +6,7 @@ import AuthenticatedNavbar from 'layout/Navbar'
 import { useEffect } from 'react'
 import { connect, useSelector } from 'react-redux'
 import { useMatch } from 'react-router-dom'
-import { sidebarDataHover, toggleCollapsedNav } from 'redux/action/Theme'
+import { sidebarDataHover, toggleCollapsedNav } from 'redux_/action/Theme'
 import Spinner from 'utils/Spinner'
 
 const AuthenticatedHeader = ({ children, navCollapsed, topNavCollapsed, toggleCollapsedNav, maximize }) => {

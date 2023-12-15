@@ -3,7 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Provider, useSelector } from 'react-redux'
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import store from 'redux/store'
+import store from 'redux_/store'
 import PrivateRoutes from 'routes/PrivateRoutes'
 import PublicRoutes from 'routes/PublicRoutes'
 import AuthProvider, { useAuth } from 'utils/AuthProvider'
@@ -13,7 +13,10 @@ import './i18n'
 
 function App() {
   const { getUser } = useAuth()
-  getUser()
+
+  React.useEffect(() => {
+    getUser()
+  }, [getUser])
 
   const selectLocale = (state) => state.auth0Reducer.locale
   const locale = useSelector(selectLocale)

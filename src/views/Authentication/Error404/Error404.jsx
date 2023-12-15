@@ -3,7 +3,7 @@ import { Button, Col, Container, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 // Redux
 import { connect } from 'react-redux'
-import { sidebarDataHover, toggleCollapsedNav } from 'redux/action/Theme'
+import { sidebarDataHover, toggleCollapsedNav } from 'redux_/action/Theme'
 
 //Image
 import fatalErrorImg from 'assets/dist/img/macaroni-fatal-error.png'

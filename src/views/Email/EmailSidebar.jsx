@@ -7,7 +7,7 @@ import ComposeEmail from './ComposeEmail'
 
 //Redux
 import { connect } from 'react-redux'
-import { Compose } from 'redux/action/Email'
+import { Compose } from 'redux_/action/Email'
 
 const EmailSidebar = ({ Compose, composeEmail }) => {
   const [addCategory, setAddCategory] = useState(false)

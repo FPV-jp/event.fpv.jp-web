@@ -1,4 +1,4 @@
-import { CONTACT_MSG, GROUP_MSG, REPLY_MSG, SENT_MSG, SET_USER, START_CHATING } from 'redux/constants/Chat'
+import { CONTACT_MSG, GROUP_MSG, REPLY_MSG, SENT_MSG, SET_USER, START_CHATING } from 'redux_/constants/Chat'
 
 export function StartConversation(startChating) {
   return {

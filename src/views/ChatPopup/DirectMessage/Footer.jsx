@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Button, Dropdown, Form, InputGroup } from 'react-bootstrap'
 import { Share, Smile } from 'react-feather'
 //Redux
 import { connect } from 'react-redux'
-import { DirectMsg } from 'redux/action/ChatPopup'
+import { DirectMsg } from 'redux_/action/ChatPopup'
 
 const ChatPopupFooter = ({ directMsgs, DirectMsg }) => {
   const [messages, setMessages] = useState([])
