@@ -43,7 +43,7 @@ const Calendar = ({ topNavCollapsed, toggleTopNav }) => {
     if (calApi) {
       setDate(moment(calApi.getDate()))
     }
-  }, [setDate])
+  }, [setDate, calendarRef])
 
   const history = useNavigate()
   const token = useSelector(getToken)
