@@ -49,7 +49,6 @@ const EventCalendar = ({ calendarRef, date, setShowEventInfo, setEventTitle, set
         }
       }}
       eventClick={function (info) {
-        // console.log(info);
         setTargetEvent(info.event)
         setEventTitle(info.event._def.title)
         setShowEventInfo(true)
