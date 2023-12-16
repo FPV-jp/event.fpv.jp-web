@@ -1,12 +1,6 @@
 /* eslint-disable no-useless-concat */
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import dayGridPlugin from '@fullcalendar/daygrid'
-import interactionPlugin from '@fullcalendar/interaction'
-import listPlugin from '@fullcalendar/list'
-import FullCalendar from '@fullcalendar/react'
-import timeGridPlugin from '@fullcalendar/timegrid'
-import { useWindowHeight } from '@react-hook/window-size'
 import 'assets/dist/css/FullCalendar.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import classNames from 'classnames'
@@ -20,7 +14,7 @@ import { toggleTopNav } from 'redux_/action/Theme'
 import { fetchData_calendar } from 'utils/API'
 import CalendarSidebar from './CalendarSidebar'
 import CreateNewEvent from './CreateNewEvent'
-import { CalendarEvents } from './Events'
+import EventCalendar from './EventCalendar'
 import EventsDrawer from './EventsDrawer'
 
 const getToken = (state) => state.auth0Reducer.idToken
@@ -39,9 +33,11 @@ const Calendar = ({ topNavCollapsed, toggleTopNav }) => {
   const [currentView, setCurrentView] = useState('month')
 
   useEffect(() => {
-    const calApi = calendarRef.current.getApi()
-    if (calApi) {
-      setDate(moment(calApi.getDate()))
+    if (calendarRef.current) {
+      const calendarApi = calendarRef.current.getApi()
+      if (calendarApi) {
+        setDate(moment(calendarApi.getDate()))
+      }
     }
   }, [setDate, calendarRef])
 
@@ -96,7 +92,6 @@ const Calendar = ({ topNavCollapsed, toggleTopNav }) => {
       window.dispatchEvent(new Event('resize'))
     }, 500)
   }
-  const Calender_height = useWindowHeight()
 
   return (
     <>
@@ -149,30 +144,7 @@ const Calendar = ({ topNavCollapsed, toggleTopNav }) => {
                 <div className={classNames('hk-sidebar-togglable', { active: !showSidebar })} onClick={toggleSidebar} />
               </header>
 
-              <FullCalendar
-                ref={calendarRef}
-                plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
-                initialView='dayGridMonth'
-                initialDate={date}
-                headerToolbar={false}
-                themeSystem='bootstrap'
-                height={Calender_height - 130}
-                windowResizeDelay={500}
-                droppable={true}
-                editable={true}
-                events={CalendarEvents}
-                eventContent={function (arg) {
-                  if (arg.event.extendedProps.toHtml) {
-                    return { html: arg.event.title }
-                  }
-                }}
-                eventClick={function (info) {
-                  // console.log(info);
-                  setTargetEvent(info.event)
-                  setEventTitle(info.event._def.title)
-                  setShowEventInfo(true)
-                }}
-              />
+              <EventCalendar setShowEventInfo={setShowEventInfo} setEventTitle={setEventTitle} setTargetEvent={setTargetEvent} />
             </div>
           </div>
         </div>

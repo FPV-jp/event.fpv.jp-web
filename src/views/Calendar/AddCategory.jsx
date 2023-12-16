@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button, Col, Form, Modal, Row } from 'react-bootstrap'
 
 const AddCategory = ({ show, hide }) => {
