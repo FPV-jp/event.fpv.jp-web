@@ -20,6 +20,7 @@ import { CalendarEvents } from './Events'
 import { fetchData_calendar } from 'utils/API'
 
 const getToken = (state) => state.auth0Reducer.idToken
+// const getToken = (state) => state.auth0Reducer.accessToken
 
 const EventCalendar = ({ calendarRef, date, setShowEventInfo, setEventTitle, setTargetEvent }) => {
   const history = useNavigate()

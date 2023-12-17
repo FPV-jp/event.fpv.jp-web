@@ -1,11 +1,12 @@
 import * as auth0 from '@auth0/auth0-spa-js'
 import { createContext, useCallback, useContext, useMemo, useState } from 'react'
 import { connect } from 'react-redux'
-import { setAccessToken, setIdToken, setInvoking, setUser } from 'redux_/action/Auth0'
+import { setAccessToken, setExpiresAt, setIdToken, setInvoking, setUser } from 'redux_/action/Auth0'
+import { AUTH0_ACCESS_TOKEN, AUTH0_EXPIRES_AT, AUTH0_ID_TOKEN } from 'redux_/constants/Auth0'
 
 const AuthContext = createContext()
 
-const AuthProviderComponent = ({ children, setAccessToken, setIdToken, setUser, setInvoking }) => {
+const AuthProviderComponent = ({ children, setAccessToken, setIdToken, setExpiresAt, setUser, setInvoking }) => {
   const [auth0Instance, setAuth0Instance] = useState(null)
 
   const createAuth0Client = () => {
@@ -23,9 +24,9 @@ const AuthProviderComponent = ({ children, setAccessToken, setIdToken, setUser, 
   // -------------- getAuth0Instance
   const getAuth0Instance = useCallback(async () => {
     if (!auth0Instance) {
-      const instance = await createAuth0Client()
-      setAuth0Instance(instance)
-      return instance
+      const newInstance = await createAuth0Client()
+      setAuth0Instance(newInstance)
+      return newInstance
     }
     return auth0Instance
   }, [auth0Instance])
@@ -38,17 +39,39 @@ const AuthProviderComponent = ({ children, setAccessToken, setIdToken, setUser, 
       setAccessToken(accessToken)
       const idToken = await auth0Instance.getIdTokenClaims()
       setIdToken(idToken.__raw)
+      let expiresAt = JSON.stringify(idToken.exp * 1000 + new Date().getTime())
+      setExpiresAt(expiresAt)
       setInvoking(false)
     },
-    [setUser, setAccessToken, setIdToken, setInvoking],
+    [setUser, setAccessToken, setIdToken, setExpiresAt, setInvoking],
   )
 
   // -------------- clear
   const clear = useCallback(async () => {
+    setExpiresAt(null)
     setIdToken(null)
     setAccessToken(null)
     setUser(null, null, null, null, false, null)
-  }, [setUser, setAccessToken, setIdToken])
+  }, [setUser, setAccessToken, setIdToken, setExpiresAt])
+
+  // -------------- isAuthenticated
+  const isAuthenticated = useCallback(async () => {
+    var authenticated = await (await getAuth0Instance()).isAuthenticated()
+    if (!authenticated) {
+      const expiresAt = localStorage.getItem(AUTH0_EXPIRES_AT)
+      authenticated = expiresAt && new Date().getTime() < JSON.parse(expiresAt)
+    }
+    if (authenticated) {
+      setAccessToken(localStorage.getItem(AUTH0_ACCESS_TOKEN))
+      setIdToken(localStorage.getItem(AUTH0_ID_TOKEN))
+      const token = localStorage.getItem(AUTH0_ID_TOKEN).split('.')[1]
+      const base64 = token.replace(/-/g, '+').replace(/_/g, '/')
+      const user = JSON.parse(decodeURIComponent(window.atob(base64)))
+      setUser(user.name, user.nickname, user.picture, user.email, user.email_verified, user.sub, user.locale ? user.locale : 'jp')
+      return true
+    }
+    return authenticated
+  }, [getAuth0Instance, setAccessToken, setIdToken, setUser])
 
   // -------------- loginWithRedirect
   const loginWithRedirect = useCallback(async () => {
@@ -92,11 +115,12 @@ const AuthProviderComponent = ({ children, setAccessToken, setIdToken, setUser, 
   // export --------------
   const authContextValue = useMemo(
     () => ({
+      isAuthenticated,
       loginWithRedirect,
       logout,
       getUser,
     }),
-    [loginWithRedirect, logout, getUser],
+    [isAuthenticated, loginWithRedirect, logout, getUser],
   )
 
   return <AuthContext.Provider value={authContextValue}>{children}</AuthContext.Provider>
@@ -107,6 +131,7 @@ export const useAuth = () => useContext(AuthContext)
 const mapDispatchToProps = {
   setAccessToken,
   setUser,
+  setExpiresAt,
   setIdToken,
   setInvoking,
 }

@@ -1,4 +1,4 @@
-import { AUTH0_ACCESS_TOKEN, AUTH0_ID_TOKEN, AUTH0_INVOKING, AUTH0_USER } from 'redux_/constants/Auth0'
+import { AUTH0_ACCESS_TOKEN, AUTH0_EXPIRES_AT, AUTH0_ID_TOKEN, AUTH0_INVOKING, AUTH0_USER } from 'redux_/constants/Auth0'
 
 export function setAccessToken(accessToken) {
   return {
@@ -11,6 +11,14 @@ export function setIdToken(idToken) {
   return {
     type: AUTH0_ID_TOKEN,
     idToken,
+  }
+}
+
+export function setExpiresAt(expiresAt) {
+  console.log('ffff')
+  return {
+    type: AUTH0_EXPIRES_AT,
+    expiresAt,
   }
 }
 
