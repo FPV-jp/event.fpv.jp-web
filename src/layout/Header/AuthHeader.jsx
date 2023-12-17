@@ -18,24 +18,20 @@ const AuthenticatedHeader = ({ children, navCollapsed, topNavCollapsed, toggleCo
 
   const invoking = useSelector(selectInvoking)
   const { auth, checkAuthenticated, loginWithRedirect } = useAuth()
-  const [isSpinner, setIsSpinner] = useState(true)
-
   useEffect(() => {
-    if (!invoking) {
-      checkAuthenticated()
-    }
+    if (!invoking) checkAuthenticated()
   }, [checkAuthenticated, invoking])
 
+  const [isSpinner, setIsSpinner] = useState(true)
   useEffect(() => {
-    if (auth !== null && !invoking) {
-      const fetchData = async () => {
-        if (appRoutes && !auth) {
-          await loginWithRedirect()
-        }
+    const fetchData = async () => {
+      if (appRoutes && !auth) {
+        await loginWithRedirect()
+      } else {
         setIsSpinner(false)
       }
-      fetchData()
     }
+    if (auth !== null && !invoking) fetchData()
   }, [auth, invoking, appRoutes, loginWithRedirect, setIsSpinner])
 
   const windowWidth = useWindowWidth()
