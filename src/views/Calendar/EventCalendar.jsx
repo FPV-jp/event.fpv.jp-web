@@ -6,34 +6,10 @@ import interactionPlugin from '@fullcalendar/interaction'
 import listPlugin from '@fullcalendar/list'
 import timeGridPlugin from '@fullcalendar/timegrid'
 
+import { useWindowHeight } from '@react-hook/window-size'
 import 'assets/dist/css/FullCalendar.css'
 
-import { useEffect, useState } from 'react'
-
-import { useWindowHeight } from '@react-hook/window-size'
-
-import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-
-import { CalendarEvents } from './Events'
-
-import { fetchData_calendar } from 'utils/API'
-
-const getToken = (state) => state.auth0Reducer.idToken
-// const getToken = (state) => state.auth0Reducer.accessToken
-
-const EventCalendar = ({ calendarRef, date, setShowEventInfo, setEventTitle, setTargetEvent }) => {
-  const history = useNavigate()
-  const token = useSelector(getToken)
-  const [data, setData] = useState()
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetchData_calendar(setData, token, history)
-      setData(result)
-    }
-    fetchData()
-  }, [token, history])
-
+const EventCalendar = ({ CalendarEvents, calendarRef, date, setShowEventInfo, setEventTitle, setTargetEvent }) => {
   const Calender_height = useWindowHeight()
 
   return (

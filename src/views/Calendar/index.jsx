@@ -19,7 +19,10 @@ import CreateNewEvent from './CreateNewEvent'
 import EventCalendar from './EventCalendar'
 import EventsDrawer from './EventsDrawer'
 
+import { useAuth } from 'utils/AuthProvider'
+
 import { fetchData_calendar } from 'utils/API'
+import { CalendarEvents } from './Events'
 
 const getToken = (state) => state.auth0Reducer.idToken
 
@@ -47,14 +50,19 @@ const Calendar = ({ topNavCollapsed, toggleTopNav }) => {
 
   const history = useNavigate()
   const token = useSelector(getToken)
+  const { auth, loginWithRedirect } = useAuth()
   const [data, setData] = useState()
   useEffect(() => {
     const fetchData = async () => {
       const result = await fetchData_calendar(setData, token, history)
-      setData(result)
+      setData(CalendarEvents)
     }
-    fetchData()
-  }, [token, history])
+    if (auth) {
+      fetchData()
+    } else {
+      loginWithRedirect()
+    }
+  }, [auth, token, history, loginWithRedirect])
 
   //Function for date change
   const handleChange = (action) => {
@@ -148,7 +156,7 @@ const Calendar = ({ topNavCollapsed, toggleTopNav }) => {
                 <div className={classNames('hk-sidebar-togglable', { active: !showSidebar })} onClick={toggleSidebar} />
               </header>
 
-              <EventCalendar date={date} setShowEventInfo={setShowEventInfo} setEventTitle={setEventTitle} setTargetEvent={setTargetEvent} calendarRef={calendarRef} />
+              <EventCalendar CalendarEvents={data} date={date} setShowEventInfo={setShowEventInfo} setEventTitle={setEventTitle} setTargetEvent={setTargetEvent} calendarRef={calendarRef} />
             </div>
           </div>
         </div>
