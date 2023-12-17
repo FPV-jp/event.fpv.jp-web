@@ -5,7 +5,7 @@ import { Suspense } from 'react'
 import { Route, Routes, useMatch } from 'react-router-dom'
 import { publicRoutes } from 'routes/RouteList'
 
-const ClassicRoutes = () => {
+const PublicRoutes = () => {
   const match = useMatch('/auth/*')
   return (
     <AnimatePresence>
@@ -24,7 +24,7 @@ const ClassicRoutes = () => {
                 path={route.path}
                 element={
                   <PageAnimate>
-                    <route.component />
+                    <route.element />
                   </PageAnimate>
                 }
               />
@@ -37,4 +37,4 @@ const ClassicRoutes = () => {
   )
 }
 
-export default ClassicRoutes
+export default PublicRoutes

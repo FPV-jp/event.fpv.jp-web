@@ -5,7 +5,7 @@ import { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { privateRoutes } from 'routes/RouteList'
 
-const IndexRoute = () => {
+const PrivateRoutes = () => {
   return (
     <AnimatePresence>
       <Suspense
@@ -23,7 +23,7 @@ const IndexRoute = () => {
                 path={route.path}
                 element={
                   <PageAnimate>
-                    <route.component />
+                    <route.element />
                   </PageAnimate>
                 }
               />
@@ -36,4 +36,4 @@ const IndexRoute = () => {
   )
 }
 
-export default IndexRoute
+export default PrivateRoutes
