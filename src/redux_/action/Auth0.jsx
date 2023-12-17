@@ -15,7 +15,6 @@ export function setIdToken(idToken) {
 }
 
 export function setExpiresAt(expiresAt) {
-  console.log('ffff')
   return {
     type: AUTH0_EXPIRES_AT,
     expiresAt,

@@ -10,7 +10,6 @@ import { sidebarDataHover, toggleCollapsedNav } from 'redux_/action/Theme'
 import { useAuth } from 'utils/AuthProvider'
 import Spinner from 'utils/Spinner'
 
-// const getToken = (state) => state.auth0Reducer.idToken
 const selectInvoking = (state) => state.auth0Reducer.invoking
 
 const AuthenticatedHeader = ({ children, navCollapsed, topNavCollapsed, toggleCollapsedNav, maximize }) => {
@@ -30,11 +29,17 @@ const AuthenticatedHeader = ({ children, navCollapsed, topNavCollapsed, toggleCo
     }
   }, [windowWidth, toggleCollapsedNav])
 
+  const [isSpinner, setIsSpinner] = useState(true)
   const invoking = useSelector(selectInvoking)
+  useEffect(() => {
+    if (auth !== null && !invoking) {
+      setIsSpinner(false)
+    }
+  }, [auth, invoking, setIsSpinner])
 
   return (
     <div className={classNames('hk-wrapper', { 'hk-pg-auth': errro404Route }, { hk__email__backdrop: maximize })} data-layout='navbar' data-layout-style={navCollapsed ? 'collapsed' : 'default'} data-navbar-style={topNavCollapsed ? 'collapsed' : ''} data-menu='light' data-footer='simple'>
-      {auth === null || invoking ? (
+      {isSpinner ? (
         <Spinner />
       ) : (
         <>

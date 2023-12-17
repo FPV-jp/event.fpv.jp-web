@@ -31,8 +31,8 @@ const AuthProviderComponent = ({ children, setAccessToken, setIdToken, setExpire
     return auth0Instance
   }, [auth0Instance])
 
-  // -------------- savewithtoken
-  const savewithtoken = useCallback(
+  // -------------- saveWithToken
+  const saveWithToken = useCallback(
     async (auth0Instance, user) => {
       setUser(user.name, user.nickname, user.picture, user.email, user.email_verified, user.sub, user.locale ? user.locale : 'jp')
       const accessToken = await auth0Instance.getTokenSilently()
@@ -59,7 +59,7 @@ const AuthProviderComponent = ({ children, setAccessToken, setIdToken, setExpire
     var authenticated = await (await getAuth0Instance()).isAuthenticated()
     if (!authenticated) {
       const expiresAt = localStorage.getItem(AUTH0_EXPIRES_AT)
-      authenticated = expiresAt && new Date().getTime() < JSON.parse(expiresAt)
+      authenticated = expiresAt !== null && new Date().getTime() < JSON.parse(expiresAt)
     }
     if (authenticated) {
       setAccessToken(localStorage.getItem(AUTH0_ACCESS_TOKEN))
@@ -68,7 +68,6 @@ const AuthProviderComponent = ({ children, setAccessToken, setIdToken, setExpire
       const base64 = token.replace(/-/g, '+').replace(/_/g, '/')
       const user = JSON.parse(decodeURIComponent(window.atob(base64)))
       setUser(user.name, user.nickname, user.picture, user.email, user.email_verified, user.sub, user.locale ? user.locale : 'jp')
-      return true
     }
     return authenticated
   }, [getAuth0Instance, setAccessToken, setIdToken, setUser])
@@ -98,19 +97,19 @@ const AuthProviderComponent = ({ children, setAccessToken, setIdToken, setExpire
     const auth0Instance = await getAuth0Instance()
     const user = await auth0Instance.getUser()
     if (user) {
-      await savewithtoken(auth0Instance, user)
+      await saveWithToken(auth0Instance, user)
       return user
     }
     var hasAuthParams = window.location.href.indexOf('code=') !== -1 && window.location.href.indexOf('state=') !== -1
     if (hasAuthParams) {
       await auth0Instance.handleRedirectCallback()
-      await savewithtoken(auth0Instance, await auth0Instance.getUser())
+      await saveWithToken(auth0Instance, await auth0Instance.getUser())
       return user
     }
     await clear()
     setInvoking(false)
     return user
-  }, [setInvoking, getAuth0Instance, savewithtoken, clear])
+  }, [setInvoking, getAuth0Instance, saveWithToken, clear])
 
   // export --------------
   const authContextValue = useMemo(
