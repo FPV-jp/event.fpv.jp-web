@@ -27,6 +27,8 @@ import { CalendarEvents } from './Events'
 const getToken = (state) => state.auth0Reducer.idToken
 
 const Calendar = ({ topNavCollapsed, toggleTopNav }) => {
+  const { auth } = useAuth()
+
   let calendarRef = createRef()
   var curYear = moment().format('YYYY'),
     curMonth = moment().format('MM')
@@ -50,7 +52,6 @@ const Calendar = ({ topNavCollapsed, toggleTopNav }) => {
 
   const history = useNavigate()
   const token = useSelector(getToken)
-  const { auth, loginWithRedirect } = useAuth()
   const [data, setData] = useState()
   useEffect(() => {
     const fetchData = async () => {
@@ -59,10 +60,8 @@ const Calendar = ({ topNavCollapsed, toggleTopNav }) => {
     }
     if (auth) {
       fetchData()
-    } else {
-      loginWithRedirect()
     }
-  }, [auth, token, history, loginWithRedirect])
+  }, [auth, token, history])
 
   //Function for date change
   const handleChange = (action) => {

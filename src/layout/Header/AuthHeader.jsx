@@ -13,12 +13,11 @@ import Spinner from 'utils/Spinner'
 const selectInvoking = (state) => state.auth0Reducer.invoking
 
 const AuthenticatedHeader = ({ children, navCollapsed, topNavCollapsed, toggleCollapsedNav, maximize }) => {
-  const appRoutes = useMatch('/apps/')
+  const appRoutes = useMatch('/apps/*')
   const errro404Route = useMatch('/error-404')
 
   const invoking = useSelector(selectInvoking)
-  const { auth, checkAuthenticated } = useAuth()
-
+  const { auth, checkAuthenticated, loginWithRedirect } = useAuth()
   const [isSpinner, setIsSpinner] = useState(true)
 
   useEffect(() => {
@@ -29,9 +28,15 @@ const AuthenticatedHeader = ({ children, navCollapsed, topNavCollapsed, toggleCo
 
   useEffect(() => {
     if (auth !== null && !invoking) {
-      setIsSpinner(false)
+      const fetchData = async () => {
+        if (appRoutes && !auth) {
+          await loginWithRedirect()
+        }
+        setIsSpinner(false)
+      }
+      fetchData()
     }
-  }, [auth, invoking, setIsSpinner])
+  }, [auth, invoking, appRoutes, loginWithRedirect, setIsSpinner])
 
   const windowWidth = useWindowWidth()
   useEffect(() => {
