@@ -1,20 +1,16 @@
 import PageAnimate from 'components/Animation/PageAnimate'
 import { AnimatePresence } from 'framer-motion'
-import AuthHeader from 'layout/Header/AuthHeader'
 import { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
+
+import AuthHeader from 'layout/Header/AuthHeader'
 import { privateRoutes } from 'routes/RouteList'
+import Spinner from 'utils/Spinner'
 
 const PrivateRoutes = () => {
   return (
     <AnimatePresence>
-      <Suspense
-        fallback={
-          <div className='preloader-it'>
-            <div className='loader-pendulums' />
-          </div>
-        }
-      >
+      <Suspense fallback={<Spinner />}>
         <AuthHeader>
           <Routes>
             {privateRoutes.map((route, i) => (
