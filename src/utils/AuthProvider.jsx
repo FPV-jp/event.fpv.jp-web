@@ -8,6 +8,7 @@ const AuthContext = createContext()
 
 const AuthProviderComponent = ({ children, setAccessToken, setIdToken, setExpiresAt, setUser, setInvoking }) => {
   const [auth0Instance, setAuth0Instance] = useState(null)
+  const [auth, setAuth] = useState(null)
 
   const createAuth0Client = () => {
     return auth0.createAuth0Client({
@@ -41,9 +42,10 @@ const AuthProviderComponent = ({ children, setAccessToken, setIdToken, setExpire
       setIdToken(idToken.__raw)
       let expiresAt = JSON.stringify(idToken.exp * 1000 + new Date().getTime())
       setExpiresAt(expiresAt)
+      setAuth(true)
       setInvoking(false)
     },
-    [setUser, setAccessToken, setIdToken, setExpiresAt, setInvoking],
+    [setUser, setAccessToken, setIdToken, setExpiresAt, setInvoking, setAuth],
   )
 
   // -------------- clear
@@ -52,10 +54,11 @@ const AuthProviderComponent = ({ children, setAccessToken, setIdToken, setExpire
     setIdToken(null)
     setAccessToken(null)
     setUser(null, null, null, null, false, null)
-  }, [setUser, setAccessToken, setIdToken, setExpiresAt])
+    setAuth(false)
+  }, [setUser, setAccessToken, setIdToken, setExpiresAt, setAuth])
 
-  // -------------- isAuthenticated
-  const isAuthenticated = useCallback(async () => {
+  // -------------- checkAuthenticated
+  const checkAuthenticated = useCallback(async () => {
     var authenticated = await (await getAuth0Instance()).isAuthenticated()
     if (!authenticated) {
       const expiresAt = localStorage.getItem(AUTH0_EXPIRES_AT)
@@ -69,6 +72,7 @@ const AuthProviderComponent = ({ children, setAccessToken, setIdToken, setExpire
       const user = JSON.parse(decodeURIComponent(window.atob(base64)))
       setUser(user.name, user.nickname, user.picture, user.email, user.email_verified, user.sub, user.locale ? user.locale : 'jp')
     }
+    setAuth(authenticated)
     return authenticated
   }, [getAuth0Instance, setAccessToken, setIdToken, setUser])
 
@@ -113,12 +117,13 @@ const AuthProviderComponent = ({ children, setAccessToken, setIdToken, setExpire
   // export --------------
   const authContextValue = useMemo(
     () => ({
-      isAuthenticated,
+      auth,
+      checkAuthenticated,
       loginWithRedirect,
       logout,
       getUser,
     }),
-    [isAuthenticated, loginWithRedirect, logout, getUser],
+    [auth, checkAuthenticated, loginWithRedirect, logout, getUser],
   )
 
   return <AuthContext.Provider value={authContextValue}>{children}</AuthContext.Provider>

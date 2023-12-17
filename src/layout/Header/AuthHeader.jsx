@@ -17,15 +17,15 @@ const AuthenticatedHeader = ({ children, navCollapsed, topNavCollapsed, toggleCo
   const errro404Route = useMatch('/error-404')
 
   const invoking = useSelector(selectInvoking)
-  const { isAuthenticated } = useAuth()
-  const [auth, setAuth] = useState(null)
+  const { auth, checkAuthenticated } = useAuth()
+
   const [isSpinner, setIsSpinner] = useState(true)
 
   useEffect(() => {
     if (!invoking) {
-      isAuthenticated().then((auth) => setAuth(auth))
+      checkAuthenticated()
     }
-  }, [setAuth, isAuthenticated, invoking])
+  }, [checkAuthenticated, invoking])
 
   useEffect(() => {
     if (auth !== null && !invoking) {
