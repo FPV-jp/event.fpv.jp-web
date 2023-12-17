@@ -5,14 +5,19 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import listPlugin from '@fullcalendar/list'
 import timeGridPlugin from '@fullcalendar/timegrid'
-import { useWindowHeight } from '@react-hook/window-size'
+
 import 'assets/dist/css/FullCalendar.css'
-import 'bootstrap-icons/font/bootstrap-icons.css'
+
 import { useEffect, useState } from 'react'
+
+import { useWindowHeight } from '@react-hook/window-size'
+
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { fetchData_calendar } from 'utils/API'
+
 import { CalendarEvents } from './Events'
+
+import { fetchData_calendar } from 'utils/API'
 
 const getToken = (state) => state.auth0Reducer.idToken
 

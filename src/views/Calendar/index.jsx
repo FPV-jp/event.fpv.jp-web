@@ -1,21 +1,25 @@
 /* eslint-disable no-useless-concat */
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import 'assets/dist/css/FullCalendar.css'
-import 'bootstrap-icons/font/bootstrap-icons.css'
 import classNames from 'classnames'
 import moment from 'moment'
+
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import { ChevronDown, ChevronUp } from 'react-feather'
+
 import { createRef, useEffect, useState } from 'react'
 import { Button, ButtonGroup } from 'react-bootstrap'
-import { ChevronDown, ChevronUp } from 'react-feather'
+
 import { connect, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toggleTopNav } from 'redux_/action/Theme'
-import { fetchData_calendar } from 'utils/API'
+
 import CalendarSidebar from './CalendarSidebar'
 import CreateNewEvent from './CreateNewEvent'
 import EventCalendar from './EventCalendar'
 import EventsDrawer from './EventsDrawer'
+
+import { fetchData_calendar } from 'utils/API'
 
 const getToken = (state) => state.auth0Reducer.idToken
 
@@ -144,7 +148,7 @@ const Calendar = ({ topNavCollapsed, toggleTopNav }) => {
                 <div className={classNames('hk-sidebar-togglable', { active: !showSidebar })} onClick={toggleSidebar} />
               </header>
 
-              <EventCalendar setShowEventInfo={setShowEventInfo} setEventTitle={setEventTitle} setTargetEvent={setTargetEvent} />
+              <EventCalendar date={date} setShowEventInfo={setShowEventInfo} setEventTitle={setEventTitle} setTargetEvent={setTargetEvent} calendarRef={calendarRef} />
             </div>
           </div>
         </div>
