@@ -16,11 +16,22 @@ const AuthenticatedHeader = ({ children, navCollapsed, topNavCollapsed, toggleCo
   const appRoutes = useMatch('/apps/')
   const errro404Route = useMatch('/error-404')
 
+  const invoking = useSelector(selectInvoking)
   const { isAuthenticated } = useAuth()
   const [auth, setAuth] = useState(null)
+  const [isSpinner, setIsSpinner] = useState(true)
+
   useEffect(() => {
-    isAuthenticated().then((auth) => setAuth(auth))
-  }, [setAuth, isAuthenticated])
+    if (!invoking) {
+      isAuthenticated().then((auth) => setAuth(auth))
+    }
+  }, [setAuth, isAuthenticated, invoking])
+
+  useEffect(() => {
+    if (auth !== null && !invoking) {
+      setIsSpinner(false)
+    }
+  }, [auth, invoking, setIsSpinner])
 
   const windowWidth = useWindowWidth()
   useEffect(() => {
@@ -28,14 +39,6 @@ const AuthenticatedHeader = ({ children, navCollapsed, topNavCollapsed, toggleCo
       toggleCollapsedNav(false)
     }
   }, [windowWidth, toggleCollapsedNav])
-
-  const [isSpinner, setIsSpinner] = useState(true)
-  const invoking = useSelector(selectInvoking)
-  useEffect(() => {
-    if (auth !== null && !invoking) {
-      setIsSpinner(false)
-    }
-  }, [auth, invoking, setIsSpinner])
 
   return (
     <div className={classNames('hk-wrapper', { 'hk-pg-auth': errro404Route }, { hk__email__backdrop: maximize })} data-layout='navbar' data-layout-style={navCollapsed ? 'collapsed' : 'default'} data-navbar-style={topNavCollapsed ? 'collapsed' : ''} data-menu='light' data-footer='simple'>

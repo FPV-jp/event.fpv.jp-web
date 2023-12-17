@@ -81,9 +81,8 @@ const AuthProviderComponent = ({ children, setAccessToken, setIdToken, setExpire
   // -------------- logout
   const logout = useCallback(async () => {
     setInvoking(true)
-    await (
-      await getAuth0Instance()
-    ).logout({
+    const auth0Instance = await getAuth0Instance()
+    await auth0Instance.logout({
       logoutParams: {
         returnTo: window.location.origin,
       },
