@@ -11,7 +11,7 @@ export const initialState = {
   email: null,
   email_verified: false,
   sub: null,
-  locale: 'ja',
+  locale: 'jp',
 }
 
 const saveLocalStorage = (type, value) => {

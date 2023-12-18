@@ -66,7 +66,7 @@ const resources = {
       'Create pages using': 'Create pages using a variety of features that leverage jampack components',
     },
   },
-  ja: {
+  jp: {
     translation: {
       Dashboard: 'ダッシュボード',
       Chat: 'チャット',
