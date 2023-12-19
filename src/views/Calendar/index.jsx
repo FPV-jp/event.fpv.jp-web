@@ -22,7 +22,6 @@ import EventsDrawer from './EventsDrawer'
 import { useAuth } from 'utils/AuthProvider'
 
 import { fetchData_calendar } from 'utils/API'
-import { CalendarEvents } from './Events'
 
 const getToken = (state) => state.auth0Reducer.idToken
 
@@ -54,13 +53,7 @@ const Calendar = ({ topNavCollapsed, toggleTopNav }) => {
   const token = useSelector(getToken)
   const [data, setData] = useState()
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetchData_calendar(setData, token, history)
-      setData(CalendarEvents)
-    }
-    if (auth) {
-      fetchData()
-    }
+    if (auth) fetchData_calendar(setData, token, history)
   }, [auth, token, history])
 
   //Function for date change

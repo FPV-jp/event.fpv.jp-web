@@ -4,18 +4,13 @@ import { AnimatePresence } from 'framer-motion'
 import { Suspense } from 'react'
 import { Route, Routes, useMatch } from 'react-router-dom'
 import { publicRoutes } from 'routes/RouteList'
+import Spinner from 'utils/Spinner'
 
 const PublicRoutes = () => {
   const match = useMatch('/auth/*')
   return (
     <AnimatePresence>
-      <Suspense
-        fallback={
-          <div className='preloader-it'>
-            <div className='loader-pendulums' />
-          </div>
-        }
-      >
+      <Suspense fallback={<Spinner />}>
         <div className={classNames('hk-wrapper hk-pg-auth', { 'bg-primary-dark-3': !match })} data-footer='simple'>
           <Routes>
             {publicRoutes.map((route, i) => (
@@ -29,7 +24,7 @@ const PublicRoutes = () => {
                 }
               />
             ))}
-            {/* <Navigate to="/dashboard" /> */}
+            {/* <Navigate to='/dashboard' /> */}
           </Routes>
         </div>
       </Suspense>
