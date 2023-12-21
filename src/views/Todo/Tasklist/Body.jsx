@@ -1,20 +1,41 @@
-import React, { useEffect, useState } from 'react'
-import SimpleBar from 'simplebar-react'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+
 import { Col, Container, Form, Pagination, Row } from 'react-bootstrap'
-import { DATASET } from './Data'
+import SimpleBar from 'simplebar-react'
+// import { DATASET } from './Data'
 import DragCard from './DragCard'
 
+import { fetchData_task_list } from 'utils/API'
+
+const getToken = (state) => state.auth0Reducer.idToken
+
 const Body = ({ showInfo }) => {
+  const history = useNavigate()
+  const token = useSelector(getToken)
+
   // eslint-disable-next-line no-unused-vars
   const [dataset, setDataset] = useState(() => {
     const savedDataset = sessionStorage.getItem('todo-task-list')
     const initialValue = JSON.parse(savedDataset)
-    return initialValue || DATASET
+    return initialValue
   })
+
+  useEffect(() => {
+    fetchData_task_list(setDataset, token, history)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const [tasks, setTasks] = useState(dataset.tasks)
   const [cards, setCards] = useState(dataset.cards)
   const [cardOrder, setCardOrder] = useState(dataset.cardOrder)
+
+  useEffect(() => {
+    setTasks(dataset.tasks)
+    setCards(dataset.cards)
+    setCardOrder(dataset.cardOrder)
+  }, [dataset])
 
   useEffect(() => {
     sessionStorage.setItem('todo-task-list', JSON.stringify({ tasks, cards, cardOrder }))
@@ -59,7 +80,7 @@ const Body = ({ showInfo }) => {
             </div>
           </div>
 
-          <DragCard cards={cards} tasks={tasks} cardOrder={cardOrder} setCards={setCards} setTasks={setTasks} setCardOrder={setCardOrder} taskInfo={showInfo} />
+          {dataset && <DragCard cards={cards} tasks={tasks} cardOrder={cardOrder} setCards={setCards} setTasks={setTasks} setCardOrder={setCardOrder} taskInfo={showInfo} />}
 
           <Row className='mt-3'>
             <Col sm={12}>

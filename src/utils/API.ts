@@ -33,3 +33,25 @@ export const fetchData_gallery = async (setData: Function, token: string, histor
     history('/auth/error-503')
   }
 }
+
+export const fetchData_task_list = async (setData: Function, token: string, history: NavigateFunction) => {
+  const response = await GET(token, '/apps/todo/task_list')
+  if (response.ok) {
+    const data = await response.json()
+    setData(data)
+    console.log(data)
+  } else {
+    history('/auth/error-503')
+  }
+}
+
+export const fetchData_gantt = async (setData: Function, token: string, history: NavigateFunction) => {
+  const response = await GET(token, '/apps/todo/gantt')
+  if (response.ok) {
+    const data = await response.json()
+    setData(data)
+    console.log(data)
+  } else {
+    history('/auth/error-503')
+  }
+}

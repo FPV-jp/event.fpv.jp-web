@@ -66,16 +66,11 @@ export const NavMenuConfig = () => {
       group: 'Apps',
       contents: [
         {
-          id: 'dash_scrumboard',
-          name: t('Scrumboard'),
-          icon: <Icons.LayoutKanban />,
-          path: '/apps/taskboard',
-          iconBadge: <IconBadge count='3' />,
-          childrens: [
-            appSubMenuConfig('All Boards', '/apps/taskboard/projects-board'), //
-            appSubMenuConfig('Project Kanban', '/apps/taskboard/kanban-board'), //
-            appSubMenuConfig('Pipeline Kanban', '/apps/taskboard/pipeline'), //
-          ],
+          id: 'dash_chatpop',
+          name: t('Calendar'),
+          icon: <Icons.CalendarTime />,
+          path: '/apps/calendar',
+          grp_name: 'apps',
         },
         {
           id: 'dash_task',
@@ -89,11 +84,26 @@ export const NavMenuConfig = () => {
           ],
         },
         {
-          id: 'dash_chatpop',
-          name: t('Calendar'),
-          icon: <Icons.CalendarTime />,
-          path: '/apps/calendar',
-          grp_name: 'apps',
+          id: 'dash_scrumboard',
+          name: t('Scrumboard'),
+          icon: <Icons.LayoutKanban />,
+          path: '/apps/taskboard',
+          iconBadge: <IconBadge count='3' />,
+          childrens: [
+            appSubMenuConfig('All Boards', '/apps/taskboard/projects-board'), //
+            appSubMenuConfig('Project Kanban', '/apps/taskboard/kanban-board'), //
+            appSubMenuConfig('Pipeline Kanban', '/apps/taskboard/pipeline'), //
+          ],
+        },
+        {
+          id: 'dash_file',
+          name: t('File Manager'),
+          icon: <Icons.FileCheck />,
+          path: '/apps/file-manager',
+          childrens: [
+            appSubMenuConfig('List View', '/apps/file-manager/list-view'), //
+            appSubMenuConfig('Grid View', '/apps/file-manager/grid-view'), //
+          ],
         },
         {
           name: t('Email'),
@@ -137,16 +147,6 @@ export const NavMenuConfig = () => {
             appSubMenuConfig('Contact List', '/apps/contacts/contact-list'), //
             appSubMenuConfig('Contact Cards', '/apps/contacts/contact-cards'), //
             appSubMenuConfig('Edit Contact', '/apps/contacts/edit-contact'), //
-          ],
-        },
-        {
-          id: 'dash_file',
-          name: t('File Manager'),
-          icon: <Icons.FileCheck />,
-          path: '/apps/file-manager',
-          childrens: [
-            appSubMenuConfig('List View', '/apps/file-manager/list-view'), //
-            appSubMenuConfig('Grid View', '/apps/file-manager/grid-view'), //
           ],
         },
         {

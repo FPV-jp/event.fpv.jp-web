@@ -1,19 +1,24 @@
-import 'bootstrap-daterangepicker/daterangepicker.css'
-import moment from 'moment'
 import { useEffect, useState } from 'react'
-import { Col, Container, Form, InputGroup, Nav, Row, Tab } from 'react-bootstrap'
-import DateRangePicker from 'react-bootstrap-daterangepicker'
-import { Calendar } from 'react-feather'
 import { useTranslation } from 'react-i18next'
 import { connect, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+
 import { sidebarDataHover, toggleCollapsedNav } from 'redux_/action/Theme'
-import { fetchData_dashboard } from 'utils/API'
+
+import 'bootstrap-daterangepicker/daterangepicker.css'
+import moment from 'moment'
+
+import { Col, Container, Form, InputGroup, Nav, Row, Tab } from 'react-bootstrap'
+import DateRangePicker from 'react-bootstrap-daterangepicker'
+import { Calendar } from 'react-feather'
+
 import ChatBotInterface from '../ChatPopup/ChatBot/ChatBotInterface'
 import ActiveUserCard from './ActiveUserCard'
 import AudienceReviewCard from './AudienceReviewCard'
 import CustomerTable from './CustomerTable'
 import ReturningCustomersCard from './ReturningCustomersCard'
+
+import { fetchData_dashboard } from 'utils/API'
 
 const getToken = (state) => state.auth0Reducer.idToken
 
