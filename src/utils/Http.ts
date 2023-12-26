@@ -24,7 +24,7 @@ function delay(time: number) {
 
 const retry = async (token: string, count: number, path: string, method: string, body?: BodyInit | null): Promise<Response> => {
   try {
-    const url: URL = new URL(window.location.protocol + '//' + window.location.host.replace(':3000', ':8000') + path)
+    const url: URL = new URL(window.location.protocol + '//' + window.location.host.replace(':3001', ':8001') + path)
 
     const headers: HeadersInit = {
       'Content-Type': 'application/json',
