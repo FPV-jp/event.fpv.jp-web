@@ -23,6 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-yarn.lock
 .env
 private_html/
