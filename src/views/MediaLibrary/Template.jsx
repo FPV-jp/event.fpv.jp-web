@@ -1,5 +1,5 @@
+import { fileSize } from '@/utils'
 import PropTypes from 'prop-types'
-import { fileSize } from '@/queries/FileUpload'
 
 VideoTemplate.propTypes = {
   objectURL: PropTypes.instanceOf(Blob).isRequired,

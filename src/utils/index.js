@@ -2,6 +2,10 @@ export function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+export function fileSize(size) {
+  return size > 1024 ? (size > 1048576 ? Math.round(size / 1048576) + 'MB' : Math.round(size / 1024) + 'KB') : size + 'Byte'
+}
+
 export const dateFormatOptions = {
   year: 'numeric',
   month: 'long',

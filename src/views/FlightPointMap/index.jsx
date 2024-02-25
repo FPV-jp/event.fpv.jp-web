@@ -135,6 +135,7 @@ export default function FlightPointMap() {
 
       <PointForm openPointForm={openPointForm} setOpenPointForm={setOpenPointForm}>
         <PointFormInput //
+          setThumbnailImages={setThumbnailImages}
           setEditMode={setEditMode}
           setOpenPointForm={setOpenPointForm}
           selectPoint={selectPoint}

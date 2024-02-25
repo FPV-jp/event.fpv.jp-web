@@ -1,24 +1,14 @@
-import { useEffect, useState, useRef } from 'react'
-import { useQuery } from '@apollo/client'
+import { Loading } from '@/assets/Loading'
+import sound_only from '@/assets/sound_only.jpg'
 import { downloadFileFromS3, downloadFilesFromS3 } from '@/queries/FileUpload'
 import { ALL_MEDIA_LIBRARY_QUERY } from '@/queries/MediaLibrary'
+import { dateFormat, fileSize } from '@/utils'
+import FileUpload, { FileUploadForm } from '@/views/MediaLibrary/FileUpload'
+import MediaPreview, { MediaContent } from '@/views/MediaLibrary/MediaPreview'
+import { useQuery } from '@apollo/client'
 import { useAuth0 } from '@auth0/auth0-react'
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline'
-import MediaPreview, { MediaContent } from '@/views/MediaLibrary/MediaPreview'
-import FileUpload, { FileUploadForm } from '@/views/MediaLibrary/FileUpload'
-import { Loading } from '@/assets/Loading'
-import { fileSize } from '@/queries/FileUpload'
-import sound_only from '@/assets/sound_only.jpg'
-
-const options = {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-  hour: '2-digit',
-  minute: '2-digit',
-  second: '2-digit',
-  hour12: true,
-}
+import { useEffect, useRef, useState } from 'react'
 
 export default function MediaLibrary() {
   const { getIdTokenClaims } = useAuth0()
@@ -103,7 +93,7 @@ export default function MediaLibrary() {
                     <span aria-hidden='true' className='absolute inset-0' onClick={() => getMediaFile(mediaLibrary)} />
                     {mediaLibrary.file_name}
                   </h3>
-                  <p className='mt-1 text-sm text-gray-500'>{new Date(mediaLibrary.registered_at).toLocaleString('ja-JP', options)}</p>
+                  <p className='mt-1 text-sm text-gray-500'>{dateFormat(mediaLibrary.registered_at)}</p>
                 </div>
                 <p className='text-sm font-medium text-gray-900'>{fileSize(mediaLibrary.file_size)}</p>
               </div>

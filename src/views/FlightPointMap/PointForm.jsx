@@ -17,6 +17,7 @@ const initialFormValue = {
 }
 
 PointFormInput.propTypes = {
+  setThumbnailImages: PropTypes.func.isRequired,
   setEditMode: PropTypes.func.isRequired,
   setOpenPointForm: PropTypes.func.isRequired,
   selectPoint: PropTypes.shape({
@@ -27,7 +28,7 @@ PointFormInput.propTypes = {
   refetch: PropTypes.func.isRequired,
 }
 
-export function PointFormInput({ setEditMode, setOpenPointForm, selectPoint, setSelectPoint, refetch }) {
+export function PointFormInput({ setThumbnailImages, setEditMode, setOpenPointForm, selectPoint, setSelectPoint, refetch }) {
   const [formData, setFormData] = useState({ ...initialFormValue })
 
   useEffect(() => {
@@ -50,6 +51,7 @@ export function PointFormInput({ setEditMode, setOpenPointForm, selectPoint, set
 
   async function submit(event) {
     event.preventDefault()
+    setThumbnailImages(null)
 
     const imageOption = await getImageOption(formData.markerImage, 120, 120)
     const createFlightPointInput = {

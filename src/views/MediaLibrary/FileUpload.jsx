@@ -1,9 +1,9 @@
-import { Fragment, useRef, useState } from 'react'
+import '@/assets/scss/FileUpload.scss'
+import { FileTemplate, ImageTemplate, VideoTemplate } from '@/views/MediaLibrary/Template'
+import { useMutation } from '@apollo/client'
 import { Dialog, Transition } from '@headlessui/react'
 import PropTypes from 'prop-types'
-import '@/assets/scss/FileUpload.scss'
-import { useMutation } from '@apollo/client'
-import { VideoTemplate, ImageTemplate, FileTemplate } from '@/views/MediaLibrary/Template'
+import { Fragment, useRef, useState } from 'react'
 
 import { CREATE_MEDIA_LIBRARY_MUTATION } from '@/queries/MediaLibrary'
 import { upload } from '@/views/MediaLibrary/FileUploadSupport'
@@ -79,20 +79,23 @@ export function FileUploadForm({ setOpenFileUpload, loading, refetch }) {
     setFiles(newFiles)
   }
 
-  const [loading2, setLoading2] = useState(false)
+  const [uploading, setUploading] = useState(false)
   const { getIdTokenClaims } = useAuth0()
   const [createMediaLibrary] = useMutation(CREATE_MEDIA_LIBRARY_MUTATION)
   async function submit(event) {
     event.preventDefault()
-    setLoading2(true)
-    const token = (await getIdTokenClaims()).__raw
-    upload(token, files, createMediaLibrary, setOpenFileUpload, refetch, setLoading2)
+
+    setUploading(true)
+    await upload((await getIdTokenClaims()).__raw, files, createMediaLibrary)
+    refetch()
+    setOpenFileUpload(false)
+    setUploading(false)
   }
 
   return (
     // <div className='h-screen w-screen bg-gray-500 sm:px-8 sm:py-8 md:px-16'>
     <>
-      {loading || loading2 ? (
+      {loading || uploading ? (
         <Loading />
       ) : (
         <form action='#' method='POST' onSubmit={submit} className='container mx-auto h-full max-w-screen-lg'>

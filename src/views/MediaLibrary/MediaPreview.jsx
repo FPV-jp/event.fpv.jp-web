@@ -1,6 +1,6 @@
-import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import PropTypes from 'prop-types'
+import { Fragment } from 'react'
 
 MediaContent.propTypes = {
   cancelButtonRef: PropTypes.object.isRequired,
@@ -12,7 +12,6 @@ MediaContent.propTypes = {
 export function MediaContent({ cancelButtonRef, openMediaPreview, setOpenMediaPreview, mediaContent }) {
   function Content() {
     if (!mediaContent) return <div>Loading...</div>
-    console.log(mediaContent)
     if (mediaContent.type.match('image.*')) return <img src={URL.createObjectURL(mediaContent)} alt={mediaContent.name} />
     if (mediaContent.type.match('video.*')) return <video controls src={URL.createObjectURL(mediaContent)} alt={mediaContent.name} />
     return <audio controls src={URL.createObjectURL(mediaContent)} alt={mediaContent.name} />
