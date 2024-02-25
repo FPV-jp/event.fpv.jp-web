@@ -1,4 +1,3 @@
-
 async function downloadFileFromWasabi(token, bucket, wasabi_file_key, thumbnail) {
   try {
     const wasabi = new FormData()

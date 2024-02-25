@@ -1,5 +1,5 @@
-import { UserIcon, CalendarIcon, MapPinIcon } from '@heroicons/react/20/solid'
-
+import { dateFormat } from '@/utils'
+import { CalendarIcon, MapPinIcon, UserIcon } from '@heroicons/react/20/solid'
 import PropTypes from 'prop-types'
 
 PointInfo.propTypes = {
@@ -15,16 +15,6 @@ PointInfo.propTypes = {
   }),
 }
 
-const options = { 
-  year: 'numeric',
-  month: 'long', 
-  day: 'numeric',
-  hour: '2-digit', 
-  minute: '2-digit', 
-  second: '2-digit',
-  hour12: true
-}
-
 export default function PointInfo(props) {
   const { editMode, selectMarker } = props
   return (
@@ -35,19 +25,19 @@ export default function PointInfo(props) {
         {!editMode && (
           <div className='mt-2 flex items-center text-sm text-gray-500'>
             <UserIcon className='mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400' aria-hidden='true' />
-            作成者:{selectMarker ? selectMarker.create_user : '---' }
+            作成者:{selectMarker ? selectMarker.create_user : '---'}
           </div>
         )}
         <div className='mt-2 flex items-center text-sm text-gray-500'>
           <MapPinIcon className='mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400' aria-hidden='true' />
-          緯度:{selectMarker ? selectMarker.latitude : '---' }
+          緯度:{selectMarker ? selectMarker.latitude : '---'}
           <br />
-          軽度:{selectMarker ? selectMarker.longitude : '---' }
+          軽度:{selectMarker ? selectMarker.longitude : '---'}
         </div>
         {!editMode && (
           <div className='mt-2 flex items-center text-sm text-gray-500'>
             <CalendarIcon className='mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400' aria-hidden='true' />
-            作成日時:{selectMarker ? new Date(selectMarker.registered_at).toLocaleString('ja-JP', options) : '---' }
+            作成日時:{selectMarker ? dateFormat(selectMarker.registered_at) : '---'}
           </div>
         )}
       </div>

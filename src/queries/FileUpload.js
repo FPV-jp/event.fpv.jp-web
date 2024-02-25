@@ -230,4 +230,3 @@ const fileSize = (size) => {
 }
 
 export { CREATE_PRESIGNED_REQUEST, GET_POST_OBJECTS, LIST_OBJECTS, downloadFileFromS3, downloadFilesFromS3, fileSize, uploadFileToS3, uploadPresignedUrl }
-

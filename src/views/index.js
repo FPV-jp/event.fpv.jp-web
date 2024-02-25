@@ -7,8 +7,6 @@ export * from '@/views/Chat'
 import Contact from '@/views/Contact'
 import Products from '@/views/Products'
 
-
-
 export * from '@/views/SignIn'
 export * from '@/views/NotFound'
 export * from '@/views/Slide'

@@ -106,12 +106,12 @@ export function FileUploadForm({ setOpenFileUpload, loading, refetch }) {
               <p className='text-lg text-blue-700'>Drop files to upload</p>
             </div>
             <section className='flex h-full w-full flex-col overflow-auto p-8'>
-              <header className='flex flex-col items-center justify-center border-2 rounded-lg border-dashed border-gray-400 py-12'>
+              <header className='flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-400 py-12'>
                 <p className='mb-3 flex flex-wrap justify-center font-semibold text-gray-900'>
                   <span>ファイルをここにドラッグ & ドロップするか</span>
                 </p>
                 <input id='file-input' type='file' multiple className='hidden' onChange={fileInputChange} />
-                <button id='button'type='button' className='focus:shadow-outline mt-2 rounded-md bg-indigo-600 text-white px-3 py-1 hover:bg-indigo-300 focus:outline-none' onClick={() => document.getElementById('file-input').click()}>
+                <button id='button' type='button' className='focus:shadow-outline mt-2 rounded-md bg-indigo-600 px-3 py-1 text-white hover:bg-indigo-300 focus:outline-none' onClick={() => document.getElementById('file-input').click()}>
                   ファイルを選択する
                 </button>
               </header>
@@ -139,7 +139,7 @@ export function FileUploadForm({ setOpenFileUpload, loading, refetch }) {
                 type='submit'
                 disabled={Object.keys(files).length === 0}
                 className={`inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold shadow-sm 
-             ${Object.keys(files).length === 0 ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-indigo-600 text-white hover:bg-indigo-500'} 
+             ${Object.keys(files).length === 0 ? 'cursor-not-allowed bg-gray-300 text-gray-500' : 'bg-indigo-600 text-white hover:bg-indigo-500'} 
              sm:ml-3 sm:w-auto`}
               >
                 アップロード

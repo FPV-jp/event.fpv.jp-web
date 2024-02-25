@@ -1,5 +1,6 @@
 import { CREATE_FLIGHT_POINT_MUTATION } from '@/queries/FlightPoint'
-import { upload } from '@/views/FlightPointMap/PointFormSupport'
+import { getImageOption } from '@/utils'
+import { uploadFileToWasabi } from '@/utils/WasabiUploader'
 import { useMutation } from '@apollo/client'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Dialog, Transition } from '@headlessui/react'
@@ -50,10 +51,19 @@ export function PointFormInput({ setEditMode, setOpenPointForm, selectPoint, set
   async function submit(event) {
     event.preventDefault()
 
-    await upload((await getIdTokenClaims()).__raw, formData, createFlightPoint)
+    const imageOption = await getImageOption(formData.markerImage, 120, 120)
+    const createFlightPointInput = {
+      latitude: formData.latitude,
+      longitude: formData.longitude,
+      title: formData.title,
+    }
+    createFlightPointInput.marker_image = await uploadFileToWasabi((await getIdTokenClaims()).__raw, import.meta.env.VITE_WASABI_BUCKET, formData.markerImage, imageOption.thumbnail)
+    const response = await createFlightPoint({ variables: { createFlightPointInput } })
+    console.log('response:', response.data)
+
     refetch()
     setOpenPointForm(false)
-    setFormData(initialFormValue)
+    setFormData({ ...initialFormValue })
     setEditMode(false)
     setSelectPoint(null)
   }
@@ -79,13 +89,13 @@ export function PointFormInput({ setEditMode, setOpenPointForm, selectPoint, set
             <div className='mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10'>
               <div className='text-center'>
                 <PhotoIcon className='mx-auto h-12 w-12 text-gray-300' aria-hidden='true' />
-                <div className='mt-4 flex justify-center items-center text-sm leading-6 text-gray-600'>
+                <div className='mt-4 flex items-center justify-center text-sm leading-6 text-gray-600'>
                   <label htmlFor='markerImage' className='relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500'>
                     <span className='text-base'>画像ファイルをアップロード</span>
                     <input type='file' id='markerImage' name='markerImage' onChange={fileInputChange} className='sr-only' />
                   </label>
                 </div>
-                <p className='text-sm pt-4'>するかここにドラッグ&ドロップ</p>
+                <p className='pt-4 text-sm'>するかここにドラッグ&ドロップ</p>
                 <p className='text-xs leading-5 text-gray-600'>PNG, JPG, GIF ファイル (最大10MB)</p>
               </div>
             </div>

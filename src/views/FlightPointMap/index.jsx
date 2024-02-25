@@ -22,7 +22,7 @@ export default function FlightPointMap() {
 
   const [editMode, setEditMode] = useState(false)
   const [selectPoint, setSelectPoint] = useState(null)
-  
+
   const { loading, error, data, refetch } = useQuery(ALL_FLIGHT_POINTS_QUERY)
 
   useEffect(() => {
@@ -108,12 +108,7 @@ export default function FlightPointMap() {
                   onClick={async () => {
                     setSelectMarkerImage(null)
                     setSelectMarker(flightPoint)
-                    const target = await downloadFileFromWasabi(
-                      (await getIdTokenClaims()).__raw,
-                      import.meta.env.VITE_WASABI_BUCKET,
-                      flightPoint.marker_image,
-                      false
-                    )
+                    const target = await downloadFileFromWasabi((await getIdTokenClaims()).__raw, import.meta.env.VITE_WASABI_BUCKET, flightPoint.marker_image, false)
                     setSelectMarkerImage(target.fileBlob)
                   }}
                 >
@@ -147,7 +142,6 @@ export default function FlightPointMap() {
           refetch={refetch}
         />
       </PointForm>
-
     </div>
   )
 }

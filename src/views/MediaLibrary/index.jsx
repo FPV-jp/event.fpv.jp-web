@@ -86,7 +86,7 @@ export default function MediaLibrary() {
   return (
     <div className='bg-white'>
       <div className='mx-auto max-w-2xl px-4 py-4 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8'>
-        <div className='flex justify-between items-center'>
+        <div className='flex items-center justify-between'>
           <h2 className='text-2xl font-bold tracking-tight text-gray-900'>アップロードされたファイル</h2>
           <button type='button' onClick={() => setOpenFileUpload(true)} className='rounded-md bg-indigo-600 px-3 py-2 text-sm text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
             追加
