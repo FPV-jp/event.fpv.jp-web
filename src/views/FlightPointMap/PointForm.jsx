@@ -1,13 +1,12 @@
-import { Fragment, useState, useEffect } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
-import { PhotoIcon, CameraIcon } from '@heroicons/react/24/solid'
-
-import PropTypes from 'prop-types'
-import { useAuth0 } from '@auth0/auth0-react'
-import { useMutation } from '@apollo/client'
 import { CREATE_FLIGHT_POINT_MUTATION } from '@/queries/FlightPoint'
 import { upload } from '@/views/FlightPointMap/PointFormSupport'
+import { useMutation } from '@apollo/client'
+import { useAuth0 } from '@auth0/auth0-react'
+import { Dialog, Transition } from '@headlessui/react'
+import { XMarkIcon } from '@heroicons/react/24/outline'
+import { CameraIcon, PhotoIcon } from '@heroicons/react/24/solid'
+import PropTypes from 'prop-types'
+import { Fragment, useEffect, useState } from 'react'
 
 const initialFormValue = {
   latitude: 0.0,
@@ -17,14 +16,17 @@ const initialFormValue = {
 }
 
 PointFormInput.propTypes = {
+  setEditMode: PropTypes.func.isRequired,
   setOpenPointForm: PropTypes.func.isRequired,
   selectPoint: PropTypes.shape({
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired,
   }),
+  setSelectPoint: PropTypes.func.isRequired,
+  refetch: PropTypes.func.isRequired,
 }
 
-export function PointFormInput({ setOpenPointForm, selectPoint }) {
+export function PointFormInput({ setEditMode, setOpenPointForm, selectPoint, setSelectPoint, refetch }) {
   const [formData, setFormData] = useState({ ...initialFormValue })
 
   useEffect(() => {
@@ -48,10 +50,12 @@ export function PointFormInput({ setOpenPointForm, selectPoint }) {
   async function submit(event) {
     event.preventDefault()
 
-    const token = (await getIdTokenClaims()).__raw
-    upload(token, formData, createFlightPoint)
+    await upload((await getIdTokenClaims()).__raw, formData, createFlightPoint)
+    refetch()
     setOpenPointForm(false)
     setFormData(initialFormValue)
+    setEditMode(false)
+    setSelectPoint(null)
   }
 
   return (

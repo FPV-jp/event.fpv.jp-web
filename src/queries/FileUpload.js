@@ -226,7 +226,8 @@ async function downloadFileFromS3(token, bucket, wasabi_file_key, thumbnail) {
 }
 
 const fileSize = (size) => {
-  return size > 1024 ? (size > 1048576 ? Math.round(size / 1048576) + 'mb' : Math.round(size / 1024) + 'kb') : size + 'b'
+  return size > 1024 ? (size > 1048576 ? Math.round(size / 1048576) + 'MB' : Math.round(size / 1024) + 'KB') : size + 'Byte'
 }
 
-export { GET_POST_OBJECTS, CREATE_PRESIGNED_REQUEST, LIST_OBJECTS, uploadFileToS3, downloadFilesFromS3, downloadFileFromS3, uploadPresignedUrl, fileSize }
+export { CREATE_PRESIGNED_REQUEST, GET_POST_OBJECTS, LIST_OBJECTS, downloadFileFromS3, downloadFilesFromS3, fileSize, uploadFileToS3, uploadPresignedUrl }
+
