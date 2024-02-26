@@ -9,7 +9,7 @@ import FullCalendar from '@fullcalendar/react'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'bootstrap/dist/css/bootstrap.css'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { INITIAL_EVENTS } from './event-utils'
 
 function EventContent(eventInfo) {
@@ -33,29 +33,14 @@ function SidebarEvent(event) {
 
 export default function EventSchedule() {
   const [weekendsVisible, setWeekendsVisible] = useState(true)
+  const [listView, setListView] = useState(false)
+  const [currentView, setCurrentView] = useState(false)
+
   const [currentEvents, setCurrentEvents] = useState([])
 
   function handleWeekendsToggle() {
     setWeekendsVisible(!weekendsVisible)
   }
-
-  // function handleDateSelect(selectInfo) {
-  //   let title = prompt('Please enter a new title for your event')
-  //   let calendarApi = selectInfo.view.calendar
-
-  //   calendarApi.unselect() // clear date selection
-
-  //   if (title) {
-  //     calendarApi.addEvent({
-  //       id: createEventId(),
-  //       title,
-  //       start: selectInfo.startStr,
-  //       end: selectInfo.endStr,
-  //       allDay: selectInfo.allDay,
-  //       backgroundColor: 'green',
-  //     })
-  //   }
-  // }
 
   function handleEventClick(clickInfo) {
     if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
@@ -63,11 +48,50 @@ export default function EventSchedule() {
     }
   }
 
-  function handleEvents(events) {
-    setCurrentEvents(events)
-  }
+  // function handleEvents(events) {
+  //   setCurrentEvents(events)
+  // }
 
   const [openEventForm, setOpenEventForm] = useState(false)
+  const [calendarApi, setCalendarApi] = useState(false)
+  const FullCalendarRef = useRef(null)
+  useEffect(() => setCalendarApi(FullCalendarRef.current.calendar), [FullCalendarRef])
+  // useEffect(() => {
+  //   console.log(`今は${listView ? `リスト` : `タイム`}です currentView:${currentView}`)
+  //   if (listView) {
+  //     if (currentView === 'timeGridWeek') {
+  //       calendarApi.changeView('listWeek')
+  //       setCurrentView(calendarApi.view.type)
+  //       console.log('変更します')
+  //     } else {
+  //       console.log('変更しません')
+  //     }
+  //   } else {
+  //     if (currentView === 'listWeek') {
+  //       calendarApi.changeView('timeGridWeek')
+  //       setCurrentView(calendarApi.view.type)
+  //       console.log('変更します')
+  //     } else {
+  //       console.log('変更しません')
+  //     }
+  //   }
+  //   // setCurrentView(calendarApi.view.type)
+  // }, [calendarApi, listView])
+
+  // useEffect(() => console.log(calendarApi.currentClassNames), [FullCalendarRef])
+
+  // function handleDateSelect(selectInfo) {
+  //   calendarApi.unselect() // clear date selection
+
+  //   calendarApi.addEvent({
+  //     id: 666666,
+  //     title: 'xxxxxxx',
+  //     start: selectInfo.startStr,
+  //     end: selectInfo.endStr,
+  //     allDay: selectInfo.allDay,
+  //     backgroundColor: 'green',
+  //   })
+  // }
 
   return (
     <>
@@ -75,21 +99,68 @@ export default function EventSchedule() {
         <EventFormInput setOpenEventForm={setOpenEventForm} />
       </EventForm>
       <FullCalendar
+        ref={FullCalendarRef}
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, bootstrap5Plugin, listPlugin]}
         themeSystem='bootstrap5'
         locales={[jaLocale]}
         locale='ja'
-        viewDidMount={(arg) => console.log(arg)}
+        // viewDidMount={(arg) => console.log(arg)}
         customButtons={{
+          dayGridYear: {
+            text: '年表示',
+            click: () => calendarApi.changeView('dayGridYear'),
+          },
+          dayGridMonth: {
+            text: '月表示',
+            click: () => calendarApi.changeView('dayGridMonth'),
+          },
+          today: {
+            text: '今日を表示',
+            click: () => calendarApi.today(),
+          },
           addEvent: {
             text: 'イベントを追加',
             click: () => setOpenEventForm(true),
           },
+          listView: {
+            text: listView ? 'リスト' : 'タイム',
+            click: () => {
+              if (listView) {
+                if (currentView === 'listWeek') calendarApi.changeView('timeGridWeek')
+                if (currentView === 'listDay') calendarApi.changeView('timeGridDay')
+              } else {
+                if (currentView === 'timeGridWeek') calendarApi.changeView('listWeek')
+                if (currentView === 'timeGridDay') calendarApi.changeView('listDay')
+              }
+              setListView(!listView)
+              setCurrentView(calendarApi.view.type)
+            },
+          },
+          timeGridWeek: {
+            text: '今週',
+            click: () => {
+              listView ? calendarApi.changeView('listWeek') : calendarApi.changeView('timeGridWeek')
+              setCurrentView(calendarApi.view.type)
+            },
+          },
+          timeGridDay: {
+            text: '本日',
+            click: () => {
+              listView ? calendarApi.changeView('listDay') : calendarApi.changeView('timeGridDay')
+              setCurrentView(calendarApi.view.type)
+            },
+          },
+          // listDay: {
+          //   text: '本日のイベント',
+          //   click: () => calendarApi.changeView('listDay'),
+          // },
         }}
         headerToolbar={{
           left: 'prev,next dayGridYear,dayGridMonth today',
           center: 'title',
-          right: 'addEvent timeGridWeek,listWeek timeGridDay,listDay',
+          // right: 'addEvent timeGridWeek,listWeek timeGridDay,listDay',
+          right: 'addEvent timeGridWeek timeGridDay listView',
+          // right: 'addEvent timeGridDay,listDay',
         }}
         initialView='dayGridMonth'
         editable={true}
@@ -102,7 +173,7 @@ export default function EventSchedule() {
         // select={() => setOpenEventForm(true)}
         eventContent={EventContent} // custom render function
         eventClick={handleEventClick}
-        eventsSet={handleEvents} // called after events are initialized/added/changed/removed
+        eventsSet={(events) => setCurrentEvents(events)} // called after events are initialized/added/changed/removed
         /* you can update a remote database when these fire:
           eventAdd={function(){}}
           eventChange={function(){}}
