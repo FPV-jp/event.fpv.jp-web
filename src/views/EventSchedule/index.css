@@ -21,17 +21,3 @@ b {
 .event-schedule-sidebar {
   background: #eaf9ff;
 }
-
-.event-schedule-sidebar-section {
-  padding: 2em;
-}
-
-.event-schedule-main {
-  padding: 3em;
-}
-
-.fc {
-  /* the calendar root */
-  max-width: 1100px;
-  margin: 0 auto;
-}

@@ -27,9 +27,10 @@ export default function EventSchedule() {
   const [openEventForm, setOpenEventForm] = useState(false)
 
   return (
-    <div className='text-sm flex h-full font-sans'>
+    <div className='mx-3  flex font-sans text-sm'>
       {(currentView === 'listWeek' || currentView === 'timeGridDay' || currentView === 'listDay') && (
-        <div className='event-schedule-sidebar w-72 rounded-lg leading-6'>
+        <div className='event-schedule-sidebar m-3 w-72 rounded-lg leading-6'>
+          {/* 
           <div className='event-schedule-sidebar-section'>
             <h2>Instructions</h2>
             <ul>
@@ -37,8 +38,9 @@ export default function EventSchedule() {
               <li>Drag, drop, and resize events</li>
               <li>Click an event to delete it</li>
             </ul>
-          </div>
-          <div className='event-schedule-sidebar-section'>
+          </div> 
+          */}
+          <div>
             <label>
               <input type='checkbox' checked={weekendsVisible} onChange={handleWeekendsToggle}></input>
               toggle weekends
@@ -50,10 +52,13 @@ export default function EventSchedule() {
           </div> */}
         </div>
       )}
-      <EventForm openEventForm={openEventForm} setOpenEventForm={setOpenEventForm}>
+      <EventForm //
+        openEventForm={openEventForm}
+        setOpenEventForm={setOpenEventForm}
+      >
         <EventFormInput setOpenEventForm={setOpenEventForm} />
       </EventForm>
-      <div className='event-schedule-main flex-grow'>
+      <div className='flex-grow'>
         <Calendar //
           weekendsVisible={weekendsVisible}
           setOpenEventForm={setOpenEventForm}

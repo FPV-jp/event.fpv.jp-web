@@ -69,11 +69,17 @@ export default function Calendar({ weekendsVisible, setOpenEventForm, currentVie
       customButtons={{
         dayGridYear: {
           text: '年表示',
-          click: () => calendarApi.changeView('dayGridYear'),
+          click: () => {
+            calendarApi.changeView('dayGridYear')
+            setCurrentView(calendarApi.view.type)
+          },
         },
         dayGridMonth: {
           text: '月表示',
-          click: () => calendarApi.changeView('dayGridMonth'),
+          click: () => {
+            calendarApi.changeView('dayGridMonth')
+            setCurrentView(calendarApi.view.type)
+          },
         },
         today: {
           text: '今日を表示',
