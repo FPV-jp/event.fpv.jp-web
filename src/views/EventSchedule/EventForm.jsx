@@ -1,8 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react'
+import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import PropTypes from 'prop-types'
 import { Fragment, useRef } from 'react'
-
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 
 EventFormInput.propTypes = {
   setOpenEventForm: PropTypes.func.isRequired,
