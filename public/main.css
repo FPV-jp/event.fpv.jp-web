@@ -915,6 +915,10 @@ select {
   z-index: 50;
 }
 
+.z-auto {
+  z-index: auto;
+}
+
 .col-span-full {
   grid-column: 1 / -1;
 }
@@ -1059,6 +1063,14 @@ select {
   display: inline-flex;
 }
 
+.table {
+  display: table;
+}
+
+.\!table {
+  display: table !important;
+}
+
 .grid {
   display: grid;
 }
@@ -1125,6 +1137,10 @@ select {
 
 .h-lvh {
   height: 100lvh;
+}
+
+.h-80 {
+  height: 20rem;
 }
 
 .min-h-full {
