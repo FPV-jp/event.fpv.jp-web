@@ -29,7 +29,7 @@ export function MiniCalendar({ MiniCalendarRef, setCalendarMiniApi }) {
   const FullCalendarRef = useRef(null)
   useEffect(() => setCalendarMiniApi(FullCalendarRef.current.calendar), [FullCalendarRef, setCalendarMiniApi])
   return (
-    <div id='mini-calendar' ref={MiniCalendarRef} className='flex-1 w-72 ml-3 mt-3 hidden'>
+    <div id='mini-calendar' ref={MiniCalendarRef} className='flex-1 mx-3 mt-3 hidden'>
       <FullCalendar ref={FullCalendarRef} headerToolbar={false} plugins={[dayGridPlugin]} initialView='dayGridMonth' initialDate={new Date()} />
     </div>
   )
@@ -81,18 +81,12 @@ export default function Calendar({ weekendsVisible, setOpenEventForm, currentVie
     if (currentView === 'timeGridDay') {
       parent = document.querySelector('div.fc-timeGridDay-view.fc-view.fc-timegrid')
       brother = document.querySelector('table.fc-scrollgrid.fc-scrollgrid-liquid')
-
-      parent.classList.add('flex')
-      brother.classList.add('flex-1')
-      parent.appendChild(MiniCalendarRef.current)
-      MiniCalendarRef.current.classList.remove('hidden')
-      calendarMiniApi.updateSize()
-      return
     }
     if (currentView === 'listWeek' || currentView === 'listDay') {
       parent = document.querySelector('div.fc-scroller.fc-scroller-liquid')
       brother = document.querySelector('table.fc-list-table')
-
+    }
+    if (parent && brother) {
       parent.classList.add('flex')
       brother.classList.add('flex-1')
       parent.appendChild(MiniCalendarRef.current)
@@ -100,12 +94,6 @@ export default function Calendar({ weekendsVisible, setOpenEventForm, currentVie
       calendarMiniApi.updateSize()
       return
     }
-    // if (parent && brother) {
-    // parent.classList.add('flex')
-    // brother.classList.add('flex-1')
-    //   parent.appendChild(MiniCalendarRef.current)
-    //   MiniCalendarRef.current.classList.remove('hidden')
-    // } else {
     MiniCalendarRef.current.classList.add('hidden')
   }, [currentView])
 
