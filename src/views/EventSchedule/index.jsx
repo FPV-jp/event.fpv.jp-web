@@ -1,8 +1,10 @@
 import EventForm, { EventFormInput } from '@/views/EventSchedule/EventForm'
 import bootstrap5Plugin from '@fullcalendar/bootstrap5'
 import { formatDate } from '@fullcalendar/core'
+import jaLocale from '@fullcalendar/core/locales/ja'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
+import listPlugin from '@fullcalendar/list'
 import FullCalendar from '@fullcalendar/react'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import 'bootstrap-icons/font/bootstrap-icons.css'
@@ -95,12 +97,22 @@ export default function EventSchedule() {
           <EventFormInput setOpenEventForm={setOpenEventForm} />
         </EventForm>
         <FullCalendar
-          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, bootstrap5Plugin]}
+          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, bootstrap5Plugin, listPlugin]}
           themeSystem='bootstrap5'
+          locales={[jaLocale]}
+          locale='ja'
+          customButtons={{
+            addEvent: {
+              text: 'イベントを追加',
+              click: function () {
+                alert('clicked the custom button!')
+              },
+            },
+          }}
           headerToolbar={{
             left: 'prev,next today',
             center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay',
+            right: 'addEvent listWeek dayGridMonth,timeGridWeek,timeGridDay',
           }}
           initialView='dayGridMonth'
           editable={true}
