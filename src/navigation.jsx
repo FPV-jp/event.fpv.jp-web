@@ -37,7 +37,7 @@ export const navigation = [
     name: 'EventSchedule',
     path: '/calendar',
     element: <EventSchedule />,
-    subLayout: subLayout,
+    subLayout: 'none',
   },
   {
     name: 'OpenChat',

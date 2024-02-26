@@ -11,10 +11,9 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import { useState } from 'react'
 import { INITIAL_EVENTS } from './event-utils'
-import './index.css'
 
 function EventContent(eventInfo) {
-  console.log(eventInfo)
+  // console.log(eventInfo)
   return (
     <>
       <b>{eventInfo.timeText}</b>
@@ -71,68 +70,70 @@ export default function EventSchedule() {
   const [openEventForm, setOpenEventForm] = useState(false)
 
   return (
-    <div className='text-sm flex h-full font-sans'>
-      <div className='event-schedule-sidebar w-72 rounded-lg leading-6'>
-        <div className='event-schedule-sidebar-section'>
-          <h2>Instructions</h2>
-          <ul>
-            <li>Select dates and you will be prompted to create a new event</li>
-            <li>Drag, drop, and resize events</li>
-            <li>Click an event to delete it</li>
-          </ul>
-        </div>
-        <div className='event-schedule-sidebar-section'>
-          <label>
-            <input type='checkbox' checked={weekendsVisible} onChange={handleWeekendsToggle}></input>
-            toggle weekends
-          </label>
-        </div>
-        <div className='event-schedule-sidebar-section'>
-          <h2>All Events ({currentEvents.length})</h2>
-          <ul>{currentEvents.map(SidebarEvent)}</ul>
-        </div>
-      </div>
-      <div className='event-schedule-main flex-grow'>
-        <EventForm openEventForm={openEventForm} setOpenEventForm={setOpenEventForm}>
-          <EventFormInput setOpenEventForm={setOpenEventForm} />
-        </EventForm>
-        <FullCalendar
-          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, bootstrap5Plugin, listPlugin]}
-          themeSystem='bootstrap5'
-          locales={[jaLocale]}
-          locale='ja'
-          customButtons={{
-            addEvent: {
-              text: 'イベントを追加',
-              click: function () {
-                alert('clicked the custom button!')
-              },
-            },
-          }}
-          headerToolbar={{
-            left: 'prev,next today',
-            center: 'title',
-            right: 'addEvent listWeek dayGridMonth,timeGridWeek,timeGridDay',
-          }}
-          initialView='dayGridMonth'
-          editable={true}
-          selectable={true}
-          selectMirror={true}
-          dayMaxEvents={true}
-          weekends={weekendsVisible}
-          initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-          // select={handleDateSelect}
-          select={() => setOpenEventForm(true)}
-          eventContent={EventContent} // custom render function
-          eventClick={handleEventClick}
-          eventsSet={handleEvents} // called after events are initialized/added/changed/removed
-          /* you can update a remote database when these fire:
+    <>
+      <EventForm openEventForm={openEventForm} setOpenEventForm={setOpenEventForm}>
+        <EventFormInput setOpenEventForm={setOpenEventForm} />
+      </EventForm>
+      <FullCalendar
+        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, bootstrap5Plugin, listPlugin]}
+        themeSystem='bootstrap5'
+        locales={[jaLocale]}
+        locale='ja'
+        viewDidMount={(arg) => console.log(arg)}
+        customButtons={{
+          addEvent: {
+            text: 'イベントを追加',
+            click: () => setOpenEventForm(true),
+          },
+        }}
+        headerToolbar={{
+          left: 'prev,next dayGridYear,dayGridMonth today',
+          center: 'title',
+          right: 'addEvent timeGridWeek,listWeek timeGridDay,listDay',
+        }}
+        initialView='dayGridMonth'
+        editable={true}
+        selectable={true}
+        selectMirror={true}
+        dayMaxEvents={true}
+        weekends={weekendsVisible}
+        initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+        // select={handleDateSelect}
+        // select={() => setOpenEventForm(true)}
+        eventContent={EventContent} // custom render function
+        eventClick={handleEventClick}
+        eventsSet={handleEvents} // called after events are initialized/added/changed/removed
+        /* you can update a remote database when these fire:
           eventAdd={function(){}}
           eventChange={function(){}}
           eventRemove={function(){}}
           */
-        />
-      </div>
-    </div>
+      />
+    </>
+    // // <div className='text-sm flex h-full font-sans'>
+    //   {/* <div className='event-schedule-sidebar w-72 rounded-lg leading-6'>
+    //     <div className='event-schedule-sidebar-section'>
+    //       <h2>Instructions</h2>
+    //       <ul>
+    //         <li>Select dates and you will be prompted to create a new event</li>
+    //         <li>Drag, drop, and resize events</li>
+    //         <li>Click an event to delete it</li>
+    //       </ul>
+    //     </div>
+    //     <div className='event-schedule-sidebar-section'>
+    //       <label>
+    //         <input type='checkbox' checked={weekendsVisible} onChange={handleWeekendsToggle}></input>
+    //         toggle weekends
+    //       </label>
+    //     </div>
+    //     <div className='event-schedule-sidebar-section'>
+    //       <h2>All Events ({currentEvents.length})</h2>
+    //       <ul>{currentEvents.map(SidebarEvent)}</ul>
+    //     </div>
+    //   </div> */}
+    //   // <div className='event-schedule-main flex-grow'>
+
+    //   // </div>
+    // {/* </div> */}
   )
 }
