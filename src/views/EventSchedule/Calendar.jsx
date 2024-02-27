@@ -27,10 +27,35 @@ MiniCalendar.propTypes = {
 
 export function MiniCalendar({ MiniCalendarRef, setCalendarMiniApi }) {
   const FullCalendarRef = useRef(null)
+
   useEffect(() => setCalendarMiniApi(FullCalendarRef.current.calendar), [FullCalendarRef, setCalendarMiniApi])
+
+  const now = new Date()
+  now.setHours(0, 0, 0, 0)
+  const firstDayOfWeek = new Date(now.setDate(now.getDate() - now.getDay()))
+
+  const lastDayOfWeek = new Date(firstDayOfWeek)
+  lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6)
+
+  function highlightThisWeek(arg) {
+    if (arg.date >= firstDayOfWeek && arg.date <= lastDayOfWeek) {
+      arg.el.classList.add('fc-day-today')
+    }
+  }
+
   return (
-    <div id='mini-calendar' ref={MiniCalendarRef} className='flex-1 mx-3 mt-3 hidden'>
-      <FullCalendar ref={FullCalendarRef} headerToolbar={false} plugins={[dayGridPlugin]} initialView='dayGridMonth' initialDate={new Date()} />
+    <div id='mini-calendar' ref={MiniCalendarRef} className='mx-3 mt-3 hidden flex-1'>
+      <FullCalendar //
+        ref={FullCalendarRef}
+        plugins={[dayGridPlugin, bootstrap5Plugin]}
+        themeSystem='bootstrap5'
+        locales={[jaLocale]}
+        locale='ja'
+        headerToolbar={false}
+        dayCellDidMount={highlightThisWeek}
+        initialView='dayGridMonth'
+        initialDate={new Date()}
+      />
     </div>
   )
 }
@@ -104,7 +129,6 @@ export default function Calendar({ weekendsVisible, setOpenEventForm, currentVie
         ref={FullCalendarRef}
         aspectRatio={1.618}
         height={850}
-        // windowResizeDelay={500}
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, bootstrap5Plugin, listPlugin]}
         themeSystem='bootstrap5'
         locales={[jaLocale]}
