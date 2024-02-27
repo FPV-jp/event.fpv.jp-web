@@ -50,7 +50,9 @@ function ColorPicker({ color, setColor }) {
         value={color || ''}
         onChange={(e) => setColor(e.target.value)}
         onFocus={() => setopenColorPicker(true)}
-        onBlur={() => setopenColorPicker(false)}
+        onBlur={() => {
+          setTimeout(() => setopenColorPicker(false), 100)
+        }}
         className='dark:bg-slate-800 dark:text-white/80 dark:border-slate-600 relative w-full rounded-lg border-gray-300 bg-white py-2.5 pl-4 pr-14 text-sm font-light tracking-wide placeholder-gray-400 transition-all duration-300 focus:border-blue-500 focus:ring focus:ring-blue-500/20 disabled:cursor-not-allowed disabled:opacity-40'
         autoComplete='off'
         role='presentation'
@@ -73,13 +75,13 @@ function ColorPicker({ color, setColor }) {
         )}
       </button>
       {isMounted && (
-        <div ref={refs.setFloating} style={{ ...floatingStyles, zIndex: 9999 }}>
+        <div ref={refs.setFloating} style={{ ...floatingStyles, zIndex: 9, padding: 6, borderRadius: 5, border: '1px solid #d1d5db', background: 'white' }}>
           <div style={styles}>
             <div className='w-full grid grid-cols-2 gap-2'>
               {COLORS.map((color, index) => (
                 <div
                   key={index}
-                  className={classNames(`bg-${color}-500`, 'h-10 px-8 text-xs font-medium rounded-md flex items-center justify-center text-white cursor-pointer')}
+                  className={classNames(`bg-${color}-500`, 'h-10 px-8 text-xs font-medium rounded-md flex items-center justify-center text-white cursor-pointer z-10')}
                   onClick={() => {
                     setColor(color)
                     setopenColorPicker(false)
@@ -94,6 +96,7 @@ function ColorPicker({ color, setColor }) {
               context={context}
               width={ARROW_WIDTH}
               height={ARROW_HEIGHT}
+              // stroke='black'
               // tipRadius={10}
               staticOffset={'60%'}
               fill='white'

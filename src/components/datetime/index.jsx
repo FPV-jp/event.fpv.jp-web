@@ -91,7 +91,7 @@ function TimePicker({ htmlFor }) {
         )}
       </button>
       {isMounted && (
-        <div ref={refs.setFloating} style={{ ...floatingStyles, zIndex: 9999 }}>
+        <div ref={refs.setFloating} style={{ ...floatingStyles, zIndex: 9, borderRadius: 5, border: '1px solid #d1d5db' }}>
           <div style={styles}>
             <TimeKeeper //
               // time={time}
