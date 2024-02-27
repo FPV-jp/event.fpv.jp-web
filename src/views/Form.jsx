@@ -1,3 +1,6 @@
+import Dropdowns from '@/views/Dropdowns'
+import MenuDropdown from '@/views/MenuDropdown'
+import Popover from '@/views/Popover'
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 
 export function Form() {
@@ -10,6 +13,33 @@ export function Form() {
             <p className='mt-1 text-sm leading-6 text-gray-600'>This information will be displayed publicly so be careful what you share.</p>
 
             <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
+              <div className='col-span-full'>
+                <label htmlFor='Dropdowns' className='block text-sm font-medium leading-6 text-gray-900'>
+                  Dropdowns
+                </label>
+                <div className='mt-2'>
+                  <Dropdowns />
+                </div>
+              </div>
+
+              <div className='col-span-full'>
+                <label htmlFor='Popover' className='block text-sm font-medium leading-6 text-gray-900'>
+                  Popover
+                </label>
+                <div className='mt-2'>
+                  <Popover />
+                </div>
+              </div>
+
+              <div className='col-span-full'>
+                <label htmlFor='MenuDropdown' className='block text-sm font-medium leading-6 text-gray-900'>
+                  MenuDropdown
+                </label>
+                <div className='mt-2'>
+                  <MenuDropdown />
+                </div>
+              </div>
+
               <div className='sm:col-span-4'>
                 <label htmlFor='username' className='block text-sm font-medium leading-6 text-gray-900'>
                   Username

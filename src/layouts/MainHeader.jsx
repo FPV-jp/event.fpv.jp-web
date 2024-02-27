@@ -1,13 +1,13 @@
-import { Fragment } from 'react'
+import { navigation, userNavigation } from '@/navigation'
+import { classNames } from '@/utils'
+import { useAuth0 } from '@auth0/auth0-react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { classNames } from '@/utils'
-import { navigation, userNavigation } from '@/navigation'
-import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { useAuth0 } from '@auth0/auth0-react'
+import { Fragment } from 'react'
+import { Link } from 'react-router-dom'
 
-import { ArrowRightStartOnRectangleIcon, ArrowRightEndOnRectangleIcon } from '@heroicons/react/20/solid'
+import { ArrowRightEndOnRectangleIcon, ArrowRightStartOnRectangleIcon } from '@heroicons/react/20/solid'
 
 MainHeader.propTypes = {
   currentPath: PropTypes.string.isRequired,
@@ -42,7 +42,7 @@ export function MainHeader({ currentPath }) {
                 <div className='hidden sm:ml-6 sm:block'>
                   <div className='flex space-x-4'>
                     {navigation?.map(({ name, path }) => (
-                      <Link key={name} to={path} className={classNames(path === currentPath ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium')} aria-current={path === currentPath ? 'page' : undefined}>
+                      <Link key={name} to={path} className={classNames(path === currentPath ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md no-underline px-3 py-2 text-sm font-medium')} aria-current={path === currentPath ? 'page' : undefined}>
                         {name}
                       </Link>
                     ))}

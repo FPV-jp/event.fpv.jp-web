@@ -1,6 +1,7 @@
 import { Chat, Contact, NotFound, Stacked } from '@/views'
 import EventSchedule from '@/views/EventSchedule'
 import FlightPointMap from '@/views/FlightPointMap'
+import { Form } from '@/views/Form'
 import MediaLibrary from '@/views/MediaLibrary'
 import { Cog6ToothIcon, UserIcon } from '@heroicons/react/20/solid'
 
@@ -76,12 +77,12 @@ export const navigation = [
   //   element: <Stacked />,
   //   subLayout: subLayout,
   // },
-  // {
-  //   name: 'Form',
-  //   path: '/form',
-  //   element: <Form />,
-  //   subLayout: subLayout,
-  // },
+  {
+    name: 'Form',
+    path: '/form',
+    element: <Form />,
+    subLayout: subLayout,
+  },
   // {
   //   name: 'Top',
   //   path: '/top',
