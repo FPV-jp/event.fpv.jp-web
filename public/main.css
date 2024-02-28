@@ -1197,6 +1197,18 @@ select {
   height: 100vh;
 }
 
+.max-h-80 {
+  max-height: 20rem;
+}
+
+.max-h-72 {
+  max-height: 18rem;
+}
+
+.max-h-64 {
+  max-height: 16rem;
+}
+
 .min-h-\[285px\] {
   min-height: 285px;
 }

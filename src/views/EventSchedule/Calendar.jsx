@@ -61,13 +61,12 @@ export function MiniCalendar({ MiniCalendarRef, setCalendarMiniApi }) {
 }
 
 Calendar.propTypes = {
-  weekendsVisible: PropTypes.bool.isRequired,
   setOpenEventForm: PropTypes.func.isRequired,
   currentView: PropTypes.string.isRequired,
   setCurrentView: PropTypes.func.isRequired,
 }
 
-export default function Calendar({ weekendsVisible, setOpenEventForm, currentView, setCurrentView }) {
+export default function Calendar({ setOpenEventForm, currentView, setCurrentView }) {
   const [listView, setListView] = useState(true)
 
   function handleEventClick(clickInfo) {
@@ -195,7 +194,7 @@ export default function Calendar({ weekendsVisible, setOpenEventForm, currentVie
         selectable={true}
         selectMirror={true}
         dayMaxEvents={true}
-        weekends={weekendsVisible}
+        weekends={true}
         initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
         // select={handleDateSelect}
         // select={() => setOpenEventForm(true)}

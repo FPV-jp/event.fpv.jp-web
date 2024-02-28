@@ -1,225 +1,136 @@
 import ColorPicker from '@/components/color'
-import DateTimePicker from '@/components/datetime'
+import TimePicker from '@/components/time'
+import { classNames } from '@/utils'
 import { Dialog, Transition } from '@headlessui/react'
 import PropTypes from 'prop-types'
-import { Fragment, useRef } from 'react'
+import { Fragment, useRef, useState } from 'react'
+import Datepicker from 'react-tailwindcss-datepicker'
 
 EventFormInput.propTypes = {
   setOpenEventForm: PropTypes.func.isRequired,
 }
 
 export function EventFormInput({ setOpenEventForm }) {
+  const [color, setColor] = useState(null)
+
+  const [startDate, setStartDate] = useState({
+    startDate: null,
+    endDate: null,
+  })
+
+  const [startTime, setStartTime] = useState(null)
+
+  const [allDay, setAllDay] = useState(false)
+
+  const [endDate, setEndDate] = useState({
+    startDate: null,
+    endDate: null,
+  })
+
+  const [endTime, setEndTime] = useState(null)
+
+  async function submit(event) {
+    event.preventDefault()
+    const formData = new FormData(event.target)
+    for (let [key, value] of formData.entries()) {
+      console.log(key, value)
+    }
+    setOpenEventForm(false)
+  }
+
   return (
-    <form action='#' method='POST' className='mx-5 max-w-xl py-10 sm:py-12'>
+    <form action='#' method='POST' onSubmit={submit} className='mx-5 max-w-xl py-10 sm:py-12'>
       <div>
-        {/* <div className='border-b border-gray-900/10 pb-12'>
-          <div className=' grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
-            <div className='sm:col-span-4'>
-              <label htmlFor='username' className='block text-sm font-medium leading-6 text-gray-900'>
-                Username
-              </label>
-              <div className='mt-2'>
-                <div className='flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md'>
-                  <span className='flex select-none items-center pl-3 text-gray-500 sm:text-sm'>workcation.com/</span>
-                  <input type='text' name='username' id='username' autoComplete='username' className='block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6' placeholder='janesmith' />
-                </div>
-              </div>
-            </div>
-            <div className='col-span-full'>
-              <label htmlFor='about' className='block text-sm font-medium leading-6 text-gray-900'>
-                About
-              </label>
-              <div className='mt-2'>
-                <textarea id='about' name='about' rows={3} className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' defaultValue={''} />
-              </div>
-              <p className='mt-3 text-sm leading-6 text-gray-600'>Write a few sentences about yourself.</p>
-            </div>
-
-            <div className='col-span-full'>
-              <label htmlFor='photo' className='block text-sm font-medium leading-6 text-gray-900'>
-                Photo
-              </label>
-              <div className='mt-2 flex items-center gap-x-3'>
-                <UserCircleIcon className='h-12 w-12 text-gray-300' aria-hidden='true' />
-                <button type='button' className='rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'>
-                  Change
-                </button>
-              </div>
-            </div>
-
-            <div className='col-span-full'>
-              <label htmlFor='cover-photo' className='block text-sm font-medium leading-6 text-gray-900'>
-                Cover photo
-              </label>
-              <div className='mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10'>
-                <div className='text-center'>
-                  <PhotoIcon className='mx-auto h-12 w-12 text-gray-300' aria-hidden='true' />
-                  <div className='mt-4 flex text-sm leading-6 text-gray-600'>
-                    <label htmlFor='file-upload' className='relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500'>
-                      <span>Upload a file</span>
-                      <input id='file-upload' name='file-upload' type='file' className='sr-only' />
-                    </label>
-                    <p className='pl-1'>or drag and drop</p>
-                  </div>
-                  <p className='text-xs leading-5 text-gray-600'>PNG, JPG, GIF up to 10MB</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
-
         <div className='border-b border-gray-900/10 pb-12'>
-          <h2 className='text-base font-semibold leading-7 text-gray-900'>Personal Information</h2>
-          <p className='mt-1 text-sm leading-6 text-gray-600'>Use a permanent address where you can receive mail.</p>
-
+          <h2 className='text-base font-semibold leading-7 text-gray-900'>新規イベント</h2>
           <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
-            {/* <div className='sm:col-span-3'>
-              <label htmlFor='first-name' className='block text-sm font-medium leading-6 text-gray-900'>
-                First name
-              </label>
-              <div className='mt-2'>
-                <input type='text' name='first-name' id='first-name' autoComplete='given-name' className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' />
-              </div>
-            </div> */}
-
-            {/* <div className='sm:col-span-3'>
-              <label htmlFor='last-name' className='block text-sm font-medium leading-6 text-gray-900'>
-                Last name
-              </label>
-              <div className='mt-2'>
-                <input type='text' name='last-name' id='last-name' autoComplete='family-name' className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' />
-              </div>
-            </div> */}
-
-            {/* <div className='sm:col-span-4'>
-              <label htmlFor='email' className='block text-sm font-medium leading-6 text-gray-900'>
-                Email address
-              </label>
-              <div className='mt-2'>
-                <input id='email' name='email' type='email' autoComplete='email' className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' />
-              </div>
-            </div> */}
-
-            {/* <div className='sm:col-span-3'>
-              <label htmlFor='country' className='block text-sm font-medium leading-6 text-gray-900'>
-                Country
-              </label>
-              <div className='mt-2'>
-                <select id='country' name='country' autoComplete='country-name' className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6'>
-                  <option>United States</option>
-                  <option>Canada</option>
-                  <option>Mexico</option>
-                </select>
-              </div>
-            </div> */}
-
             <div className='col-span-full'>
               <label htmlFor='event-title' className='block text-sm font-medium leading-6 text-gray-900'>
                 タイトル
               </label>
               <div className='mt-2'>
-                <input type='text' name='event-title' id='street-address' autoComplete='street-address' className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' />
+                <input type='text' name='event-title' autoComplete='off' className='dark:bg-slate-800 dark:text-white/80 dark:border-slate-600 relative w-full rounded-lg border-gray-300 bg-white py-2.5 pl-4 pr-14 text-sm font-light tracking-wide placeholder-gray-400 transition-all duration-300 focus:border-blue-500 focus:ring focus:ring-blue-500/20 disabled:cursor-not-allowed disabled:opacity-40' />
               </div>
             </div>
-
-            {/* <div className='sm:col-span-2 sm:col-start-1'>
-              <label htmlFor='city' className='block text-sm font-medium leading-6 text-gray-900'>
-                City
-              </label>
-              <div className='mt-2'>
-                <input type='text' name='city' id='city' autoComplete='address-level2' className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' />
-              </div>
-            </div>
-
-            <div className='sm:col-span-2'>
-              <label htmlFor='region' className='block text-sm font-medium leading-6 text-gray-900'>
-                State / Province
-              </label>
-              <div className='mt-2'>
-                <input type='text' name='region' id='region' autoComplete='address-level1' className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' />
-              </div>
-            </div>
-
-            <div className='sm:col-span-2'>
-              <label htmlFor='postal-code' className='block text-sm font-medium leading-6 text-gray-900'>
-                ZIP / Postal code
-              </label>
-              <div className='mt-2'>
-                <input type='text' name='postal-code' id='postal-code' autoComplete='postal-code' className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' />
-              </div>
-            </div> */}
           </div>
-          <ColorPicker />
-          <DateTimePicker />
-        </div>
 
-        <div className='border-b border-gray-900/10 pb-12'>
-          <h2 className='text-base font-semibold leading-7 text-gray-900'>Notifications</h2>
-          <p className='mt-1 text-sm leading-6 text-gray-600'>Well always let you know about important changes, but you pick what else you want to hear about.</p>
+          <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
+            <div className='sm:col-span-3'>
+              <label className='block text-sm font-medium leading-6 text-gray-900'>選択色</label>
+              <div className={classNames(`bg-${color}-500`, 'h-10 px-8 text-xs font-medium rounded-md flex items-center justify-center text-white')}>{color}</div>
+            </div>
+            <div className='sm:col-span-3'>
+              <label htmlFor='color' className='block text-sm font-medium leading-6 text-gray-900'>
+                色を選択
+              </label>
+              <ColorPicker color={color} setColor={setColor} />
+            </div>
+          </div>
 
-          <div className='mt-10 space-y-10'>
-            <fieldset>
-              <legend className='text-sm font-semibold leading-6 text-gray-900'>By Email</legend>
-              <div className='mt-6 space-y-6'>
-                <div className='relative flex gap-x-3'>
-                  <div className='flex h-6 items-center'>
-                    <input id='comments' name='comments' type='checkbox' className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600' />
-                  </div>
-                  <div className='text-sm leading-6'>
-                    <label htmlFor='comments' className='font-medium text-gray-900'>
-                      Comments
-                    </label>
-                    <p className='text-gray-500'>Get notified when someones posts a comment on a posting.</p>
-                  </div>
-                </div>
-                {/* <div className='relative flex gap-x-3'>
-                  <div className='flex h-6 items-center'>
-                    <input id='candidates' name='candidates' type='checkbox' className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600' />
-                  </div>
-                  <div className='text-sm leading-6'>
-                    <label htmlFor='candidates' className='font-medium text-gray-900'>
-                      Candidates
-                    </label>
-                    <p className='text-gray-500'>Get notified when a candidate applies for a job.</p>
-                  </div>
-                </div> */}
-                {/* <div className='relative flex gap-x-3'>
-                  <div className='flex h-6 items-center'>
-                    <input id='offers' name='offers' type='checkbox' className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600' />
-                  </div>
-                  <div className='text-sm leading-6'>
-                    <label htmlFor='offers' className='font-medium text-gray-900'>
-                      Offers
-                    </label>
-                    <p className='text-gray-500'>Get notified when a candidate accepts or rejects an offer.</p>
-                  </div>
-                </div> */}
+          <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
+            <div className='sm:col-span-3'>
+              <label htmlFor='start-date' className='block text-sm font-medium leading-6 text-gray-900'>
+                イベント開始日
+              </label>
+              <div className='mt-2'>
+                <Datepicker //
+                  i18n={'ja'}
+                  useRange={false}
+                  asSingle={true}
+                  enddate={startDate}
+                  onChange={(newStartDate) => setStartDate(newStartDate)}
+                  inputName={'start-date'}
+                />
               </div>
-            </fieldset>
-            {/* <fieldset>
-              <legend className='text-sm font-semibold leading-6 text-gray-900'>Push Notifications</legend>
-              <p className='mt-1 text-sm leading-6 text-gray-600'>These are delivered via SMS to your mobile phone.</p>
-              <div className='mt-6 space-y-6'>
-                <div className='flex items-center gap-x-3'>
-                  <input id='push-everything' name='push-notifications' type='radio' className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600' />
-                  <label htmlFor='push-everything' className='block text-sm font-medium leading-6 text-gray-900'>
-                    Everything
-                  </label>
+            </div>
+
+            <div className='sm:col-span-3'>
+              <label htmlFor='start-time' className='block text-sm font-medium leading-6 text-gray-900'>
+                イベント開始時間
+              </label>
+              <div className='mt-2'>
+                <TimePicker htmlFor='start-time' disabled={false} time={startTime} setTime={setStartTime} />
+              </div>
+            </div>
+
+            <div className='col-span-full'>
+              <div className='relative flex gap-x-3'>
+                <div className='flex h-6 items-center'>
+                  <input onChange={(e) => setAllDay(e.target.checked)} name='all-day' type='checkbox' className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600' />
                 </div>
-                <div className='flex items-center gap-x-3'>
-                  <input id='push-email' name='push-notifications' type='radio' className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600' />
-                  <label htmlFor='push-email' className='block text-sm font-medium leading-6 text-gray-900'>
-                    Same as email
-                  </label>
-                </div>
-                <div className='flex items-center gap-x-3'>
-                  <input id='push-nothing' name='push-notifications' type='radio' className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600' />
-                  <label htmlFor='push-nothing' className='block text-sm font-medium leading-6 text-gray-900'>
-                    No push notifications
+                <div className='text-sm leading-6'>
+                  <label htmlFor='all-day' className='font-medium text-gray-900'>
+                    終日イベント
                   </label>
                 </div>
               </div>
-            </fieldset> */}
+            </div>
+
+            <div className='sm:col-span-3'>
+              <label htmlFor='end-date' className={classNames(`text-gray-${allDay ? 300 : 900}`, 'block text-sm font-medium leading-6')}>
+                イベント終了日
+              </label>
+              <div className='mt-2'>
+                <Datepicker //
+                  disabled={allDay}
+                  i18n={'ja'}
+                  useRange={false}
+                  asSingle={true}
+                  enddate={endDate}
+                  onChange={(newEndDate) => setEndDate(newEndDate)}
+                  inputName={'end-date'}
+                />
+              </div>
+            </div>
+
+            <div className='sm:col-span-3'>
+              <label htmlFor='end-time' className={classNames(`text-gray-${allDay ? 300 : 900}`, 'block text-sm font-medium leading-6')}>
+                イベント終了時間
+              </label>
+              <div className='mt-2'>
+                <TimePicker htmlFor='end-time' disabled={allDay} time={endTime} setTime={setEndTime} />
+              </div>
+            </div>
           </div>
         </div>
       </div>

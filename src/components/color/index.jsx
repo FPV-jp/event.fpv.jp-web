@@ -10,11 +10,11 @@ const ARROW_HEIGHT = 10
 const COLORS = ['blue', 'orange', 'yellow', 'red', 'purple', 'amber', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose']
 
 ColorPicker.propTypes = {
-  color: PropTypes.string.isRequired,
+  color: PropTypes.string,
   setColor: PropTypes.func.isRequired,
 }
 
-function ColorPicker({ color, setColor }) {
+export default function ColorPicker({ color, setColor }) {
   const [openColorPicker, setopenColorPicker] = useState(false)
   const arrowRef = useRef(null)
 
@@ -51,31 +51,22 @@ function ColorPicker({ color, setColor }) {
         value={color || ''}
         onChange={(e) => setColor(e.target.value)}
         onFocus={() => setopenColorPicker(true)}
-        onBlur={() => {
-          setTimeout(() => setopenColorPicker(false), 300)
-        }}
+        onBlur={() => setTimeout(() => setopenColorPicker(false), 300)}
         className='dark:bg-slate-800 dark:text-white/80 dark:border-slate-600 relative w-full rounded-lg border-gray-300 bg-white py-2.5 pl-4 pr-14 text-sm font-light tracking-wide placeholder-gray-400 transition-all duration-300 focus:border-blue-500 focus:ring focus:ring-blue-500/20 disabled:cursor-not-allowed disabled:opacity-40'
         autoComplete='off'
         role='presentation'
       />
-      <button
-        type='button'
-        onClick={() => clickInputIcon()}
-        onBlur={() => {
-          setTimeout(() => setopenColorPicker(false), 300)
-        }}
-        className='absolute right-0 h-full px-3 text-gray-400 focus:outline-none disabled:cursor-not-allowed disabled:opacity-40'
-      >
+      <button type='button' onClick={() => clickInputIcon()} className='absolute right-0 h-full px-3 text-gray-400 focus:outline-none disabled:cursor-not-allowed disabled:opacity-40'>
         {color ? <RestIcon /> : <PaletteIcon />}
       </button>
       {isMounted && (
         <div ref={refs.setFloating} style={{ ...floatingStyles, zIndex: 9, padding: 6, borderRadius: 5, border: '1px solid #d1d5db', background: 'white' }}>
           <div style={styles}>
-            <div className='w-full grid grid-cols-2 gap-2'>
+            <div className='max-h-64 overflow-y-auto w-full grid grid-cols-2 gap-2'>
               {COLORS.map((color, index) => (
                 <div
                   key={index}
-                  className={classNames(`bg-${color}-500`, 'h-10 px-8 text-xs font-medium rounded-md flex items-center justify-center text-white cursor-pointer')}
+                  className={classNames(`bg-${color}-500`, 'h-6 px-8 text-xs font-medium rounded-md flex items-center justify-center text-white cursor-pointer')}
                   onClick={() => {
                     setColor(color)
                     setopenColorPicker(false)
@@ -98,24 +89,6 @@ function ColorPicker({ color, setColor }) {
           </div>
         </div>
       )}
-    </div>
-  )
-}
-
-export default function Dropdowns() {
-  const [color, setColor] = useState(null)
-  return (
-    <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
-      <div className='sm:col-span-3'>
-        <label className='block text-sm font-medium leading-6 text-gray-900'>Selected Color</label>
-        <div className={classNames(`bg-${color}-500`, 'h-10 px-8 text-xs font-medium rounded-md flex items-center justify-center text-white')}>{color}</div>
-      </div>
-      <div className='sm:col-span-3'>
-        <label htmlFor='color' className='block text-sm font-medium leading-6 text-gray-900'>
-          Choice Color
-        </label>
-        <ColorPicker color={color} setColor={setColor} />
-      </div>
     </div>
   )
 }
