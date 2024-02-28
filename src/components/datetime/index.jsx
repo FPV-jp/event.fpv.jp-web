@@ -1,3 +1,4 @@
+import { ClockIcon, RestIcon } from '@/assets/svg'
 import { FloatingArrow, arrow, autoUpdate, flip, offset, shift, useFloating, useTransitionStyles } from '@floating-ui/react'
 import PropTypes from 'prop-types'
 import { useRef, useState } from 'react'
@@ -72,27 +73,11 @@ function TimePicker({ htmlFor }) {
         role='presentation'
       />
       <button type='button' onClick={() => clickInputIcon()} className='absolute right-0 h-full px-3 text-gray-400 focus:outline-none disabled:cursor-not-allowed disabled:opacity-40'>
-        {time ? (
-          <svg className='h-5 w-5' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor'>
-            <path strokeLinecap='round' strokeLinejoin='round' d='M6 18L18 6M6 6l12 12'></path>
-          </svg>
-        ) : (
-          <svg className='h-5 w-5' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 368 368' strokeWidth='7.5' stroke='currentColor'>
-            <path d='M184,60c4.4,0,8-3.6,8-8v-4c0-4.4-3.6-8-8-8c-4.4,0-8,3.6-8,8v4C176,56.4,179.6,60,184,60z' transform='matrix(1, 0, 0, 1, 0, -3.552713678800501e-15)' />
-            <path d='M184,308c-4.4,0-8,3.6-8,8v4c0,4.4,3.6,8,8,8c4.4,0,8-3.6,8-8v-4C192,311.6,188.4,308,184,308z' transform='matrix(1, 0, 0, 1, 0, -3.552713678800501e-15)' />
-            <path d='M52,176h-4c-4.4,0-8,3.6-8,8c0,4.4,3.6,8,8,8h4c4.4,0,8-3.6,8-8C60,179.6,56.4,176,52,176z' transform='matrix(1, 0, 0, 1, 0, -3.552713678800501e-15)' />
-            <path d='M320,176h-4c-4.4,0-8,3.6-8,8c0,4.4,3.6,8,8,8h4c4.4,0,8-3.6,8-8C328,179.6,324.4,176,320,176z' transform='matrix(1, 0, 0, 1, 0, -3.552713678800501e-15)' />
-            <path d='M93.6,82.4c-3.2-3.2-8-3.2-11.2,0c-3.2,3.2-3.2,8,0,11.2l2.8,2.8c1.6,1.6,3.6,2.4,5.6,2.4s4-0.8,5.6-2.4c3.2-3.2,3.2-8,0-11.2L93.6,82.4z' transform='matrix(1, 0, 0, 1, 0, -3.552713678800501e-15)' />
-            <path d='M85.2,271.6l-2.8,2.8c-3.2,3.2-3.2,8,0,11.2C84,287.2,86,288,88,288s4-0.8,5.6-2.4l2.8-2.8c3.2-3.2,3.2-8,0-11.2S88.4,268.4,85.2,271.6z' transform='matrix(1, 0, 0, 1, 0, -3.552713678800501e-15)' />
-            <path d='M274.4,82.4l-2.8,2.8c-3.2,3.2-3.2,8,0,11.2c1.6,1.6,3.6,2.4,5.6,2.4s4-0.8,5.6-2.4l2.8-2.8c3.2-3.2,3.2-8,0-11.2C282.4,79.2,277.6,79.2,274.4,82.4z' transform='matrix(1, 0, 0, 1, 0, -3.552713678800501e-15)' />
-            <path d='M192,180.8V108c0-4.4-3.6-8-8-8c-4.4,0-8,3.6-8,8v76c0,2,0.8,4,2.4,5.6l87.6,87.6c1.6,1.6,3.6,2.4,5.6,2.4s4-0.8,5.6-2.4c3.2-3.2,3.2-8,0-11.2L192,180.8z' transform='matrix(1, 0, 0, 1, 0, -3.552713678800501e-15)' />
-            <path d='M184,0C82.4,0,0,82.4,0,184s82.4,184,184,184s184-82.4,184-184S285.6,0,184,0z M184,352c-92.8,0-168-75.2-168-168S91.2,16,184,16s168,75.2,168,168S276.8,352,184,352z' transform='matrix(1, 0, 0, 1, 0, -3.552713678800501e-15)' />
-          </svg>
-        )}
+        {time ? <RestIcon /> : <ClockIcon />}
       </button>
       {isMounted && (
         <div ref={refs.setFloating} style={{ ...floatingStyles, zIndex: 9, borderRadius: 5, border: '1px solid #d1d5db' }}>
-          <div style={styles}>
+          <div style={{ ...styles, borderRadius: 5 }}>
             <TimeKeeper //
               // time={time}
               onChange={(newTime) => setTime(newTime.formatted24)}
@@ -109,6 +94,8 @@ function TimePicker({ htmlFor }) {
               height={ARROW_HEIGHT}
               // tipRadius={10}
               staticOffset={'60%'}
+              stroke='#d1d5db'
+              strokeWidth={1}
               fill='white'
             />
           </div>
