@@ -40,55 +40,50 @@ export default function Calendar({ setOpenEventForm, currentView, setCurrentView
   const FullCalendarRef = useRef(null)
   useEffect(() => setCalendarApi(FullCalendarRef.current.calendar), [FullCalendarRef])
 
+  const $ = (query) => document.querySelector(query)
+
   const innerCalendarRef = useRef(null)
   useEffect(() => {
-    console.log('currentView:', currentView)
     let parent
     let brother
 
     if (currentView === 'timeGridDay' || currentView === 'timeGridWeek') {
-      parent = document.querySelector(`div.fc-${currentView}-view.fc-view.fc-timegrid`)
-      brother = document.querySelector('table.fc-scrollgrid.fc-scrollgrid-liquid')
+      parent = $(`div.fc-${currentView}-view.fc-view.fc-timegrid`)
+      brother = $('table.fc-scrollgrid.fc-scrollgrid-liquid')
     }
 
     if (currentView === 'listWeek' || currentView === 'listDay') {
-      parent = document.querySelector(`div.fc-${currentView}-view.fc-view.fc-list.fc-list-sticky`)
-      brother = document.querySelector('div.fc-scroller.fc-scroller-liquid')
+      parent = $(`div.fc-${currentView}-view.fc-view.fc-list.fc-list-sticky`)
+      brother = $('div.fc-scroller.fc-scroller-liquid')
     }
 
     if (parent && brother) {
-      if (!document.querySelector('div.innerCalendar')) {
-        const innerCalendar = document.createElement('div')
-        innerCalendar.classList.add('innerCalendar')
-        createRoot(innerCalendar).render(
-          <InnerCalendar //
-            innerCalendarRef={innerCalendarRef}
-            listView={listView}
-            setListView={setListView}
-            currentView={currentView}
-            setCurrentView={setCurrentView}
-            calendarApi={calendarApi}
-          />,
-        )
-        parent.insertBefore(innerCalendar, parent.firstChild)
-        // parent.appendChild(innerCalendar)
-      }
+      if ($('div.innerCalendar')) $('div.innerCalendar').parentNode.removeChild($('div.innerCalendar'))
+      const innerCalendar = document.createElement('div')
+      innerCalendar.classList.add('innerCalendar')
+      createRoot(innerCalendar).render(
+        <InnerCalendar //
+          innerCalendarRef={innerCalendarRef}
+          listView={listView}
+          setListView={setListView}
+          currentView={currentView}
+          setCurrentView={setCurrentView}
+          calendarApi={calendarApi}
+        />,
+      )
+      currentView === 'timeGridWeek' ? parent.insertBefore(innerCalendar, parent.firstChild) : parent.appendChild(innerCalendar)
 
-      const innerCalendar = document.querySelector('div.innerCalendar')
       if (currentView === 'timeGridWeek') {
-        parent.classList.add('flex')
-        brother.classList.add('flex-1')
-        innerCalendar.classList.add('flex-1')
+        parent.classList.remove('flex')
+        brother.classList.remove('flex-1')
+        $('div.innerCalendar').classList.remove('flex-1')
       } else {
         parent.classList.add('flex')
         brother.classList.add('flex-1')
-        innerCalendar.classList.add('flex-1')
+        $('div.innerCalendar').classList.add('flex-1')
       }
       return
     }
-    // if (!document.querySelector('div.innerCalendar')) {
-    //   document.querySelector('div.innerCalendar').classList.add('hidden')
-    // }
   }, [currentView, calendarApi, listView, setCurrentView])
 
   return (

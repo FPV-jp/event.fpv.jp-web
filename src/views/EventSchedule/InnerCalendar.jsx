@@ -34,7 +34,7 @@ export default function InnerCalendar({ innerCalendarRef, listView, setListView,
           aria-pressed='false'
           className='fc-timeGridDay-button fc-button fc-button-primary'
         >
-          {listView ? 'タイムグリッド' : 'リスト'}
+          {listView ? 'タイムグリッド表示' : 'リスト表示'}
         </button>
       </div>
       {calendarApi.view.type !== 'timeGridWeek' && (
