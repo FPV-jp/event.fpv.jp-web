@@ -89,6 +89,19 @@ export default function Calendar({ setOpenEventForm, calendarApi, setCalendarApi
           text: 'イベントを追加',
           click: () => setOpenEventForm(true),
         },
+
+        prev: {
+          text: '前へ',
+          click: () => {
+            calendarApi.prev()
+          },
+        },
+        next: {
+          text: '次へ',
+          click: () => {
+            calendarApi.next()
+          },
+        },
         timeGridWeek: {
           text: '週表示',
           click: () => {
@@ -105,9 +118,9 @@ export default function Calendar({ setOpenEventForm, calendarApi, setCalendarApi
         },
       }}
       headerToolbar={{
-        left: 'dayGridYear,dayGridMonth prev,next today',
+        left: 'dayGridYear,dayGridMonth today',
         center: 'title',
-        right: 'addEvent timeGridWeek timeGridDay',
+        right: 'addEvent prev,next timeGridWeek timeGridDay',
       }}
       editable={true}
       selectable={true}
