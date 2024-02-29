@@ -22,12 +22,26 @@ export function recombination(currentView, calendar) {
     brother = $('div.fc-scroller.fc-scroller-liquid')
   }
 
-  if (parent && brother) {
-    if ($('div.innerCalendar')) $('div.innerCalendar').parentNode.removeChild($('div.innerCalendar'))
+  const attachCalendar = () => {
     const innerCalendar = document.createElement('div')
     innerCalendar.classList.add('innerCalendar')
     createRoot(innerCalendar).render(calendar)
     currentView === 'timeGridWeek' ? parent.insertBefore(innerCalendar, parent.firstChild) : parent.appendChild(innerCalendar)
+  }
+
+  if (parent && brother) {
+    if (!$('div.innerCalendar')) {
+      attachCalendar()
+    } else {
+      var index = Array.prototype.indexOf.call(parent.children, $('div.innerCalendar'))
+      if (currentView === 'timeGridWeek' && index === 1) {
+        $('div.innerCalendar').parentNode.removeChild($('div.innerCalendar'))
+        attachCalendar()
+      } else if (currentView === 'timeGridDay' && index === 0) {
+        $('div.innerCalendar').parentNode.removeChild($('div.innerCalendar'))
+        attachCalendar()
+      }
+    }
 
     if (currentView === 'timeGridWeek') {
       parent.classList.remove('flex')
