@@ -44,24 +44,32 @@ export default function Calendar({ setOpenEventForm, currentView, setCurrentView
   useEffect(() => {
     let parent
     let brother
+
     if (currentView === 'timeGridDay') {
       parent = document.querySelector('div.fc-timeGridDay-view.fc-view.fc-timegrid')
       brother = document.querySelector('table.fc-scrollgrid.fc-scrollgrid-liquid')
     }
+
     if (currentView === 'listWeek' || currentView === 'listDay') {
-      parent = document.querySelector('div.fc-scroller.fc-scroller-liquid')
-      brother = document.querySelector('table.fc-list-table')
+      parent = document.querySelector(`div.fc-${currentView}-view.fc-view.fc-list.fc-list-sticky`)
+      brother = document.querySelector('div.fc-scroller.fc-scroller-liquid')
     }
+
     if (parent && brother) {
       parent.classList.add('flex')
       brother.classList.add('flex-1')
       parent.appendChild(innerCalendarRef.current)
       innerCalendarRef.current.classList.remove('hidden')
-      innerCalendarApi.updateSize()
+
+      calendarApi && calendarApi.updateSize()
+      calendarApi && innerCalendarApi.updateSize()
       return
     }
+
     innerCalendarRef.current.classList.add('hidden')
-  }, [currentView, innerCalendarApi])
+    calendarApi && calendarApi.updateSize()
+    calendarApi && innerCalendarApi.updateSize()
+  }, [currentView, calendarApi, innerCalendarApi])
 
   return (
     <>
