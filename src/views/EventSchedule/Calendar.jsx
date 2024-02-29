@@ -1,3 +1,4 @@
+import InnerCalendar from '@/views/EventSchedule/InnerCalendar'
 import bootstrap5Plugin from '@fullcalendar/bootstrap5'
 import jaLocale from '@fullcalendar/core/locales/ja'
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -10,7 +11,14 @@ import 'bootstrap/dist/css/bootstrap.css'
 import PropTypes from 'prop-types'
 import { useEffect, useRef, useState } from 'react'
 
-function EventContent(eventInfo) {
+Calendar.propTypes = {
+  setOpenEventForm: PropTypes.func.isRequired,
+  currentView: PropTypes.string.isRequired,
+  setCurrentView: PropTypes.func.isRequired,
+  eventSchedules: PropTypes.array.isRequired,
+}
+
+function EventContent(eventInfo, createElement) {
   return (
     <>
       <b>{eventInfo.timeText}</b>
@@ -19,87 +27,21 @@ function EventContent(eventInfo) {
   )
 }
 
-MiniCalendar.propTypes = {
-  MiniCalendarRef: PropTypes.object.isRequired,
-  setCalendarMiniApi: PropTypes.func.isRequired,
-}
-
-export function MiniCalendar({ MiniCalendarRef, setCalendarMiniApi }) {
-  const FullCalendarRef = useRef(null)
-
-  useEffect(() => setCalendarMiniApi(FullCalendarRef.current.calendar), [FullCalendarRef, setCalendarMiniApi])
-
-  const now = new Date()
-  now.setHours(0, 0, 0, 0)
-  const firstDayOfWeek = new Date(now.setDate(now.getDate() - now.getDay()))
-
-  const lastDayOfWeek = new Date(firstDayOfWeek)
-  lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6)
-
-  function highlightThisWeek(arg) {
-    if (arg.date >= firstDayOfWeek && arg.date <= lastDayOfWeek) {
-      arg.el.classList.add('fc-day-today')
-    }
-  }
-
-  return (
-    <div id='mini-calendar' ref={MiniCalendarRef} className='mx-3 mt-3 hidden flex-1'>
-      <FullCalendar //
-        ref={FullCalendarRef}
-        plugins={[dayGridPlugin, bootstrap5Plugin]}
-        themeSystem='bootstrap5'
-        locales={[jaLocale]}
-        locale='ja'
-        headerToolbar={false}
-        dayCellDidMount={highlightThisWeek}
-        initialView='dayGridMonth'
-        initialDate={new Date()}
-      />
-    </div>
-  )
-}
-
-Calendar.propTypes = {
-  setOpenEventForm: PropTypes.func.isRequired,
-  currentView: PropTypes.string.isRequired,
-  setCurrentView: PropTypes.func.isRequired,
-  eventSchedules: PropTypes.array.isRequired,
-}
-
 export default function Calendar({ setOpenEventForm, currentView, setCurrentView, eventSchedules }) {
   const [listView, setListView] = useState(true)
 
-  console.log(eventSchedules)
   function handleEventClick(clickInfo) {
     if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
       clickInfo.event.remove()
     }
   }
 
-  // function handleEvents(events) {
-  //   setCurrentEvents(events)
-  // }
-
-  // function handleDateSelect(selectInfo) {
-  //   calendarApi.unselect() // clear date selection
-
-  //   calendarApi.addEvent({
-  //     id: 666666,
-  //     title: 'xxxxxxx',
-  //     start: selectInfo.startStr,
-  //     end: selectInfo.endStr,
-  //     allDay: selectInfo.allDay,
-  //     backgroundColor: 'green',
-  //   })
-  // }
-  // fc-view-harness fc-view-harness-active
-
-  const [calendarMiniApi, setCalendarMiniApi] = useState(null)
   const [calendarApi, setCalendarApi] = useState(null)
   const FullCalendarRef = useRef(null)
   useEffect(() => setCalendarApi(FullCalendarRef.current.calendar), [FullCalendarRef])
 
-  const MiniCalendarRef = useRef(null)
+  const [innerCalendarApi, setInnerCalendarApi] = useState(null)
+  const InnerCalendarRef = useRef(null)
   useEffect(() => {
     let parent
     let brother
@@ -114,17 +56,17 @@ export default function Calendar({ setOpenEventForm, currentView, setCurrentView
     if (parent && brother) {
       parent.classList.add('flex')
       brother.classList.add('flex-1')
-      parent.appendChild(MiniCalendarRef.current)
-      MiniCalendarRef.current.classList.remove('hidden')
-      calendarMiniApi.updateSize()
+      parent.appendChild(InnerCalendarRef.current)
+      InnerCalendarRef.current.classList.remove('hidden')
+      innerCalendarApi.updateSize()
       return
     }
-    MiniCalendarRef.current.classList.add('hidden')
+    InnerCalendarRef.current.classList.add('hidden')
   }, [currentView])
 
   return (
     <>
-      <MiniCalendar MiniCalendarRef={MiniCalendarRef} setCalendarMiniApi={setCalendarMiniApi} />
+      <InnerCalendar InnerCalendarRef={InnerCalendarRef} setInnerCalendarApi={setInnerCalendarApi} />
       <FullCalendar
         ref={FullCalendarRef}
         aspectRatio={1.618}

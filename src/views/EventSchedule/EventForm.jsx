@@ -59,36 +59,16 @@ export function EventFormInput({ setOpenEventForm }) {
     console.log('createEventScheduleInput:', createEventScheduleInput)
     const response = await createEventSchedule({ variables: { createEventScheduleInput } })
     console.log('response:', response.data)
-    // all_day
-    // :
-    // false
-    // end_datetime
-    // :
-    // "2024-02-19T20:25:00+00:00"
-    // event_color
-    // :
-    // "red"
-    // event_title
-    // :
-    // "あああああ"
-    // start_datetime
-    // :
-    // "2024-02-06T09:30:00+00:00"
-    // __typename
-    // :
-    // "EventSchedule"
-    // [[Prototype]]
-    // :
-    // Object
-    // [[Prototype]]
-    // :
-    // Object
-
-    // for (let [key, value] of formData.entries()) {
-    //   console.log(key, value)
-    // }
-
     setOpenEventForm(false)
+    //   calendarApi.unselect() // clear date selection
+    //   calendarApi.addEvent({
+    //     id: 666666,
+    //     title: 'xxxxxxx',
+    //     start: selectInfo.startStr,
+    //     end: selectInfo.endStr,
+    //     allDay: selectInfo.allDay,
+    //     backgroundColor: 'green',
+    //   })
   }
 
   return (
