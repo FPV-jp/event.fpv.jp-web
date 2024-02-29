@@ -4,16 +4,13 @@ import FullCalendar from '@fullcalendar/react'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import PropTypes from 'prop-types'
-import { useEffect, useRef } from 'react'
 
 InnerCalendar.propTypes = {
   innerCalendarRef: PropTypes.object.isRequired,
-  setInnerCalendarApi: PropTypes.func.isRequired,
 }
 
-export default function InnerCalendar({ innerCalendarRef, setInnerCalendarApi }) {
-  const FullCalendarRef = useRef(null)
-  useEffect(() => setInnerCalendarApi(FullCalendarRef.current.calendar), [FullCalendarRef, setInnerCalendarApi])
+export default function InnerCalendar({ innerCalendarRef }) {
+  // useEffect(() => setInnerCalendarApi(FullCalendarRef.current.calendar), [])
 
   //   const now = new Date()
   //   now.setHours(0, 0, 0, 0)
@@ -29,17 +26,15 @@ export default function InnerCalendar({ innerCalendarRef, setInnerCalendarApi })
   //   }
 
   return (
-    <div ref={innerCalendarRef} className='hidden flex-1'>
-      <FullCalendar //
-        ref={FullCalendarRef}
-        plugins={[dayGridPlugin]}
-        locales={[jaLocale]}
-        locale='ja'
-        headerToolbar={false}
-        // dayCellDidMount={highlightThisWeek}
-        initialView='dayGridMonth'
-        initialDate={new Date()}
-      />
-    </div>
+    <FullCalendar //
+      ref={innerCalendarRef}
+      plugins={[dayGridPlugin]}
+      locales={[jaLocale]}
+      locale='ja'
+      headerToolbar={false}
+      // dayCellDidMount={highlightThisWeek}
+      initialView='dayGridMonth'
+      initialDate={new Date()}
+    />
   )
 }
