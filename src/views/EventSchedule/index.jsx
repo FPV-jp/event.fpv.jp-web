@@ -3,14 +3,10 @@ import { ALL_EVENT_SCHEDULES_QUERY } from '@/queries/EventSchedule'
 import Calendar from '@/views/EventSchedule/Calendar'
 import EventForm, { EventFormInput } from '@/views/EventSchedule/EventForm'
 import { useQuery } from '@apollo/client'
-import 'bootstrap-icons/font/bootstrap-icons.css'
-import 'bootstrap/dist/css/bootstrap.css'
 import { useState } from 'react'
 
 export default function EventSchedule() {
   const [currentView, setCurrentView] = useState('dayGridMonth')
-  // const [currentView, setCurrentView] = useState('timeGridWeek')
-
   const [openEventForm, setOpenEventForm] = useState(false)
 
   const { loading, error, data, refetch } = useQuery(ALL_EVENT_SCHEDULES_QUERY)

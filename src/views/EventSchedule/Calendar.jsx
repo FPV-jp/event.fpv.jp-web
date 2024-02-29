@@ -1,15 +1,12 @@
-import InnerCalendar from '@//views/EventSchedule/InnerCalendar'
+import InnerCalendar, { recombination } from '@//views/EventSchedule/InnerCalendar'
 import jaLocale from '@fullcalendar/core/locales/ja'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import listPlugin from '@fullcalendar/list'
 import FullCalendar from '@fullcalendar/react'
 import timeGridPlugin from '@fullcalendar/timegrid'
-import 'bootstrap-icons/font/bootstrap-icons.css'
-import 'bootstrap/dist/css/bootstrap.css'
 import PropTypes from 'prop-types'
 import { useEffect, useRef, useState } from 'react'
-import { createRoot } from 'react-dom/client'
 
 Calendar.propTypes = {
   setOpenEventForm: PropTypes.func.isRequired,
@@ -40,28 +37,11 @@ export default function Calendar({ setOpenEventForm, currentView, setCurrentView
   const FullCalendarRef = useRef(null)
   useEffect(() => setCalendarApi(FullCalendarRef.current.calendar), [FullCalendarRef])
 
-  const $ = (query) => document.querySelector(query)
-
   const innerCalendarRef = useRef(null)
-  useEffect(() => {
-    let parent
-    let brother
-
-    if (currentView === 'timeGridDay' || currentView === 'timeGridWeek') {
-      parent = $(`div.fc-${currentView}-view.fc-view.fc-timegrid`)
-      brother = $('table.fc-scrollgrid.fc-scrollgrid-liquid')
-    }
-
-    if (currentView === 'listWeek' || currentView === 'listDay') {
-      parent = $(`div.fc-${currentView}-view.fc-view.fc-list.fc-list-sticky`)
-      brother = $('div.fc-scroller.fc-scroller-liquid')
-    }
-
-    if (parent && brother) {
-      if ($('div.innerCalendar')) $('div.innerCalendar').parentNode.removeChild($('div.innerCalendar'))
-      const innerCalendar = document.createElement('div')
-      innerCalendar.classList.add('innerCalendar')
-      createRoot(innerCalendar).render(
+  useEffect(
+    () =>
+      recombination(
+        currentView,
         <InnerCalendar //
           innerCalendarRef={innerCalendarRef}
           listView={listView}
@@ -70,21 +50,9 @@ export default function Calendar({ setOpenEventForm, currentView, setCurrentView
           setCurrentView={setCurrentView}
           calendarApi={calendarApi}
         />,
-      )
-      currentView === 'timeGridWeek' ? parent.insertBefore(innerCalendar, parent.firstChild) : parent.appendChild(innerCalendar)
-
-      if (currentView === 'timeGridWeek') {
-        parent.classList.remove('flex')
-        brother.classList.remove('flex-1')
-        $('div.innerCalendar').classList.remove('flex-1')
-      } else {
-        parent.classList.add('flex')
-        brother.classList.add('flex-1')
-        $('div.innerCalendar').classList.add('flex-1')
-      }
-      return
-    }
-  }, [currentView, calendarApi, listView, setCurrentView])
+      ),
+    [currentView, calendarApi, listView, setCurrentView],
+  )
 
   return (
     <FullCalendar
@@ -165,9 +133,9 @@ export default function Calendar({ setOpenEventForm, currentView, setCurrentView
       eventClick={handleEventClick}
       //eventsSet={(events) => setCurrentEvents(events)} // called after events are initialized/added/changed/removed
       /* you can update a remote database when these fire:
-      eventAdd={function(){}}
-      eventChange={function(){}}
-      eventRemove={function(){}}
+        eventAdd={function(){}}
+        eventChange={function(){}}
+        eventRemove={function(){}}
       */
     />
   )
