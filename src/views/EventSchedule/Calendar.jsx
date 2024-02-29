@@ -9,7 +9,6 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import PropTypes from 'prop-types'
 import { useEffect, useRef, useState } from 'react'
-import { INITIAL_EVENTS } from './event-utils'
 
 function EventContent(eventInfo) {
   return (
@@ -64,11 +63,13 @@ Calendar.propTypes = {
   setOpenEventForm: PropTypes.func.isRequired,
   currentView: PropTypes.string.isRequired,
   setCurrentView: PropTypes.func.isRequired,
+  eventSchedules: PropTypes.array.isRequired,
 }
 
-export default function Calendar({ setOpenEventForm, currentView, setCurrentView }) {
+export default function Calendar({ setOpenEventForm, currentView, setCurrentView, eventSchedules }) {
   const [listView, setListView] = useState(true)
 
+  console.log(eventSchedules)
   function handleEventClick(clickInfo) {
     if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
       clickInfo.event.remove()
@@ -195,7 +196,22 @@ export default function Calendar({ setOpenEventForm, currentView, setCurrentView
         selectMirror={true}
         dayMaxEvents={true}
         weekends={true}
-        initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+        initialEvents={eventSchedules.map((eventSchedule) =>
+          eventSchedule.all_day
+            ? {
+                id: eventSchedule.id,
+                title: eventSchedule.event_title,
+                color: eventSchedule.event_color,
+                start: new Date(eventSchedule.start_datetime).toISOString().replace(/T.*$/, ''),
+              }
+            : {
+                id: eventSchedule.id,
+                title: eventSchedule.event_title,
+                color: eventSchedule.event_color,
+                start: eventSchedule.start_datetime,
+                end: eventSchedule.end_datetime,
+              },
+        )} // alternatively, use the `events` setting to fetch from a feed
         // select={handleDateSelect}
         // select={() => setOpenEventForm(true)}
         eventContent={EventContent} // custom render function

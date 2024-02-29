@@ -1,6 +1,8 @@
 import ColorPicker from '@/components/color'
 import TimePicker from '@/components/time'
+import { CREATE_EVENT_SCHEDULE_MUTATION } from '@/queries/EventSchedule'
 import { classNames } from '@/utils'
+import { useMutation } from '@apollo/client'
 import { Dialog, Transition } from '@headlessui/react'
 import PropTypes from 'prop-types'
 import { Fragment, useRef, useState } from 'react'
@@ -29,12 +31,63 @@ export function EventFormInput({ setOpenEventForm }) {
 
   const [endTime, setEndTime] = useState(null)
 
+  function convertToDateObject(dateStr, timeStr) {
+    const [year, month, day] = dateStr.split('-').map(Number)
+    const [hour, minute] = timeStr.split(':').map(Number)
+    return new Date(year, month - 1, day, hour, minute, 0, 0)
+  }
+
+  const [createEventSchedule] = useMutation(CREATE_EVENT_SCHEDULE_MUTATION)
+
   async function submit(event) {
     event.preventDefault()
+
     const formData = new FormData(event.target)
-    for (let [key, value] of formData.entries()) {
-      console.log(key, value)
+
+    const createEventScheduleInput = {
+      event_title: formData.get('event-title'),
+      event_color: formData.get('event-color'),
+      all_day: formData.has('all-day'),
     }
+
+    if (formData.has('all-day')) {
+      createEventScheduleInput.start_datetime = convertToDateObject(formData.get('start-date'), '00:00').toISOString()
+    } else {
+      createEventScheduleInput.start_datetime = convertToDateObject(formData.get('start-date'), formData.get('start-time')).toISOString()
+      createEventScheduleInput.end_datetime = convertToDateObject(formData.get('end-date'), formData.get('end-time')).toISOString()
+    }
+    console.log('createEventScheduleInput:', createEventScheduleInput)
+    const response = await createEventSchedule({ variables: { createEventScheduleInput } })
+    console.log('response:', response.data)
+    // all_day
+    // :
+    // false
+    // end_datetime
+    // :
+    // "2024-02-19T20:25:00+00:00"
+    // event_color
+    // :
+    // "red"
+    // event_title
+    // :
+    // "あああああ"
+    // start_datetime
+    // :
+    // "2024-02-06T09:30:00+00:00"
+    // __typename
+    // :
+    // "EventSchedule"
+    // [[Prototype]]
+    // :
+    // Object
+    // [[Prototype]]
+    // :
+    // Object
+
+    // for (let [key, value] of formData.entries()) {
+    //   console.log(key, value)
+    // }
+
     setOpenEventForm(false)
   }
 
@@ -77,7 +130,7 @@ export function EventFormInput({ setOpenEventForm }) {
                   i18n={'ja'}
                   useRange={false}
                   asSingle={true}
-                  enddate={startDate}
+                  value={startDate}
                   onChange={(newStartDate) => setStartDate(newStartDate)}
                   inputName={'start-date'}
                 />
@@ -89,7 +142,7 @@ export function EventFormInput({ setOpenEventForm }) {
                 イベント開始時間
               </label>
               <div className='mt-2'>
-                <TimePicker htmlFor='start-time' disabled={false} time={startTime} setTime={setStartTime} />
+                <TimePicker htmlFor='start-time' disabled={allDay} time={startTime} setTime={setStartTime} />
               </div>
             </div>
 
@@ -116,7 +169,7 @@ export function EventFormInput({ setOpenEventForm }) {
                   i18n={'ja'}
                   useRange={false}
                   asSingle={true}
-                  enddate={endDate}
+                  value={endDate}
                   onChange={(newEndDate) => setEndDate(newEndDate)}
                   inputName={'end-date'}
                 />

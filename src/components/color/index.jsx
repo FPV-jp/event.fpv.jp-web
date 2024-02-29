@@ -47,7 +47,7 @@ export default function ColorPicker({ color, setColor }) {
       <input //
         ref={refs.setReference}
         type='text'
-        name='color'
+        name='event-color'
         value={color || ''}
         onChange={(e) => setColor(e.target.value)}
         onFocus={() => setopenColorPicker(true)}
