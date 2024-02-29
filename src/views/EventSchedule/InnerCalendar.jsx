@@ -35,8 +35,8 @@ export default function InnerCalendar({ innerCalendarRef, listView, setListView,
     if (select) {
       innerCalendarRef.current.calendar.gotoDate(select.start)
       if (calendarApi.view.type === 'listWeek') {
-        const { activeStart, activeEnd } = calendarApi.view
-        innerCalendarRef.current.calendar.select(activeStart, activeEnd)
+        const selectDayOfWee = DayOfWee(select.start, 1)
+        innerCalendarRef.current.calendar.select(selectDayOfWee.first, selectDayOfWee.last)
       } else {
         innerCalendarRef.current.calendar.select(select.start, select.end)
       }
@@ -44,7 +44,7 @@ export default function InnerCalendar({ innerCalendarRef, listView, setListView,
     setActiveDate({ reflection: true })
   }, [innerCalendarRef, calendarApi, select])
 
-  const thisDayOfWee = DayOfWee(new Date())
+  const thisDayOfWee = DayOfWee(new Date(), 0)
   function highlightThisWeek(arg) {
     if (calendarApi.view.type === 'listDay' || calendarApi.view.type === 'timeGridDay') return
     if (arg.date >= thisDayOfWee.first && arg.date <= thisDayOfWee.last) {

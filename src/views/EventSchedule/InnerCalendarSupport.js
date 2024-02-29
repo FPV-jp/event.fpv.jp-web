@@ -42,11 +42,11 @@ export function recombination(currentView, calendar) {
   }
 }
 
-export const DayOfWee = (datetime) => {
+export const DayOfWee = (datetime, offset) => {
   datetime.setHours(0, 0, 0, 0)
   const firstDayOfWeek = new Date(datetime.setDate(datetime.getDate() - datetime.getDay()))
   const lastDayOfWeek = new Date(firstDayOfWeek)
-  lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6)
+  lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6 + offset)
   return {
     first: firstDayOfWeek,
     last: lastDayOfWeek,
