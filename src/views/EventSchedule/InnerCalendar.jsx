@@ -3,6 +3,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import FullCalendar from '@fullcalendar/react'
 import PropTypes from 'prop-types'
+import { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 
 recombination.propTypes = {
@@ -54,7 +55,41 @@ InnerCalendar.propTypes = {
   calendarApi: PropTypes.object,
 }
 
+const DayOfWee = (datetime) => {
+  datetime.setHours(0, 0, 0, 0)
+  const firstDayOfWeek = new Date(datetime.setDate(datetime.getDate() - datetime.getDay()))
+  const lastDayOfWeek = new Date(firstDayOfWeek)
+  lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6)
+  return {
+    first: firstDayOfWeek,
+    last: lastDayOfWeek,
+  }
+}
+
 export default function InnerCalendar({ innerCalendarRef, listView, setListView, setCurrentView, calendarApi }) {
+  const [innerCalendarApi, setInnerCalendarApi] = useState(null)
+
+  const [activeDate, setActiveDate] = useState({
+    activeStart: null,
+    activeEnd: null,
+    reflection: true,
+  })
+
+  useEffect(() => {
+    if (activeDate.reflection) return
+    innerCalendarApi.select(activeDate.activeStart, activeDate.activeEnd)
+    setActiveDate({ reflection: true })
+  }, [innerCalendarApi, activeDate])
+
+  useEffect(() => setInnerCalendarApi(innerCalendarRef.current.calendar), [innerCalendarRef, setInnerCalendarApi])
+
+  const thisDayOfWee = DayOfWee(new Date())
+  function highlightThisWeek(arg) {
+    if (arg.date >= thisDayOfWee.first && arg.date <= thisDayOfWee.last) {
+      arg.el.classList.add('fc-day-today')
+    }
+  }
+
   return (
     <>
       <div className='flex justify-end w-full'>
@@ -86,7 +121,13 @@ export default function InnerCalendar({ innerCalendarRef, listView, setListView,
           headerToolbar={false}
           initialDate={new Date()}
           selectable={true}
-          select={(arg) => calendarApi.gotoDate(new Date(arg.start))}
+          select={(arg) => {
+            if (activeDate.reflection) {
+              calendarApi.gotoDate(arg.start)
+              setActiveDate({ activeStart: calendarApi.view.activeStart, activeEnd: calendarApi.view.activeEnd, reflection: false })
+            }
+          }}
+          dayCellDidMount={highlightThisWeek}
         />
       )}
     </>

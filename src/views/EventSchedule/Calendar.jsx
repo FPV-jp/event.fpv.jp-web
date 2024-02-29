@@ -117,7 +117,7 @@ export default function Calendar({ setOpenEventForm, calendarApi, setCalendarApi
       initialEvents={eventSchedules} // alternatively, use the `events` setting to fetch from a feed
       eventContent={EventContent} // custom render function
       eventClick={handleEventClick}
-      //eventsSet={(events) => setCurrentEvents(events)} // called after events are initialized/added/changed/removed
+      // eventsSet={(events) => console.log(events)} // called after events are initialized/added/changed/removed
       /* you can update a remote database when these fire:
         eventAdd={function(){}}
         eventChange={function(){}}
