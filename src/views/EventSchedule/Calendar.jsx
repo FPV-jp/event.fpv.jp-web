@@ -28,6 +28,7 @@ function EventContent(eventInfo, createElement) {
 export default function Calendar({ setOpenEventForm, calendarApi, setCalendarApi, eventSchedules }) {
   const [listView, setListView] = useState(true)
   const [currentView, setCurrentView] = useState()
+  const [select, setSelect] = useState()
 
   function handleEventClick(clickInfo) {
     if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
@@ -52,9 +53,10 @@ export default function Calendar({ setOpenEventForm, calendarApi, setCalendarApi
         setListView={setListView}
         setCurrentView={setCurrentView}
         calendarApi={calendarApi}
+        select={select}
       />,
     )
-  }, [currentView, calendarApi, listView, setCurrentView])
+  }, [currentView, calendarApi, listView, setCurrentView, select])
 
   return (
     <FullCalendar
@@ -110,14 +112,13 @@ export default function Calendar({ setOpenEventForm, calendarApi, setCalendarApi
       editable={true}
       selectable={true}
       selectMirror={true}
-      select={(arg) => {
-        console.log('arg:', arg)
-      }}
+      select={(arg) => setSelect(arg)}
       dayMaxEvents={true}
       weekends={true}
       initialEvents={eventSchedules} // alternatively, use the `events` setting to fetch from a feed
       eventContent={EventContent} // custom render function
       eventClick={handleEventClick}
+      // viewWillUnmount={(events) => console.log(events)}
       //eventsSet={(events) => console.log(events)} // called after events are initialized/added/changed/removed
       /* you can update a remote database when these fire:
         eventAdd={function(){}}

@@ -12,9 +12,10 @@ InnerCalendar.propTypes = {
   setListView: PropTypes.func.isRequired,
   setCurrentView: PropTypes.func.isRequired,
   calendarApi: PropTypes.object,
+  select: PropTypes.object,
 }
 
-export default function InnerCalendar({ innerCalendarRef, listView, setListView, setCurrentView, calendarApi }) {
+export default function InnerCalendar({ innerCalendarRef, listView, setListView, setCurrentView, calendarApi, select }) {
   const [innerCalendarApi, setInnerCalendarApi] = useState(null)
 
   const [activeDate, setActiveDate] = useState({
@@ -29,7 +30,19 @@ export default function InnerCalendar({ innerCalendarRef, listView, setListView,
     setActiveDate({ reflection: true })
   }, [innerCalendarApi, activeDate])
 
-  useEffect(() => setInnerCalendarApi(innerCalendarRef.current.calendar), [innerCalendarRef, setInnerCalendarApi])
+  useEffect(() => {
+    setInnerCalendarApi(innerCalendarRef.current.calendar)
+    if (select) {
+      innerCalendarRef.current.calendar.gotoDate(select.start)
+      if (calendarApi.view.type === 'listWeek') {
+        const { activeStart, activeEnd } = calendarApi.view
+        innerCalendarRef.current.calendar.select(activeStart, activeEnd)
+      } else {
+        innerCalendarRef.current.calendar.select(select.start, select.end)
+      }
+    }
+    setActiveDate({ reflection: true })
+  }, [innerCalendarRef, calendarApi, select])
 
   const thisDayOfWee = DayOfWee(new Date())
   function highlightThisWeek(arg) {
