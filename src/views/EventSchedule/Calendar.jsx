@@ -1,5 +1,4 @@
 import InnerCalendar from '@/views/EventSchedule/InnerCalendar'
-import bootstrap5Plugin from '@fullcalendar/bootstrap5'
 import jaLocale from '@fullcalendar/core/locales/ja'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
@@ -71,8 +70,7 @@ export default function Calendar({ setOpenEventForm, currentView, setCurrentView
         ref={FullCalendarRef}
         aspectRatio={1.618}
         height={850}
-        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, bootstrap5Plugin, listPlugin]}
-        themeSystem='bootstrap5'
+        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
         locales={[jaLocale]}
         locale='ja'
         customButtons={{

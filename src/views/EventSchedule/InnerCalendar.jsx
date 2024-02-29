@@ -1,4 +1,3 @@
-import bootstrap5Plugin from '@fullcalendar/bootstrap5'
 import jaLocale from '@fullcalendar/core/locales/ja'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import FullCalendar from '@fullcalendar/react'
@@ -33,8 +32,7 @@ export default function InnerCalendar({ innerCalendarRef, setInnerCalendarApi })
     <div ref={innerCalendarRef} className='hidden flex-1'>
       <FullCalendar //
         ref={FullCalendarRef}
-        plugins={[dayGridPlugin, bootstrap5Plugin]}
-        themeSystem='bootstrap5'
+        plugins={[dayGridPlugin]}
         locales={[jaLocale]}
         locale='ja'
         headerToolbar={false}
