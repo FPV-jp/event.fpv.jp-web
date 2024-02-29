@@ -86,9 +86,7 @@ export default function InnerCalendar({ innerCalendarRef, listView, setListView,
           headerToolbar={false}
           initialDate={new Date()}
           selectable={true}
-          select={(arg) => {
-            console.log(arg)
-          }}
+          select={(arg) => calendarApi.gotoDate(new Date(arg.start))}
         />
       )}
     </>
