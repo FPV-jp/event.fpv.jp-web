@@ -1,4 +1,5 @@
-import InnerCalendar, { recombination } from '@//views/EventSchedule/InnerCalendar'
+import InnerCalendar from '@//views/EventSchedule/InnerCalendar'
+import { recombination } from '@/views/EventSchedule/InnerCalendarSupport'
 import jaLocale from '@fullcalendar/core/locales/ja'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
@@ -87,14 +88,14 @@ export default function Calendar({ setOpenEventForm, calendarApi, setCalendarApi
           click: () => setOpenEventForm(true),
         },
         timeGridWeek: {
-          text: '今週',
+          text: '週表示',
           click: () => {
             listView ? calendarApi.changeView('listWeek') : calendarApi.changeView('timeGridWeek')
             setCurrentView(calendarApi.view.type)
           },
         },
         timeGridDay: {
-          text: '本日',
+          text: '日表示',
           click: () => {
             listView ? calendarApi.changeView('listDay') : calendarApi.changeView('timeGridDay')
             setCurrentView(calendarApi.view.type)
@@ -117,7 +118,7 @@ export default function Calendar({ setOpenEventForm, calendarApi, setCalendarApi
       initialEvents={eventSchedules} // alternatively, use the `events` setting to fetch from a feed
       eventContent={EventContent} // custom render function
       eventClick={handleEventClick}
-      // eventsSet={(events) => console.log(events)} // called after events are initialized/added/changed/removed
+      //eventsSet={(events) => console.log(events)} // called after events are initialized/added/changed/removed
       /* you can update a remote database when these fire:
         eventAdd={function(){}}
         eventChange={function(){}}
