@@ -41,7 +41,7 @@ export default function Calendar({ setOpenEventForm, currentView, setCurrentView
   useEffect(() => setCalendarApi(FullCalendarRef.current.calendar), [FullCalendarRef])
 
   const [innerCalendarApi, setInnerCalendarApi] = useState(null)
-  const InnerCalendarRef = useRef(null)
+  const innerCalendarRef = useRef(null)
   useEffect(() => {
     let parent
     let brother
@@ -56,17 +56,17 @@ export default function Calendar({ setOpenEventForm, currentView, setCurrentView
     if (parent && brother) {
       parent.classList.add('flex')
       brother.classList.add('flex-1')
-      parent.appendChild(InnerCalendarRef.current)
-      InnerCalendarRef.current.classList.remove('hidden')
+      parent.appendChild(innerCalendarRef.current)
+      innerCalendarRef.current.classList.remove('hidden')
       innerCalendarApi.updateSize()
       return
     }
-    InnerCalendarRef.current.classList.add('hidden')
-  }, [currentView])
+    innerCalendarRef.current.classList.add('hidden')
+  }, [currentView, innerCalendarApi])
 
   return (
     <>
-      <InnerCalendar InnerCalendarRef={InnerCalendarRef} setInnerCalendarApi={setInnerCalendarApi} />
+      <InnerCalendar innerCalendarRef={innerCalendarRef} setInnerCalendarApi={setInnerCalendarApi} />
       <FullCalendar
         ref={FullCalendarRef}
         aspectRatio={1.618}

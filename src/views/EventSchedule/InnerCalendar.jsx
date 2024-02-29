@@ -8,11 +8,11 @@ import PropTypes from 'prop-types'
 import { useEffect, useRef } from 'react'
 
 InnerCalendar.propTypes = {
-  InnerCalendarRef: PropTypes.object.isRequired,
+  innerCalendarRef: PropTypes.object.isRequired,
   setInnerCalendarApi: PropTypes.func.isRequired,
 }
 
-export default function InnerCalendar({ InnerCalendarRef, setInnerCalendarApi }) {
+export default function InnerCalendar({ innerCalendarRef, setInnerCalendarApi }) {
   const FullCalendarRef = useRef(null)
   useEffect(() => setInnerCalendarApi(FullCalendarRef.current.calendar), [FullCalendarRef, setInnerCalendarApi])
 
@@ -30,7 +30,7 @@ export default function InnerCalendar({ InnerCalendarRef, setInnerCalendarApi })
   //   }
 
   return (
-    <div ref={InnerCalendarRef} className='hidden flex-1'>
+    <div ref={innerCalendarRef} className='hidden flex-1'>
       <FullCalendar //
         ref={FullCalendarRef}
         plugins={[dayGridPlugin, bootstrap5Plugin]}
