@@ -36,26 +36,25 @@ export default function Calendar({ setOpenEventForm, calendarApi, setCalendarApi
 
   const FullCalendarRef = useRef(null)
   useEffect(() => {
-    setCurrentView(FullCalendarRef.current.calendar.type)
+    setCurrentView(FullCalendarRef.current.calendar.view.type)
     setCalendarApi(FullCalendarRef.current.calendar)
   }, [FullCalendarRef, setCurrentView, setCalendarApi])
 
   const innerCalendarRef = useRef(null)
-  useEffect(
-    () =>
-      recombination(
-        currentView,
-        <InnerCalendar //
-          innerCalendarRef={innerCalendarRef}
-          listView={listView}
-          setListView={setListView}
-          currentView={currentView}
-          setCurrentView={setCurrentView}
-          calendarApi={calendarApi}
-        />,
-      ),
-    [currentView, calendarApi, listView, setCurrentView],
-  )
+  useEffect(() => {
+    if (!calendarApi) return
+    recombination(
+      calendarApi.view.type,
+      <InnerCalendar //
+        innerCalendarRef={innerCalendarRef}
+        listView={listView}
+        setListView={setListView}
+        currentView={calendarApi.view.type}
+        setCurrentView={setCurrentView}
+        calendarApi={calendarApi}
+      />,
+    )
+  }, [currentView, calendarApi, listView, setCurrentView])
 
   return (
     <FullCalendar
@@ -114,22 +113,7 @@ export default function Calendar({ setOpenEventForm, calendarApi, setCalendarApi
       selectMirror={true}
       dayMaxEvents={true}
       weekends={true}
-      initialEvents={eventSchedules.map((eventSchedule) =>
-        eventSchedule.all_day
-          ? {
-              id: eventSchedule.id,
-              title: eventSchedule.event_title,
-              color: eventSchedule.event_color,
-              start: new Date(eventSchedule.start_datetime).toISOString().replace(/T.*$/, ''),
-            }
-          : {
-              id: eventSchedule.id,
-              title: eventSchedule.event_title,
-              color: eventSchedule.event_color,
-              start: eventSchedule.start_datetime,
-              end: eventSchedule.end_datetime,
-            },
-      )} // alternatively, use the `events` setting to fetch from a feed
+      initialEvents={eventSchedules} // alternatively, use the `events` setting to fetch from a feed
       // select={handleDateSelect}
       // select={() => setOpenEventForm(true)}
       eventContent={EventContent} // custom render function

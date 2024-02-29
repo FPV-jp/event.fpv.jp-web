@@ -25,7 +25,22 @@ export default function EventSchedule() {
         setOpenEventForm={setOpenEventForm}
         calendarApi={calendarApi}
         setCalendarApi={setCalendarApi}
-        eventSchedules={data.allEventSchedules}
+        eventSchedules={data.allEventSchedules.map((eventSchedule) =>
+          eventSchedule.all_day
+            ? {
+                id: eventSchedule.id,
+                title: eventSchedule.event_title,
+                color: eventSchedule.event_color,
+                start: new Date(eventSchedule.start_datetime).toISOString().replace(/T.*$/, ''),
+              }
+            : {
+                id: eventSchedule.id,
+                title: eventSchedule.event_title,
+                color: eventSchedule.event_color,
+                start: eventSchedule.start_datetime,
+                end: eventSchedule.end_datetime,
+              },
+        )}
       />
     </div>
   )
