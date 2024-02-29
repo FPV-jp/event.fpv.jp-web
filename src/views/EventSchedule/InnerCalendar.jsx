@@ -1,5 +1,6 @@
 import jaLocale from '@fullcalendar/core/locales/ja'
 import dayGridPlugin from '@fullcalendar/daygrid'
+import interactionPlugin from '@fullcalendar/interaction'
 import FullCalendar from '@fullcalendar/react'
 import PropTypes from 'prop-types'
 import { createRoot } from 'react-dom/client'
@@ -49,12 +50,11 @@ InnerCalendar.propTypes = {
   innerCalendarRef: PropTypes.object.isRequired,
   listView: PropTypes.bool,
   setListView: PropTypes.func.isRequired,
-  currentView: PropTypes.string,
   setCurrentView: PropTypes.func.isRequired,
   calendarApi: PropTypes.object,
 }
 
-export default function InnerCalendar({ innerCalendarRef, listView, setListView, currentView, setCurrentView, calendarApi }) {
+export default function InnerCalendar({ innerCalendarRef, listView, setListView, setCurrentView, calendarApi }) {
   return (
     <>
       <div className='flex justify-end w-full'>
@@ -62,11 +62,11 @@ export default function InnerCalendar({ innerCalendarRef, listView, setListView,
           type='button'
           onClick={() => {
             if (listView) {
-              if (currentView === 'listWeek') calendarApi.changeView('timeGridWeek')
-              if (currentView === 'listDay') calendarApi.changeView('timeGridDay')
+              if (calendarApi.view.type === 'listWeek') calendarApi.changeView('timeGridWeek')
+              if (calendarApi.view.type === 'listDay') calendarApi.changeView('timeGridDay')
             } else {
-              if (currentView === 'timeGridWeek') calendarApi.changeView('listWeek')
-              if (currentView === 'timeGridDay') calendarApi.changeView('listDay')
+              if (calendarApi.view.type === 'timeGridWeek') calendarApi.changeView('listWeek')
+              if (calendarApi.view.type === 'timeGridDay') calendarApi.changeView('listDay')
             }
             setListView(!listView)
             setCurrentView(calendarApi.view.type)
@@ -80,12 +80,15 @@ export default function InnerCalendar({ innerCalendarRef, listView, setListView,
       {calendarApi.view.type !== 'timeGridWeek' && (
         <FullCalendar //
           ref={innerCalendarRef}
-          plugins={[dayGridPlugin]}
+          plugins={[dayGridPlugin, interactionPlugin]}
           locales={[jaLocale]}
           locale='ja'
           headerToolbar={false}
-          initialView='dayGridMonth'
           initialDate={new Date()}
+          selectable={true}
+          select={(arg) => {
+            console.log(arg)
+          }}
         />
       )}
     </>

@@ -49,7 +49,6 @@ export default function Calendar({ setOpenEventForm, calendarApi, setCalendarApi
         innerCalendarRef={innerCalendarRef}
         listView={listView}
         setListView={setListView}
-        currentView={calendarApi.view.type}
         setCurrentView={setCurrentView}
         calendarApi={calendarApi}
       />,
@@ -61,7 +60,7 @@ export default function Calendar({ setOpenEventForm, calendarApi, setCalendarApi
       ref={FullCalendarRef}
       aspectRatio={1.618}
       height={850}
-      plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
+      plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin, listPlugin]}
       locales={[jaLocale]}
       locale='ja'
       customButtons={{
@@ -107,15 +106,15 @@ export default function Calendar({ setOpenEventForm, calendarApi, setCalendarApi
         center: 'title',
         right: 'addEvent timeGridWeek timeGridDay',
       }}
-      // initialView={currentView}
       editable={true}
       selectable={true}
       selectMirror={true}
+      select={(arg) => {
+        console.log('arg:', arg)
+      }}
       dayMaxEvents={true}
       weekends={true}
       initialEvents={eventSchedules} // alternatively, use the `events` setting to fetch from a feed
-      // select={handleDateSelect}
-      // select={() => setOpenEventForm(true)}
       eventContent={EventContent} // custom render function
       eventClick={handleEventClick}
       //eventsSet={(events) => setCurrentEvents(events)} // called after events are initialized/added/changed/removed
