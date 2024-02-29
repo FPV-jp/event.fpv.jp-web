@@ -42,11 +42,12 @@ export default function Calendar({ setOpenEventForm, currentView, setCurrentView
 
   const innerCalendarRef = useRef(null)
   useEffect(() => {
+    console.log('currentView:', currentView)
     let parent
     let brother
 
-    if (currentView === 'timeGridDay') {
-      parent = document.querySelector('div.fc-timeGridDay-view.fc-view.fc-timegrid')
+    if (currentView === 'timeGridDay' || currentView === 'timeGridWeek') {
+      parent = document.querySelector(`div.fc-${currentView}-view.fc-view.fc-timegrid`)
       brother = document.querySelector('table.fc-scrollgrid.fc-scrollgrid-liquid')
     }
 
@@ -56,17 +57,39 @@ export default function Calendar({ setOpenEventForm, currentView, setCurrentView
     }
 
     if (parent && brother) {
-      parent.classList.add('flex')
-      brother.classList.add('flex-1')
       if (!document.querySelector('div.innerCalendar')) {
         const innerCalendar = document.createElement('div')
-        innerCalendar.classList.add('innerCalendar', 'flex-1')
-        createRoot(innerCalendar).render(<InnerCalendar innerCalendarRef={innerCalendarRef} />)
-        parent.appendChild(innerCalendar)
+        innerCalendar.classList.add('innerCalendar')
+        createRoot(innerCalendar).render(
+          <InnerCalendar //
+            innerCalendarRef={innerCalendarRef}
+            listView={listView}
+            setListView={setListView}
+            currentView={currentView}
+            setCurrentView={setCurrentView}
+            calendarApi={calendarApi}
+          />,
+        )
+        parent.insertBefore(innerCalendar, parent.firstChild)
+        // parent.appendChild(innerCalendar)
+      }
+
+      const innerCalendar = document.querySelector('div.innerCalendar')
+      if (currentView === 'timeGridWeek') {
+        parent.classList.add('flex')
+        brother.classList.add('flex-1')
+        innerCalendar.classList.add('flex-1')
+      } else {
+        parent.classList.add('flex')
+        brother.classList.add('flex-1')
+        innerCalendar.classList.add('flex-1')
       }
       return
     }
-  }, [currentView, calendarApi])
+    // if (!document.querySelector('div.innerCalendar')) {
+    //   document.querySelector('div.innerCalendar').classList.add('hidden')
+    // }
+  }, [currentView, calendarApi, listView, setCurrentView])
 
   return (
     <FullCalendar
@@ -99,20 +122,6 @@ export default function Calendar({ setOpenEventForm, currentView, setCurrentView
           text: 'イベントを追加',
           click: () => setOpenEventForm(true),
         },
-        listView: {
-          text: listView ? 'リスト' : 'タイム',
-          click: () => {
-            if (listView) {
-              if (currentView === 'listWeek') calendarApi.changeView('timeGridWeek')
-              if (currentView === 'listDay') calendarApi.changeView('timeGridDay')
-            } else {
-              if (currentView === 'timeGridWeek') calendarApi.changeView('listWeek')
-              if (currentView === 'timeGridDay') calendarApi.changeView('listDay')
-            }
-            setListView(!listView)
-            setCurrentView(calendarApi.view.type)
-          },
-        },
         timeGridWeek: {
           text: '今週',
           click: () => {
@@ -131,7 +140,7 @@ export default function Calendar({ setOpenEventForm, currentView, setCurrentView
       headerToolbar={{
         left: 'dayGridYear,dayGridMonth prev,next today',
         center: 'title',
-        right: 'addEvent timeGridWeek timeGridDay listView',
+        right: 'addEvent timeGridWeek timeGridDay',
       }}
       initialView={currentView}
       editable={true}

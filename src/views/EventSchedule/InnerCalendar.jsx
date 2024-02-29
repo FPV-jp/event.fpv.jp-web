@@ -7,34 +7,47 @@ import PropTypes from 'prop-types'
 
 InnerCalendar.propTypes = {
   innerCalendarRef: PropTypes.object.isRequired,
+  listView: PropTypes.bool,
+  setListView: PropTypes.func.isRequired,
+  currentView: PropTypes.string,
+  setCurrentView: PropTypes.func.isRequired,
+  calendarApi: PropTypes.object.isRequired,
 }
 
-export default function InnerCalendar({ innerCalendarRef }) {
-  // useEffect(() => setInnerCalendarApi(FullCalendarRef.current.calendar), [])
-
-  //   const now = new Date()
-  //   now.setHours(0, 0, 0, 0)
-  //   const firstDayOfWeek = new Date(now.setDate(now.getDate() - now.getDay()))
-
-  //   const lastDayOfWeek = new Date(firstDayOfWeek)
-  //   lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6)
-
-  //   function highlightThisWeek(arg) {
-  //     if (arg.date >= firstDayOfWeek && arg.date <= lastDayOfWeek) {
-  //       arg.el.classList.add('fc-day-today')
-  //     }
-  //   }
-
+export default function InnerCalendar({ innerCalendarRef, listView, setListView, currentView, setCurrentView, calendarApi }) {
   return (
-    <FullCalendar //
-      ref={innerCalendarRef}
-      plugins={[dayGridPlugin]}
-      locales={[jaLocale]}
-      locale='ja'
-      headerToolbar={false}
-      // dayCellDidMount={highlightThisWeek}
-      initialView='dayGridMonth'
-      initialDate={new Date()}
-    />
+    <>
+      <div className='flex justify-end w-full'>
+        <button
+          type='button'
+          onClick={() => {
+            if (listView) {
+              if (currentView === 'listWeek') calendarApi.changeView('timeGridWeek')
+              if (currentView === 'listDay') calendarApi.changeView('timeGridDay')
+            } else {
+              if (currentView === 'timeGridWeek') calendarApi.changeView('listWeek')
+              if (currentView === 'timeGridDay') calendarApi.changeView('listDay')
+            }
+            setListView(!listView)
+            setCurrentView(calendarApi.view.type)
+          }}
+          aria-pressed='false'
+          className='fc-timeGridDay-button fc-button fc-button-primary'
+        >
+          {listView ? 'タイムグリッド' : 'リスト'}
+        </button>
+      </div>
+      {calendarApi.view.type !== 'timeGridWeek' && (
+        <FullCalendar //
+          ref={innerCalendarRef}
+          plugins={[dayGridPlugin]}
+          locales={[jaLocale]}
+          locale='ja'
+          headerToolbar={false}
+          initialView='dayGridMonth'
+          initialDate={new Date()}
+        />
+      )}
+    </>
   )
 }

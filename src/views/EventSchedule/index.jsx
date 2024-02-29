@@ -9,6 +9,8 @@ import { useState } from 'react'
 
 export default function EventSchedule() {
   const [currentView, setCurrentView] = useState('dayGridMonth')
+  // const [currentView, setCurrentView] = useState('timeGridWeek')
+
   const [openEventForm, setOpenEventForm] = useState(false)
 
   const { loading, error, data, refetch } = useQuery(ALL_EVENT_SCHEDULES_QUERY)
