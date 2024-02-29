@@ -117,6 +117,8 @@ export default function InnerCalendar({ innerCalendarRef, listView, setListView,
           ref={innerCalendarRef}
           plugins={[dayGridPlugin, interactionPlugin]}
           locales={[jaLocale]}
+          aspectRatio={0.618}
+          height={460}
           locale='ja'
           headerToolbar={false}
           initialDate={new Date()}
