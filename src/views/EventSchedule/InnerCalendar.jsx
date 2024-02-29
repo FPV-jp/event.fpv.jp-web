@@ -51,7 +51,7 @@ InnerCalendar.propTypes = {
   setListView: PropTypes.func.isRequired,
   currentView: PropTypes.string,
   setCurrentView: PropTypes.func.isRequired,
-  calendarApi: PropTypes.object.isRequired,
+  calendarApi: PropTypes.object,
 }
 
 export default function InnerCalendar({ innerCalendarRef, listView, setListView, currentView, setCurrentView, calendarApi }) {

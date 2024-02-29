@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/client'
 import { useState } from 'react'
 
 export default function EventSchedule() {
-  const [currentView, setCurrentView] = useState('dayGridMonth')
+  const [calendarApi, setCalendarApi] = useState(null)
   const [openEventForm, setOpenEventForm] = useState(false)
 
   const { loading, error, data, refetch } = useQuery(ALL_EVENT_SCHEDULES_QUERY)
@@ -23,8 +23,8 @@ export default function EventSchedule() {
       </EventForm>
       <Calendar //
         setOpenEventForm={setOpenEventForm}
-        currentView={currentView}
-        setCurrentView={setCurrentView}
+        calendarApi={calendarApi}
+        setCalendarApi={setCalendarApi}
         eventSchedules={data.allEventSchedules}
       />
     </div>

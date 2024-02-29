@@ -10,8 +10,8 @@ import { useEffect, useRef, useState } from 'react'
 
 Calendar.propTypes = {
   setOpenEventForm: PropTypes.func.isRequired,
-  currentView: PropTypes.string.isRequired,
-  setCurrentView: PropTypes.func.isRequired,
+  calendarApi: PropTypes.object,
+  setCalendarApi: PropTypes.func.isRequired,
   eventSchedules: PropTypes.array.isRequired,
 }
 
@@ -24,8 +24,9 @@ function EventContent(eventInfo, createElement) {
   )
 }
 
-export default function Calendar({ setOpenEventForm, currentView, setCurrentView, eventSchedules }) {
+export default function Calendar({ setOpenEventForm, calendarApi, setCalendarApi, eventSchedules }) {
   const [listView, setListView] = useState(true)
+  const [currentView, setCurrentView] = useState()
 
   function handleEventClick(clickInfo) {
     if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
@@ -33,9 +34,11 @@ export default function Calendar({ setOpenEventForm, currentView, setCurrentView
     }
   }
 
-  const [calendarApi, setCalendarApi] = useState(null)
   const FullCalendarRef = useRef(null)
-  useEffect(() => setCalendarApi(FullCalendarRef.current.calendar), [FullCalendarRef])
+  useEffect(() => {
+    setCurrentView(FullCalendarRef.current.calendar.type)
+    setCalendarApi(FullCalendarRef.current.calendar)
+  }, [FullCalendarRef, setCurrentView, setCalendarApi])
 
   const innerCalendarRef = useRef(null)
   useEffect(
@@ -105,7 +108,7 @@ export default function Calendar({ setOpenEventForm, currentView, setCurrentView
         center: 'title',
         right: 'addEvent timeGridWeek timeGridDay',
       }}
-      initialView={currentView}
+      // initialView={currentView}
       editable={true}
       selectable={true}
       selectMirror={true}
