@@ -1,4 +1,4 @@
-import InnerCalendar from '@//views/EventSchedule/InnerCalendar'
+import InnerCalendar from '@/views/EventSchedule/InnerCalendar'
 import { recombination } from '@/views/EventSchedule/InnerCalendarSupport'
 import jaLocale from '@fullcalendar/core/locales/ja'
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -42,28 +42,41 @@ export default function Calendar({ setOpenEventForm, calendarApi, setCalendarApi
     setCalendarApi(FullCalendarRef.current.calendar)
   }, [FullCalendarRef, setCurrentView, setCalendarApi])
 
-  const innerCalendarRef = useRef(null)
+  // const innerCalendarRef = useRef(null)
   useEffect(() => {
     if (!calendarApi) return
     recombination(
       calendarApi.view.type,
       <InnerCalendar //
-        innerCalendarRef={innerCalendarRef}
+        // innerCalendarRef={innerCalendarRef}
         listView={listView}
         setListView={setListView}
+        currentView={currentView}
         setCurrentView={setCurrentView}
         calendarApi={calendarApi}
         select={select}
       />,
     )
-  }, [currentView, calendarApi, listView, setCurrentView, select])
-
+  }, [calendarApi, currentView, listView, select])
+  // useEffect(() => {
+  //   console.log(select)
+  // }, [select])
+  // useEffect(() => {
+  //   console.log('currentView1:', currentView)
+  //   // const { activeStart, activeEnd, calendar, currentStart, currentEnd } = calendarApi.view
+  //   // setValue(select.start)
+  //   // console.log('activeStart:', activeStart)
+  //   // console.log('activeEnd:', activeEnd)
+  //   // console.log('currentStart:', currentStart)
+  //   // console.log('currentEnd:', currentEnd)
+  //   // console.log('calendar:', calendar)
+  // }, [currentView])
   return (
     <FullCalendar
       ref={FullCalendarRef}
       aspectRatio={1.618}
       height={850}
-      plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin, listPlugin]}
+      plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
       locales={[jaLocale]}
       locale='ja'
       customButtons={{
@@ -94,12 +107,20 @@ export default function Calendar({ setOpenEventForm, calendarApi, setCalendarApi
           text: '前へ',
           click: () => {
             calendarApi.prev()
+            // setSelect({
+            //   start: calendarApi.view.activeStart,
+            //   end: calendarApi.view.activeEnd,
+            // })
           },
         },
         next: {
           text: '次へ',
           click: () => {
             calendarApi.next()
+            // setSelect({
+            //   start: calendarApi.view.activeStart,
+            //   end: calendarApi.view.activeEnd,
+            // })
           },
         },
         timeGridWeek: {
